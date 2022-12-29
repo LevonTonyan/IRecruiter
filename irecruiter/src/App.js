@@ -1,25 +1,21 @@
 import './App.css';
-import { useEffect } from 'react';
-import { db } from './db/firebase'
-import {collection, getDocs} from 'firebase/firestore'
-import Header from './components/header/Header';
-import { useState } from 'react';
-import LoginPage from './components/login/LoginPage';
-import SignUp from './components/signUp/SignUp'
-import {Routes, Route} from 'react-router-dom'
-
-
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
+import About from './components/About';
+import Home from './components/Home';
+import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App"> 
       <Routes>
-        <Route path='/login' element={<LoginPage/>}/>
-        <Route path='/signup' element={<SignUp />} />
+        <Route path='/' element={<Layout/>}>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/home' element={<Home/>}/>
+          <Route path='/about' element={<About/>}/>
+          <Route path='/contact' element={<Contact/>}/>
+        </Route> 
       </Routes>
-   
-    
-      
     </div>
   );
 }
