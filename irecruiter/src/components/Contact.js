@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import {GoogleApiWrapper, Map, Marker} from 'google-maps-react'
 import phone from "../images/call.png"
 import location from "../images/location.png"
 import mail from "../images/mail.png"
@@ -48,8 +49,8 @@ class Contact extends Component {
                   lng: 44.490525, 
                 }
               }/>
-            </Maps>   */}
-        {/* </div> */}
+            </Map>   
+         </div> */}
         </section>
       </>  
     );
@@ -58,9 +59,6 @@ class Contact extends Component {
 
 export default Contact
 
-// GoogleApiWrapper({
-//   apiKey:"AIzaSyB8NJO8jSkm12HJolyoixqBth6awzw8sPM"
+// export default GoogleApiWrapper({
+//   apiKey:process.env.REACT_APP_API_KEY
 // })(Contact)
-
-
-// googleMapsApiKey: "AIzaSyAHlPYqo41F3__XUtP3CBCsGD6qbzby2mg"
