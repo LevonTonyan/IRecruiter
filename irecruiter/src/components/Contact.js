@@ -1,13 +1,28 @@
-import React, { Component } from 'react'
-// import {GoogleApiWrapper, Map, Marker} from 'google-maps-react'
 import phone from "../images/call.png"
 import location from "../images/location.png"
 import mail from "../images/mail.png"
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 
-class Contact extends Component {
-  render(){
-    return (  
-      <>
+
+
+function Contact () {
+  const containerStyle = {
+    width: '700px',
+    height: '500px'
+  };
+  
+  const center = {
+    lat: 40.198892,
+    lng: 44.490525
+  };
+  
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+  })
+
+
+  return isLoaded ? (  
         <section>
           <div className='contact-heading'>
             <h2>Contact Us</h2>
@@ -29,36 +44,19 @@ class Contact extends Component {
                 <p>irecruit.support@gmail.com</p>
               </div>
           </div>
-
-      
-        {/* <div className='map'>
-            <Map
-              google={this.props.google}
-              style={{width:"50%", height:"70%"}}
-              zoom={10}
-              initialCenter={
-                {
-                  lat: 40.198892,
-                  lng: 44.490525,
-                }
-              }
-            >
-              <Marker position={
+   
+            <GoogleMap 
+              mapContainerStyle={containerStyle}  
+              zoom={10}  
+              center={center}>
+             <Marker position={
                 {
                   lat: 40.198892,
                   lng: 44.490525, 
-                }
-              }/>
-            </Map>   
-         </div> */}
-        </section>
-      </>  
-    );
+                }}/>
+            </GoogleMap>    
+        </section> 
+    ): <></>
   }
-}
 
 export default Contact
-
-// export default GoogleApiWrapper({
-//   apiKey:process.env.REACT_APP_API_KEY
-// })(Contact)
