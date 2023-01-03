@@ -1,0 +1,150 @@
+
+.navbar{
+    position: relative;
+    height: 90px;
+    background-color: #d4e8ff;
+  }
+  
+  .navlink{
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    margin-left: 60px; 
+    margin-right: 0px;
+    padding: 25px 20px;
+    display: flex;
+    justify-content:fle;
+    font-size:x-large;
+    font-weight:bolder;
+    text-decoration-line: none;
+  }
+  
+  .container{
+    display: flex;
+    text-align: left;
+    float: left;
+    margin-left: 100px;
+    margin-top:80px;
+    margin-bottom: 80px;
+    padding-left: 0px;
+    font-size: x-large;
+    display: block;
+    width: 100%;
+    max-width: 580px;
+  }
+  
+  
+  .logo {
+    width: 60px;
+    height: 70px;
+    margin-top: -15px;
+    margin-right: 950px;
+  }
+  
+  .button {
+    margin-left: 10px;
+    margin-top: -5px;
+    margin-bottom: 20px;
+    flex: 0 0 auto;
+    background-color: #1ebd53;
+    margin-left: 20px;
+    padding: 20px 30px;
+    border-radius: 12px;
+    text-align: center;
+    font-family: 'Open Sans',sans-serif;
+    color: #fff;
+    font-size: 18px;
+    line-height: 30%;
+    font-weight: 600; 
+    text-decoration: none; 
+  }
+  
+  .leftbuttons{
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: -20px;
+  }
+  
+  .recruiterbutton{
+    margin-left: 20px;
+    padding: 15px 25px;
+    border-radius: 12px;
+    background-color: #145aff;
+    font-family: 'Open Sans',sans-serif;
+    color: #fff;
+    font-size: 16px;
+    line-height: 120%;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .employeebutton{
+    margin-left: 20px;
+    padding: 15px 25px;
+    border-radius: 12px;
+    background-color: #1ebd53; 
+    font-family: 'Open Sans',sans-serif;
+    color: #fff;
+    font-size: 16px;
+    line-height: 120%;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .main-picture {
+    display: flex;
+    float: right;
+    margin-right: 100px;
+    margin-top:60px;
+    height:500px;
+    width:750px;
+  }
+  
+  
+  .about-header{
+    display: flex;
+    justify-content: center;
+    font-size: large;
+  }
+  
+  .about-text {
+    justify-content: center;
+    text-align:center;
+    width: 800px;
+    font-size: 20px;
+    margin-left: 350px;
+  }
+  
+  .contact-heading {
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+  }
+   
+  .contacts-container{
+    display: flex;
+    float: right;
+    margin-top:10px;
+    font-size: larger;
+    display: block;
+    width: 100%;
+    max-width: 580px;
+  }
+  
+  .text{
+    display: block;
+    text-align:justify;
+  }
+  
+  .icon{
+    display: flex;
+    float: left;
+    padding-top: 15px;
+    padding-right: 25px;
+    height: 50px;
+    width: 50px;
+  }
+  
+  
