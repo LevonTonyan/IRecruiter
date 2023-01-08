@@ -13,25 +13,21 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 const Icons = [
     {
-      id: 1,
       text: "Dashboard",
       description:"icon",
       icon: DashboardIcon,
     },
     {
-      id: 2,
       text: "Clients",
       description:"icon",
       icon: GroupsIcon,
     },
     {
-      id: 3,
       text: "Jobs",
       description:"icon",
       icon: WorkIcon,
     },
     {
-      id: 4,
       text: "Candidates",
       description:"icon",
       icon: PeopleAltIcon,
@@ -40,25 +36,21 @@ const Icons = [
 
 const DividerIcons=[
     {
-        id: 5,
         text: "Reports",
         description:"icon",
         icon: AssessmentIcon,
       },
       {
-        id: 6,
         text: "Placements",
         description:"icon",
         icon: HowToRegIcon,
       },
       {
-        id: 7,
         text: "Calendar",
         description:"icon",
         icon: EventNoteIcon,
       },
       {
-        id: 8,
         text: "Settings",
         description:"icon",
         icon: SettingsIcon,
@@ -112,9 +104,8 @@ function Sidebar(){
         <React.Fragment>
           <Drawer variant="permanent" open={openDrawer}>
            <List sx={{marginTop:"60px"}}>
-            {Icons.map(list => (
-              <ListItem key={list.id}>
-                <list.text/>
+            {Icons.map((item, index)=> (
+              <ListItem key={index}>
                 <ListItemButton sx={{ 
                   minHeight: 48,
                   justifyContent: openDrawer ? 'initial' : 'center',
@@ -124,20 +115,19 @@ function Sidebar(){
                   <ListItemIcon sx={{ color: "#4169E1", minWidth: 0,
                     mr: openDrawer ? 3 : 'auto',
                     justifyContent: 'center',}}>
-                        <div key={list.id}>
-                            <list.icon />       
+                        <div key={index}>
+                            <item.icon />       
                         </div>  
                   </ListItemIcon>
-                  <ListItemText primary={list.text} sx={{ opacity: openDrawer ? 1 : 0 }} />
+                  <ListItemText primary={item.text} sx={{ opacity: openDrawer ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
           <Divider />
           <List>
-          {DividerIcons.map(list => (
-              <ListItem key={list.id}>
-              <list.text/>
+          {DividerIcons.map((item,index) => (
+              <ListItem key={index}>
               <ListItemButton sx={{ 
                 minHeight: 48,
                 justifyContent: openDrawer ? 'initial' : 'center',
@@ -147,11 +137,11 @@ function Sidebar(){
                 <ListItemIcon sx={{ color: "#4169E1", minWidth: 0,
                   mr: openDrawer ? 3 : 'auto',
                   justifyContent: 'center',}}>
-                      <div key={list.id}>
-                          <list.icon />       
+                      <div key={index}>
+                          <item.icon />       
                       </div>  
                 </ListItemIcon>
-                <ListItemText primary={list.text} sx={{ opacity: openDrawer ? 1 : 0 }} />
+                <ListItemText primary={item.text} sx={{ opacity: openDrawer ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
              ))}
