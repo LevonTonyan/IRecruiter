@@ -2,6 +2,8 @@
   border: 1px solid#E0E0E0;
   border-radius: 5px;
   
+  
+  
 }
 
 .skills-title {
@@ -9,6 +11,8 @@
   background-color: #E8E8E8;
   text-align: left;
   padding: 10px 0px;
+  font-size: large;
+  font-weight: bolder;
 }
 
 .skills-title span {
@@ -18,15 +22,11 @@
 
 
 
-.skill-item {
-  display: inline-block;
-  padding:5px;
-  margin:3px
-}
-.skils-list {
+
+.sk-List {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  
   align-items:center
 
 }
@@ -40,4 +40,24 @@
   margin-top: 40px;
   margin-bottom: 20px;
   
+}
+
+
+
+.skill {
+  border-radius:10px;
+  display:inline-block;
+  height: 10px;
+  background-color:#9fda82;
+  padding:15px;
+  align-items:center
+}
+
+.close-btn {
+  border-radius:50%;
+  border:none;
+  position:relative;
+  right:10px;
+  bottom:20px;
+  border:1px solid grey;
 }

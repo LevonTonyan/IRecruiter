@@ -4,20 +4,32 @@ import { UserAuth } from "../../../../context/AuthContext";
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db } from './../../../../db/firebase';
 import { useState } from 'react';
+import uuid from 'react-uuid';
+
+
+///////////////SMALL SKILLITEM CMPONENT///////////////////
+const Skill = ({skill}) => {
+  return (<>
+            <div className='skill'>
+                {skill}
+             </div>
+            <button className='close-btn' onClick={() => console.log('close')}>X</button>
+          </>
+       
+  )
+}
 
 
 
 const Skills = ({ candidate }) => {
 
-  const { user, currentUserData } = UserAuth()
-  const [showInput, setShowInput] = useState(false)
+
   const [input, setInput] = useState('')
 
-  console.log(candidate)
+
   //if (!Object.keys(skills).length) return
 
   const addCandidateSkill = () => { 
-    console.log("render")
     if (input) {
     const skillsRef = doc(db, "employee", candidate.id);
       
@@ -42,7 +54,7 @@ if(!Object.keys(candidate).length) return
         <div className="sk-List">
           {candidate.skills.length ? (
           candidate.skills.map((skill) => {
-            return <div className="skill-item"><li >{skill}</li></div>;
+            return <Skill skill={skill} key={uuid()} />
           })
         ) : (<h4 style={{ margin: "40px 0px 0px 0px" }}>No skills added yet</h4>
         )}</div> 

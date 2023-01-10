@@ -51,9 +51,10 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
  
 
   const [openDrawer, setOpenDrawer] = useState(false)  
-const { logout, currentUserData, settingUser, user, setIsSidebarOpen } = UserAuth()
-const navigate = useNavigate()
-const usersName = Object.keys(currentUserData).length && currentUserData.name[0]
+  const { logout, currentUserData, settingUser, user, setIsSidebarOpen } = UserAuth()
+
+  const navigate = useNavigate()
+  const usersName = Object.keys(currentUserData).length && currentUserData['Candidate Name'][0];
   const organisation = Object.keys(currentUserData).length ? currentUserData.organisation : "Self-employed"
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)

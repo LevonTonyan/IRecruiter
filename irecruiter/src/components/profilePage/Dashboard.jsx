@@ -23,7 +23,7 @@ const Dashboard = () => {
 
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
-  const usersName = Object.keys(currentUserData).length&&currentUserData.name
+  const usersName = Object.keys(currentUserData).length&&currentUserData["Candidate Name"]
 
   if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
 

@@ -81,22 +81,26 @@ function SignUp() {
     createUser(data.email, data.password).then(cred => {
       let object = userType === 'employee' ?
         {
-          name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber,
-          diploma: null,
-          university: null,
-          gender: null,
-          birthdate: null,
-          candidateAddress: null,
-          createdBy: cred.user.uid,
+          'Candidate Name': data.name[0].toUpperCase() + data.name.slice(1),
+          "Candidate Phone Number": data.phoneNumber,
+          "Diploma": null,
+          "University": null,
+          'Current Company':null,
+          "Gender": null,
+          "Birthdate": null,
+          'Candidate Address':null,
+          "Candidate Location": null,
+          "expectedSalary":null,
+          "createdBy": cred.user.uid,
           id:cred.user.uid,
-          created: new Date().toLocaleString(),
-          location: null,
-          skills:[]
+          "created": new Date().toLocaleString(),
+          "location": null,
+          "skills": [],
+          "jobs":[]
 
         } : {
-          name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber,
+          'Candidate Name': data.name[0].toUpperCase() + data.name.slice(1),
+          "Candidate Phone Number": data.phoneNumber,
           organisation:data.organisation
         }
         setDoc(doc(db, userType, cred.user.uid), object)
