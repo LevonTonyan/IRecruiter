@@ -10,6 +10,7 @@ import AssessmentIcon from '@mui/icons-material/Assessment';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import SettingsIcon from '@mui/icons-material/Settings';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
 
 const Icons = [
     {
@@ -102,24 +103,31 @@ function Sidebar(){
 
     return(
         <React.Fragment>
+        <ClickAwayListener onClickAway={()=>{setOpenDrawer(false)}}>
           <Drawer variant="permanent" open={openDrawer}>
            <List sx={{marginTop:"60px"}}>
             {Icons.map((item, index)=> (
-              <ListItem key={index}>
+              <ListItem key={index} sx={{
+                paddingBottom:"1px",
+                paddingTop:"1px"
+                }}>
                 <ListItemButton sx={{ 
                   minHeight: 48,
                   justifyContent: openDrawer ? 'initial' : 'center',
-                  px: 2.5, 
+                  px: 2.5,
                   color: "#708090" 
                   }}>
-                  <ListItemIcon sx={{ color: "#4169E1", minWidth: 0,
+                  <ListItemIcon sx={{ 
+                    color: "#4169E1", 
+                    minWidth: 0,
                     mr: openDrawer ? 3 : 'auto',
-                    justifyContent: 'center',}}>
+                    justifyContent: 'center',
+                    }}>
                         <div key={index}>
                             <item.icon />       
                         </div>  
                   </ListItemIcon>
-                  <ListItemText primary={item.text} sx={{ opacity: openDrawer ? 1 : 0 }} />
+                  <ListItemText primary={item.text} primaryTypographyProps={{fontSize:"14px" }} sx={{opacity: openDrawer ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
             ))}
@@ -127,26 +135,33 @@ function Sidebar(){
           <Divider />
           <List>
           {DividerIcons.map((item,index) => (
-              <ListItem key={index}>
+              <ListItem key={index}sx={{
+                paddingBottom:"1px",
+                paddingTop:"1px"
+                }}>
               <ListItemButton sx={{ 
                 minHeight: 48,
                 justifyContent: openDrawer ? 'initial' : 'center',
                 px: 2.5, 
                 color: "#708090" 
                 }}>
-                <ListItemIcon sx={{ color: "#4169E1", minWidth: 0,
+                <ListItemIcon sx={{ 
+                  color: "#4169E1",
+                  minWidth: 0,
                   mr: openDrawer ? 3 : 'auto',
-                  justifyContent: 'center',}}>
+                  justifyContent: 'center',
+                }}>
                       <div key={index}>
                           <item.icon />       
                       </div>  
                 </ListItemIcon>
-                <ListItemText primary={item.text} sx={{ opacity: openDrawer ? 1 : 0 }} />
+                <ListItemText primary={item.text} primaryTypographyProps={{fontSize:"14px" }} sx={{ opacity: openDrawer ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
              ))}
           </List>
             </Drawer>
+            </ClickAwayListener>
         </React.Fragment>
     )
 }
