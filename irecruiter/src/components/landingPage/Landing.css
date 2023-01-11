@@ -20,10 +20,27 @@
     font-weight:bolder;
     
   }
+.landing-navbar{
+  position: relative;
+  height: 90px;
+  background-color: #d4e8ff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navlink {
+  width: 50vh;
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+  font-size:x-large;
+  font-weight:bolder;
+  
+  
+}
   
   .navlink a {
     text-decoration: none;
-    margin: 0 20px;
     color:black;
 
   }
@@ -33,16 +50,18 @@
     text-decoration: underline;
 
   }
+.allContainer{
 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 
   .container{
+   
     display: flex;
     text-align: left;
     float: left;
-    margin-left: 100px;
-    margin-top:80px;
-    margin-bottom: 80px;
-    padding-left: 0px;
     font-size: x-large;
     display: block;
     width: 100%;
@@ -56,12 +75,7 @@
     flex-direction: column;
   }
   
-  .nav-logo {
-    width: 60px;
-    height: 70px;
-    margin-top: -15px;
-    margin-right: 950px;
-  }
+  
   
   .button {
     margin-left: 10px;
@@ -118,12 +132,9 @@
   }
   
   .main-picture {
-    display: flex;
-    float: right;
-    margin-right: 100px;
-    margin-top:60px;
-    height:500px;
-    width:750px;
+    
+    height:400px;
+    width:600px;
   }
   
   
@@ -131,6 +142,7 @@
     display: flex;
     justify-content: center;
     font-size: large;
+    
   }
   
   .about-text {
@@ -148,26 +160,88 @@
    
   .contacts-container{
     display: flex;
-    float: right;
-    margin-top:10px;
+    
+   
     font-size: larger;
     display: block;
-    width: 100%;
-    max-width: 580px;
+    
   }
   
   .text{
     display: block;
     text-align:justify;
   }
-  
-  .icon{
+
+  .contact{
     display: flex;
-    float: left;
+    align-items: center;
+  }
+
+  .icon{
+  
     padding-top: 15px;
     padding-right: 25px;
     height: 50px;
     width: 50px;
   }
+  .navbar-logo{
+    margin-top: 8px;
+    
+    margin-left: 30px;    
+  }
   
-  
+  @media only screen and (max-width: 850px)  {
+    .allContainer{
+      flex-direction: column;
+    
+    }
+      .main-picture {
+    
+        height:300px;
+        width:450px;
+      }
+      .navbar-logo{
+        display:none;
+        
+      }
+      .navlink{
+        font-size: large;
+        margin-left: 0;
+        width: 100%;
+        display: flex;
+      }
+      
+
+     
+      .container{
+        text-align: center;
+      }
+      .container h1 {
+        margin:20px 40pxpx;
+        font-size: 30px;
+      }
+      .leftbuttons {
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        width:90%;
+        margin: auto;
+        
+      }
+ 
+      
+     .homepagetext {
+      font-size: 15px;
+     }
+    
+      
+  }
+
+
+.container h1 {
+  margin: 20px;
+}
+
+  .homepagetext{
+    margin:20px;
+  }

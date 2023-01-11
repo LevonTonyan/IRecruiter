@@ -13,14 +13,13 @@
     vertical-align: middle;
 }
 
-@media screen and  (max-width: 900px) {
+@media screen and  (max-width: 850px) {
     .home_link {
       display: none;
     }
     .help_icon {
         display: none;
-    }
-    
+        }
     }
 
 .toolbar {
@@ -39,6 +38,7 @@
     user-select: none;
     background-color: rgb(33, 150, 243);
     color: white;
+    cursor: pointer;
 
 
 }

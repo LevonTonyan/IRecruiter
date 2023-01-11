@@ -1,15 +1,16 @@
-import React from "react";
-import Header from "../header/Header";
-import './ProfilePageStyles.css'
+import React, { useEffect } from "react";
+import './DashboardStyles.css'
 import { Box, Button } from "@mui/material";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
 import { UserAuth } from "../../context/AuthContext";
+import Loader from './../loader/Loader';
 
-const ProfilePage = () => {
+
+const Dashboard = () => {
   const [showModal, setShowModal] = useState(false)
-  const [showSignOutDrop, setShowSignOutDrop] = useState(false);
-  const { currentUserData, settingUser, user } = UserAuth()
+ 
+  const { currentUserData, settingUser, user, loading,isSidebarOpen } = UserAuth()
 
 
 
@@ -21,35 +22,32 @@ const ProfilePage = () => {
   })
 
 
-
-  const usersName = Object.keys(currentUserData).length&&currentUserData.name
+  /////////////CREATE CANDIDATE HANDLER////////////////////////
+  const usersName = Object.keys(currentUserData).length&&currentUserData["Candidate Name"]
 
   if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
 
-  const styles = {
-    button: {
-      width: "200px",
-      
-    }
-  }
+
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
   const createCandidate = () => { 
     setShowModal((prev) => !prev)
   } 
   
+
+
+///////////////rendering Loader if still loadings
+  if (loading) return <Loader />
   
+
   return (
-    <div className="profile-container">
-      <Header setShowSignOutDrop={setShowSignOutDrop}
-        showSignOutDrop={showSignOutDrop}
-      />
+    <div className={isSidebarOpen?"profile-container sideBarOpen":'profile-container'}>
       <div>
-        <div className="greething-username">Hello {usersName},</div>
+    <div className="greething-username">Hello {usersName},</div>
         <div className="greething">
           Here are three steps to get you started.
         </div>
-      </div>
+      
       <div className="create-candidate-box-container">
         <div className="box" onClick={createCandidate}>
           <div>
@@ -65,7 +63,6 @@ const ProfilePage = () => {
           </span>
           <Box>
             <Button variant="contained"
-              sx={styles.button }
               className="mui-btn"
               size="small">Create a Candidate
             </Button>
@@ -87,9 +84,8 @@ const ProfilePage = () => {
           </span>
           <Box>
             <Button variant="contained"
-              sx={styles.button }
               className="mui-btn"
-              size="small">Create a Client
+              size="small">Create a Candidate
             </Button>
           </Box>
         </div>
@@ -111,15 +107,17 @@ const ProfilePage = () => {
           </span>
           <Box>
             <Button variant="contained"
-              sx={styles.button }
               className="mui-btn"
-              size="small">Create a Job
+              size="small">Create a Candidate
             </Button>
           </Box>
         </div>
       </div>
     </div>
+      
+      
+    </div>
   );
 };
 
-export default ProfilePage;
+export default Dashboard;

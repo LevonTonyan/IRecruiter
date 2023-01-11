@@ -11,6 +11,7 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ClickAwayListener from '@mui/base/ClickAwayListener';
+import { useNavigate} from "react-router-dom";
 
 const Icons = [
     {
@@ -96,10 +97,14 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         '& .MuiDrawer-paper': closedMixin(theme),
       }),
     }),
-  );
+);
+  
+
 
 function Sidebar(){
-    const [openDrawer, setOpenDrawer]= useState(true)  
+    const [openDrawer, setOpenDrawer] = useState(true)  
+    const navigate = useNavigate()
+
 
     return(
         <React.Fragment>
@@ -159,7 +164,8 @@ function Sidebar(){
               </ListItemButton>
             </ListItem>
              ))}
-          </List>
+                </List>
+                <Divider />
             </Drawer>
             </ClickAwayListener>
         </React.Fragment>

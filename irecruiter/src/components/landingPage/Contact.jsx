@@ -8,8 +8,8 @@ import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
 
 function Contact () {
   const containerStyle = {
-    width: '700px',
-    height: '500px'
+    width: '400px',
+    height: '50vh'
   };
   
   const center = {
@@ -28,25 +28,9 @@ function Contact () {
           <div className='contact-heading'>
             <h2>Contact Us</h2>
           </div>
-          <div className='contacts-container'>
-              <div className='text'>
-              <img src={location} alt='call.png' className='icon'></img>
-                <h4>Address</h4>
-                <p>3 Hakob Hakobyan St, Yerevan, Armenia</p>
-              </div>
-              <div className='text'>
-              <img src={phone} alt='call.png' className='icon'></img>
-                <h4>Contact Us</h4>
-                <p>+374 77857885, +374 77858585, </p>
-              </div>
-              <div className='text'>
-              <img src={mail} alt='call.png' className='icon'></img>
-                <h4>Mail</h4>
-                <p>irecruit.support@gmail.com</p>
-              </div>
-          </div>
-   
-            <GoogleMap 
+<div className='allContainer'>
+  
+<GoogleMap
               mapContainerStyle={containerStyle}  
               zoom={10}  
               center={center}>
@@ -55,7 +39,34 @@ function Contact () {
                   lat: 40.198892,
                   lng: 44.490525, 
                 }}/>
-            </GoogleMap>    
+            </GoogleMap>  
+
+          <div className='contacts-container'>
+              <div className='contact'>
+              <img src={location} alt='call.png' className='icon'></img>
+                <div className='text'>
+                <h4>Address</h4>
+                <p>3 Hakob Hakobyan St, Yerevan, Armenia</p>
+                </div>
+              </div>
+              <div className='contact'>
+              <img src={phone} alt='call.png' className='icon'></img>
+              <div className='text'>
+                <h4>Contact Us</h4>
+                <p>+374 77857885, +374 77858585, </p>
+                </div>
+              </div>
+              <div className='contact'>
+              <img src={mail} alt='call.png' className='icon'></img>
+              <div className='text'>
+                <h4>Mail</h4>
+                <p>irecruit.support@gmail.com</p>
+                </div>
+              </div>
+          </div>
+   
+            
+            </div>  
         </section> 
     ): <></>
   }

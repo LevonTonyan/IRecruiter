@@ -69,29 +69,45 @@ function SignUp() {
     )
   }
 
-
   
   const createNewUser = (data) => {
+    if (!data.name || !data.phoneNumber) { 
+      console.log(data.name, data.phoneNumber)
+      setError("All fields marked * should be filled up")
+      return 
+    }
+
+
     createUser(data.email, data.password).then(cred => {
       let object = userType === 'employee' ?
         {
-          name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber,
-          diploma: null,
-          university: null,
-          gender: null,
-          birthdate: null,
-          candidateAddress: null,
-          createdBy:cred.user.uid
+          'Candidate Name': data.name[0].toUpperCase() + data.name.slice(1),
+          "Candidate Phone Number": data.phoneNumber,
+          "Diploma": null,
+          "University": null,
+          'Current Company':null,
+          "Gender": null,
+          "Birthdate": null,
+          'Candidate Address':null,
+          "Candidate Location": null,
+          "expectedSalary":null,
+          "createdBy": cred.user.uid,
+          id:cred.user.uid,
+          "created": new Date().toLocaleString(),
+          "location": null,
+          "skills": [],
+          "jobs":[]
 
         } : {
-          name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber,
+          'Candidate Name': data.name[0].toUpperCase() + data.name.slice(1),
+          "Candidate Phone Number": data.phoneNumber,
           organisation:data.organisation
         }
         setDoc(doc(db, userType, cred.user.uid), object)
         return cred.user.uid
-      }).then((id) => settingUser(id)).then(() => navigate('/profile')).catch((e) => setError(e.message))
+    }).then((id) => settingUser(id))
+      .then(() => navigate('/dashboard'))
+      .catch((e) => setError(e.message))
 }
   
   return (
@@ -162,6 +178,7 @@ function SignUp() {
 
               <Organisation/>
 
+
               <div className="input">
                 <TextFieldWrapper
                   name="phoneNumber"
@@ -202,10 +219,10 @@ function SignUp() {
           <div className="input" style={{ marginButtom: "40px" }}></div>
         </div>
             <div style={{color:"red"}}>{error}</div>
-        <div className="input">
+        <div className="footer-login">
           
           <p>Already have an account?</p>
-          <Link to="/login" style={{margin:"15px 0 0 3px"}}>Login</Link>
+          <Link to="/login" style={{marginLeft:"5px"}}>Login</Link>
         </div>
       </div>
     </div>

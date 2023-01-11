@@ -34,14 +34,14 @@ const LoginPage = () => {
   function loginButtonHandler() {
     loginUser(formik.values.logInEmail, formik.values.logInPassword)
       .then((res) => settingUser(res.user.uid))
-      .then(() => navigate("/profile"))
+      .then(() => navigate("/dashboard"))
       .catch((error) => setError(error.message));
   }
 
   return (
     <div className="login-page-wrapper">
       <div className="login-form">
-        <div className="logo">
+        <div className="login-logo">
           <Link to="/">
             <HandshakeIcon
               sx={{ width: "80px", height: "80px" }}

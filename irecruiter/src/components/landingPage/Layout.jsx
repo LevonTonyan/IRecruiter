@@ -2,28 +2,26 @@ import "./Landing.css";
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import HandshakeIcon from "@mui/icons-material/Handshake";
-import { Button  } from "@mui/material";
+import { Button } from "@mui/material";
+
 
 function Layout() {
-
- 
-
 
 
 
   return (
     <>
       <nav className="landing-navbar">
-        <div>
+        <div className="navbar-logo">
           <Link to="/">
             <HandshakeIcon
-              sx={{ width: "60px",height: "80px", marginLeft:"40px", marginTop: "5px" }}
+              sx={{ width: "60px",height: "80px" }}
               color="primary"
             />
           </Link>
         </div>
-        <div>
-          <ul className="navlink">
+        <div className="navlink">
+         
             <Link  to="/home">
               Home
             </Link>
@@ -40,7 +38,7 @@ function Layout() {
                           Sign In
                           </Button>
             </Link>
-          </ul>
+          
         </div>
       </nav>
       <Outlet />

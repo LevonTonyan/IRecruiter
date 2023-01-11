@@ -1,0 +1,16 @@
+.create-candidate-header{
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  flex-direction: column;
+  padding:0 10px;
+}
+
+
+.cellClass {
+
+    text-decoration: underline;
+    font-weight: bolder;
+ 
+ 
+  }

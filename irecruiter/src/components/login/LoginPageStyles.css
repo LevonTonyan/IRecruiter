@@ -31,3 +31,16 @@
 .login-form h1{ 
     color:#1976d2
 }
+
+
+
+.login-logo {
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 850px) {
+    .login-page-wrapper {
+        height: 90vh;
+        
+    }
+  }
