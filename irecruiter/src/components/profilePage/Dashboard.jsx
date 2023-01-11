@@ -10,7 +10,7 @@ import Loader from './../loader/Loader';
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false)
  
-  const { currentUserData, settingUser, user, loading } = UserAuth()
+  const { currentUserData, settingUser, user, loading,isSidebarOpen } = UserAuth()
 
 
 
@@ -41,7 +41,7 @@ const Dashboard = () => {
   
 
   return (
-    <div className="profile-container">
+    <div className={isSidebarOpen?"profile-container sideBarOpen":'profile-container'}>
       <div>
     <div className="greething-username">Hello {usersName},</div>
         <div className="greething">

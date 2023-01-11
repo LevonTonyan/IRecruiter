@@ -6,6 +6,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from './../../../../db/firebase';
 
 
+
 ////////////MINI INPUT COMP////////////////////////////
 function MiniInput({ input, setInput, setShowMiniEdit, id, field }) {
 

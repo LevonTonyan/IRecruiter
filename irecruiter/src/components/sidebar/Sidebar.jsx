@@ -141,7 +141,7 @@ function Sidebar(){
           <Divider />
           <List>
           {DividerIcons.map(list => (
-              <ListItem key={list.id}>
+            <ListItem key={list.id} onClick={() => navigate(`${list.text.toLowerCase()}`)}>
               <list.text/>
               <ListItemButton sx={{ 
                 minHeight: 48,
