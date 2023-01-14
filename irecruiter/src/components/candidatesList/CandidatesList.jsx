@@ -14,8 +14,6 @@ import { UserAuth } from '../../context/AuthContext';
 
 
 const SimpleComp = p => {
-  
-
   return (
     <Link to={`/candidate/${p.data.id}`} >{p.value}</Link>
     )

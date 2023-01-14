@@ -25,6 +25,7 @@
 .toolbar {
     width: 100%;
     justify-content: space-between;
+    align-items:center
 }
 .user_avatar {
     display: flex;
@@ -48,11 +49,40 @@
     margin-left: 10px;
 }
 
-
-.search_input {
-    width: 35%;
-    height: 35px;
-    border-radius:3px;
+.search-input input{
+    padding:  0 10px;
+    width: 96%;
+    border-radius:5px;
+    height: 40px;
+    background-color:rgb(162, 181, 232);
     border:none;
-    background-color:#b3d4fc;
 }
+.search-input {
+    width: 100%;
+    border-radius:5px;
+    height: 30px;
+    
+}
+.search-btn {
+    position: relative;
+    top:-33px;
+    right: -160px;
+    background-color:inherit;
+    border:none;
+
+}
+
+.search-input input:focus{
+    background-color:white;
+    outline: none;
+}
+
+
+.search-wrap {
+    position: absolute;
+    width: 350px;
+    max-width: 350px;
+    left: 50%;
+    margin-left: -200px!important;
+}
+

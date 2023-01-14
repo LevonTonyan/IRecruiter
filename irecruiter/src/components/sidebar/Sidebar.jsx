@@ -17,7 +17,7 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import SettingsIcon from "@mui/icons-material/Settings";
-import ClickAwayListener from "@mui/base/ClickAwayListener";
+
 import { useNavigate } from "react-router-dom";
 
 const Icons = [
@@ -112,11 +112,9 @@ function Sidebar() {
 
   return (
     <React.Fragment>
-      <ClickAwayListener
-        onClickAway={() => {
-          setOpenDrawer(false);
-        }}
-      >
+     
+      
+      
         <Drawer variant="permanent" open={openDrawer}>
           <List sx={{ marginTop: "60px" }}>
             {Icons.map((item, index) => (
@@ -199,7 +197,7 @@ function Sidebar() {
           </List>
           <Divider />
         </Drawer>
-      </ClickAwayListener>
+    
     </React.Fragment>
   );
 }
