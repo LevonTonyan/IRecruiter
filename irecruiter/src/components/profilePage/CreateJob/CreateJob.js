@@ -30,10 +30,12 @@ function ControlledCheckbox() {
 
 function CreateJob ({setShowForm}) {
   const navigate = useNavigate()
-  const [errorMessage, setErrorMessage] = useState("");  
+  const [error, setError] = useState(false);  
+  const [ErrorMessage, setErrorMessage] = useState("");
 
   const formik =useFormik({
     initialValues:{
+      catagory: "",
       positionName: "",
       selectClient:"",
       addLocation: "",
@@ -45,6 +47,8 @@ function CreateJob ({setShowForm}) {
     },
 
     validationSchema: Yup.object({
+      catagory: Yup.string()
+          .required("Necessary"),
       positionName: Yup.string()
           .required("Necessary"),
       selectClient: Yup.string()
@@ -65,6 +69,7 @@ function CreateJob ({setShowForm}) {
 
 const createNewJob = (values) => {
    let jobForm = {
+      catagory: null,
       positionName: null,
       selectClient: null,
       addLocation: null,
@@ -88,6 +93,20 @@ const createNewJob = (values) => {
           </div>
             <div>
               <form onSubmit={formik.handleSubmit}>
+              <div className="job-input">
+                <TextField
+                    name="catagory"
+                    onChange={formik.handleChange}
+                    value={formik.values.catagory}
+                    error={formik.errors.catagory && true}
+                    helperText={formik.errors.catagory}
+                    sx={{ width: "500px" }}
+                    size="small"
+                    label="Catagory*"
+                    variant="outlined"
+                />
+                </div>
+                
                 <div className="job-input">
                 <TextField
                     name="positionName"
@@ -199,7 +218,7 @@ const createNewJob = (values) => {
                 <TextField
                     name="jobDescription"
                     id="outlined-multiline-static"
-                    label="Job description"
+                    label="Job description*"
                     multiline
                     sx={{ width: "500px" }}
                     rows={2}
