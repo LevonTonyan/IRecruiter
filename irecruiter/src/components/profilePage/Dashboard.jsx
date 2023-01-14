@@ -3,13 +3,14 @@ import './DashboardStyles.css'
 import { Box, Button } from "@mui/material";
 import { useState } from 'react';
 import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
+import CreateJob from "./CreateJob/CreateJob";
 import { UserAuth } from "../../context/AuthContext";
 import Loader from './../loader/Loader';
 
 
 const Dashboard = () => {
   const [showModal, setShowModal] = useState(false)
- 
+  const [showForm, setShowForm]=useState (false) 
   const { currentUserData, settingUser, user, loading,isSidebarOpen } = UserAuth()
 
 
@@ -26,6 +27,7 @@ const Dashboard = () => {
   const usersName = Object.keys(currentUserData).length&&currentUserData["Candidate Name"]
 
   if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
+  if (showForm) return (<CreateJob setShowForm={setShowForm} />)
 
 
 
@@ -33,8 +35,13 @@ const Dashboard = () => {
   const createCandidate = () => { 
     setShowModal((prev) => !prev)
   } 
-  
 
+
+  /////////////CREATE JOB HANDLER////////////////////////
+  const createJob =()=>{
+    setShowForm((prev) => !prev)
+  }  
+  
 
 ///////////////rendering Loader if still loadings
   if (loading) return <Loader />
@@ -90,7 +97,7 @@ const Dashboard = () => {
           </Box>
         </div>
 
-        <div className="box">
+        <div className="box" onClick={createJob}>
           <div>
             <img
               src="https://app.manatal.com/img/createJob.9530d415.png"
