@@ -92,8 +92,8 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
 
   return (
     <>
-      <Box>
-        <AppBar position="sticky">
+      <Box >
+        <AppBar position="fixed">
           <Box className="navbar">
             <Toolbar className="toolbar">
               <div>

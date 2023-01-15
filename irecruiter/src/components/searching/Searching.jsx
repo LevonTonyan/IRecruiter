@@ -32,7 +32,7 @@ const Searching = ({ isSearching, searchInputValue }) => {
                
                 async function handleSearch() { 
                     let resultData = []
-                    const q = query(Ref, where(searchingField, "==", valueToSearch));
+                    const q = query(Ref, where(searchingField, ">=", valueToSearch));
                     const querySnapshot = await getDocs(q);
                     console.log(querySnapshot)
                     querySnapshot.forEach((doc) => {

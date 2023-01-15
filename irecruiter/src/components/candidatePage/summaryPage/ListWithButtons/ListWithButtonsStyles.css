@@ -12,6 +12,8 @@
   font-weight: bolder;
 }
 .details-title span {
+  font-size: .75rem;
+  max-width: 396px;
   margin-left: 10px;
   
   
@@ -24,10 +26,10 @@
 .line {
   display: flex;
   justify-content: space-between;
-  padding: 5px;
   width: 100%;
   box-sizing: border-box;
   font-size: 12px;
+  padding:5px 10px ;
   
 }
 .line:hover {
