@@ -15,6 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
+import ClickAwayListener from '@mui/base/ClickAwayListener';
+
 
 const drawerWidth = 240;
 
@@ -113,6 +115,8 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
                   </Link>
                 </span>
               </div>
+              
+              <ClickAwayListener onClickAway={() => setIsSearching(false)}>
               <div className="search-wrap">
                 <div className="search-input">
                   <input
@@ -128,6 +132,8 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
                 </div>
                 <Searching isSearching={isSearching} searchInputValue={searchInputValue} setSearchInputValue={setSearchInputValue } />
               </div>
+              </ClickAwayListener>
+               
 
               <div>
                 <IconButton>

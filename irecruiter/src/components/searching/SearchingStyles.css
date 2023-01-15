@@ -85,3 +85,14 @@
     align-items:center;
     color:#1976d2
 }
+
+
+@media screen and  (max-width: 850px) {
+    .searchResultWrap{
+        width: 170px;
+        margin-left: -92px;
+    }
+    .can-phone {
+        display: none;
+    }
+}

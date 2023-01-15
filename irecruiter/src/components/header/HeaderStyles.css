@@ -9,18 +9,10 @@
     color:white;
     margin: 20px;
     font-size: larger;
-
     vertical-align: middle;
 }
 
-@media screen and  (max-width: 850px) {
-    .home_link {
-      display: none;
-    }
-    .help_icon {
-        display: none;
-        }
-    }
+
 
 .toolbar {
     width: 100%;
@@ -86,3 +78,24 @@
     margin-left: -200px!important;
 }
 
+
+@media screen and  (max-width: 850px) {
+    .home_link {
+      display: none;
+    }
+    .help_icon {
+        display: none;
+        }
+    .search-wrap {
+        position: absolute;
+        width: 150px;
+        max-width: 150px;
+        margin-left: -90px!important;
+    }
+    .search-btn {
+       display: none;
+    
+    }
+        
+
+    }
