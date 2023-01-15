@@ -26,7 +26,7 @@ const Searching = ({ isSearching, searchInputValue }) => {
         setLoading(true);
         async function handleSearch() {
           let resultData = [];
-          const q = query(Ref, where(searchingField, ">=", valueToSearch));
+          const q = query(Ref, where(searchingField, "==", valueToSearch));
           const querySnapshot = await getDocs(q);
           console.log(querySnapshot);
           querySnapshot.forEach((doc) => {
@@ -63,6 +63,7 @@ const Searching = ({ isSearching, searchInputValue }) => {
                       ? `/jobs/${res.id}`
                       : `/candidate/${res.id}`
                   }
+                      key={uuid()}
                 >
                   <div className="result-line">
                     <div className="result-left-wrap">
@@ -103,7 +104,7 @@ const Searching = ({ isSearching, searchInputValue }) => {
   }
 
     const handleClick = (collection) => {
-      
+      setSearchResults([])
     setSearchCollection(collection);
   };
 
