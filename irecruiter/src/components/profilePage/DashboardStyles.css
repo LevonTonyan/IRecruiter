@@ -53,6 +53,12 @@
  justify-content:center;
 }
 
+
+
+.box h4 {
+  margin:0
+}
+
 @media screen and  (max-width: 900px) {
   .create-candidate-box-container {
     display: flex;
@@ -64,8 +70,4 @@
   .greething {
     display: none;
   }
-}
-
-.box h4 {
-  margin:0
 }

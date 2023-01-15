@@ -10,7 +10,7 @@ function Layout() {
 
 
   return (
-    <>
+    <div>
       <nav className="landing-navbar">
         <div className="navbar-logo">
           <Link to="/">
@@ -35,14 +35,14 @@ function Layout() {
             </Link>
             <Link to="login" >
                           <Button variant="contained" sx={{backgroundColor:"#1ebd53"}}>
-                          Sign In
+                          Log In
                           </Button>
             </Link>
           
         </div>
       </nav>
       <Outlet />
-    </>
+    </div>
   );
 }
 
