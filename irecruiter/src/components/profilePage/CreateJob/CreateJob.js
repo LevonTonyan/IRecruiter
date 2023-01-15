@@ -68,19 +68,8 @@ function CreateJob ({setShowForm}) {
   })
 
 const createNewJob = (values) => {
-   let jobForm = {
-      catagory: null,
-      positionName: null,
-      selectClient: null,
-      addLocation: null,
-      checkBox: null,
-      contractDetails: null,
-      minSalary: null,
-      maxSalary: null,
-      jobDescription: null,
-  }
-    
-  setDoc(doc(db, "job-form",), jobForm)
+  setDoc(doc(db, "job-form",), values)
+  .then((id) => values(id))
   .then(() => navigate('/jobs'))
   .catch((e) => setErrorMessage(e.message))
 }
