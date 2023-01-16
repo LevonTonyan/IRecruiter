@@ -8,7 +8,12 @@ import { UserAuth } from "../../context/AuthContext";
 import Loader from "./../loader/Loader";
 
 const Dashboard = () => {
-  const [showCandidateModal, setShowCandidateModal] = useState(false);
+
+  const [showCandidateModal, setShowCandidateModal] = useState(false)
+    
+  const [showJobFormModal, setShowJobFormModal]=useState (false) 
+  const { currentUserData, settingUser, user, loading,isSidebarOpen } = UserAuth()
+
 
   const [showForm, setShowForm] = useState(false);
   const { currentUserData, settingUser, user, loading, isSidebarOpen } =
@@ -22,34 +27,38 @@ const Dashboard = () => {
   });
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
+
   const usersName =
     Object.keys(currentUserData).length && currentUserData["Candidate Name"];
+
 
   //if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
   //if (showForm) return (<CreateJob setShowCandidateModal={setShowCandidateModal} />)
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
-  const createCandidate = () => {
-    setShowCandidateModal((prev) => !prev);
-  };
+
+  const createCandidate = () => { 
+    setShowCandidateModal((prev) => !prev)
+  } 
+
 
   /////////////CREATE JOB HANDLER////////////////////////
-  const createJob = () => {
-    setShowForm((prev) => !prev);
-  };
+  const createJob =()=>{
+    setShowJobFormModal((prev) => !prev)
+  }  
+  
+
 
   ///////////////rendering Loader if still loadings
   if (loading) return <Loader />;
 
   return (
-    <div
-      className={
-        isSidebarOpen ? "profile-container sideBarOpen" : "profile-container"
-      }
-    >
-      {showCandidateModal && (
-        <CreateCandidate setShowCandidateModal={setShowCandidateModal} />
-      )}
+
+    <div className={isSidebarOpen?"profile-container sideBarOpen":'profile-container'}>
+      {showCandidateModal&&<CreateCandidate setShowCandidateModal={setShowCandidateModal}/>}
+      {showJobFormModal&&<CreateJob setShowJobFormModal={setShowJobFormModal}/>}
+
+
       <div>
         <div className="greething-username">Hello {usersName},</div>
         <div className="greething">
