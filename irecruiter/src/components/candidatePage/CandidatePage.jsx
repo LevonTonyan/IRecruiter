@@ -17,7 +17,7 @@ const CandidatePage = () => {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
 
-console.log(isSidebarOpen)
+
   useEffect(() => { 
     setLoading(true)
     onSnapshot(candidateRef, (doc) => setCandidate(doc.data()))
@@ -30,7 +30,7 @@ console.log(isSidebarOpen)
   if (loading) return <Loader />
 
   return (
-    <div className="candidatePage-container" style={isSidebarOpen?{"padding-left":"240px"}:{"padding-left":"0px"}}>
+    <div className="candidatePage-container" style={isSidebarOpen?{"paddingLeft":"240px"}:{"paddingLeft":"0px"}}>
       <CandidatePageHeader candidate={candidate } />
       <Outlet context={candidate }/>
     </div>

@@ -17,29 +17,31 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import SettingsIcon from "@mui/icons-material/Settings";
+
+
 import { useNavigate } from "react-router-dom";
 
 const Icons = [
   {
-    id: 1,
+
     text: "Dashboard",
     description: "icon",
     icon: DashboardIcon,
   },
   {
-    id: 2,
+
     text: "Clients",
     description: "icon",
     icon: GroupsIcon,
   },
   {
-    id: 3,
+
     text: "Jobs",
     description: "icon",
     icon: WorkIcon,
   },
   {
-    id: 4,
+
     text: "Candidates",
     description: "icon",
     icon: PeopleAltIcon,
@@ -48,25 +50,25 @@ const Icons = [
 
 const DividerIcons = [
   {
-    id: 5,
+
     text: "Reports",
     description: "icon",
     icon: AssessmentIcon,
   },
   {
-    id: 6,
+
     text: "Placements",
     description: "icon",
     icon: HowToRegIcon,
   },
   {
-    id: 7,
+
     text: "Calendar",
     description: "icon",
     icon: EventNoteIcon,
   },
   {
-    id: 8,
+
     text: "Settings",
     description: "icon",
     icon: SettingsIcon,
@@ -83,6 +85,7 @@ const openedMixin = (theme) => ({
   }),
   overflowX: "hidden",
 });
+
 
 const closedMixin = (theme) => ({
   transition: theme.transitions.create("width", {
@@ -119,77 +122,93 @@ function Sidebar() {
 
   return (
     <React.Fragment>
-      <Drawer variant="permanent" open={openDrawer}>
-        <List sx={{ marginTop: "60px" }}>
-          {Icons.map((list) => (
-            <ListItem
-              key={list.id}
-              onClick={() => navigate(`${list.text.toLowerCase()}`)}
-            >
-              <list.text />
-              <ListItemButton
+     
+      
+      
+        <Drawer variant="permanent" open={openDrawer}>
+          <List sx={{ marginTop: "60px" }}>
+            {Icons.map((item, index) => (
+              <ListItem
+                key={index}
+                onClick={() => navigate(`${item.text.toLowerCase()}`)}
                 sx={{
-                  minHeight: 48,
-                  justifyContent: openDrawer ? "initial" : "center",
-                  px: 1.5,
-                  color: "#708090",
+                  paddingBottom: "1px",
+                  paddingTop: "1px",
                 }}
               >
-                <ListItemIcon
+                <ListItemButton
                   sx={{
-                    color: "#4169E1",
-                    minWidth: 0,
-                    mr: openDrawer ? 3 : "auto",
-                    justifyContent: "center",
+                    minHeight: 48,
+                    justifyContent: openDrawer ? "initial" : "center",
+                    px: 2.5,
+                    color: "#708090",
                   }}
                 >
-                  <div key={list.id}>
-                    <list.icon />
-                  </div>
-                </ListItemIcon>
-                <ListItemText
-                  primary={list.text}
-                  sx={{ opacity: openDrawer ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {DividerIcons.map((list) => (
-            <ListItem key={list.id}>
-              <list.text />
-              <ListItemButton
+                  <ListItemIcon
+                    sx={{
+                      color: "#4169E1",
+                      minWidth: 0,
+                      mr: openDrawer ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div key={index}>
+                      <item.icon />
+                    </div>
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.text}
+                    primaryTypographyProps={{ fontSize: "14px" }}
+                    sx={{ opacity: openDrawer ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {DividerIcons.map((item, index) => (
+              <ListItem
+                key={index}
+                onClick={() => navigate(`${item.text.toLowerCase()}`)}
                 sx={{
-                  minHeight: 48,
-                  justifyContent: openDrawer ? "initial" : "center",
-                  px: 1.5,
-                  color: "#708090",
+                  paddingBottom: "1px",
+                  paddingTop: "1px",
                 }}
               >
-                <ListItemIcon
+                <ListItemButton
                   sx={{
-                    color: "#4169E1",
-                    minWidth: 0,
-                    mr: openDrawer ? 3 : "auto",
-                    justifyContent: "center",
+                    minHeight: 48,
+                    justifyContent: openDrawer ? "initial" : "center",
+                    px: 2.5,
+                    color: "#708090",
                   }}
                 >
-                  <div key={list.id}>
-                    <list.icon />
-                  </div>
-                </ListItemIcon>
-                <ListItemText
-                  primary={list.text}
-                  sx={{ opacity: openDrawer ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-      </Drawer>
+                  <ListItemIcon
+                    sx={{
+                      color: "#4169E1",
+                      minWidth: 0,
+                      mr: openDrawer ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div key={index}>
+                      <item.icon />
+                    </div>
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={item.text}
+                    primaryTypographyProps={{ fontSize: "14px" }}
+                    sx={{ opacity: openDrawer ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+        </Drawer>
+    
+
     </React.Fragment>
   );
 }

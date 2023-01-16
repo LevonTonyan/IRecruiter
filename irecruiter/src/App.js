@@ -1,21 +1,21 @@
-import './App.css';
-import Header from './components/header/Header';
-import LoginPage from './components/login/LoginPage';
-import { Routes, Route } from 'react-router-dom'
-import Dashboard from './components/profilePage/Dashboard';
-import SignUpPage from './components/signUp/SignUpPage';
-import ProtectedRoute from './components/ProtectedRoute';
-import Layout from './components/landingPage/Layout';
-import Home from './components/landingPage/Home';
-import About from './components/landingPage/About';
-import Contact from './components/landingPage/Contact'
-import CandidatePage from './components/candidatePage/CandidatePage';
-import Summary from './components/candidatePage/summaryPage/Summary';
-import JobsTab from './components/candidatePage/jobs/JobsTab';
-import CandidatesList from './components/candidatesList/CandidatesList';
-import { UserAuth } from './context/AuthContext';
-import JobsList from './components/jobsList/JobsList';
-
+import "./App.css";
+import Header from "./components/header/Header";
+import LoginPage from "./components/login/LoginPage";
+import { Routes, Route } from "react-router-dom";
+import Dashboard from "./components/profilePage/Dashboard";
+import SignUpPage from "./components/signUp/SignUpPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./components/landingPage/Layout";
+import Home from "./components/landingPage/Home";
+import About from "./components/landingPage/About";
+import Contact from "./components/landingPage/Contact";
+import CandidatePage from "./components/candidatePage/CandidatePage";
+import Summary from "./components/candidatePage/summaryPage/Summary";
+import JobsTab from "./components/candidatePage/jobs/JobsTab";
+import CandidatesList from "./components/candidatesList/CandidatesList";
+import { UserAuth } from "./context/AuthContext";
+import JobsList from "./components/jobsList/JobsList";
+import ReportsPage from './components/reportsPage/ReportsPage'
 
 
 
@@ -50,7 +50,6 @@ function App() {
           >
             <Route path="summary" element={<Summary />} />
             <Route path="jobs" element={<JobsTab />} />
-            
           </Route>
 
           <Route
@@ -61,7 +60,17 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
-                <Route
+
+          <Route
+            path="/reports"
+            element={
+              <ProtectedRoute>
+                <ReportsPage />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+          <Route
             path="/jobs"
             element={
               <ProtectedRoute>

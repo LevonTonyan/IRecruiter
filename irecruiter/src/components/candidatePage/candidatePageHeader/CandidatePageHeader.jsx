@@ -19,10 +19,10 @@ const CandidatePageHeader = ({candidate}) => {
   return (
     <>
       <div className="header-container">
-        <div className="avatar-container">{candidate.name[0]}</div>
+        <div className="avatar-container">{candidate['Candidate Name'][0]}</div>
 
         <div className="user-details">
-          <div>{candidate.name}</div>
+          <div>{candidate['Candidate Name']}</div>
           <div>Yerevan, Amrenia</div>
         </div>
       </div>

@@ -1,8 +1,9 @@
 .profile-container {
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: Roboto, sans-serif !important;
+
+  height:100vh;
+  align-items:center;
+  justify-content:center;
+
 }
 
 .greething {
