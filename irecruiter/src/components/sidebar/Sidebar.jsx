@@ -17,10 +17,40 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import SettingsIcon from "@mui/icons-material/Settings";
-
+import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-const Icons = [
+const IconsForEmployee = [
+  {
+    text: "Dashboard",
+    description: "icon",
+    icon: DashboardIcon,
+  },
+  {
+    text: "Companies",
+    description: "icon",
+    icon: GroupsIcon,
+  },
+  {
+    text: "Jobs",
+    description: "icon",
+    icon: WorkIcon,
+  },
+];
+const DividerIconsForEmployee = [
+  {
+    text: "Calendar",
+    description: "icon",
+    icon: EventNoteIcon,
+  },
+  {
+    text: "Settings",
+    description: "icon",
+    icon: SettingsIcon,
+  },
+];
+
+const IconsForRecruiter = [
   {
     text: "Dashboard",
     description: "icon",
@@ -43,7 +73,7 @@ const Icons = [
   },
 ];
 
-const DividerIcons = [
+const DividerIconsForRecruiter = [
   {
     text: "Reports",
     description: "icon",
@@ -66,7 +96,7 @@ const DividerIcons = [
   },
 ];
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -107,97 +137,100 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 function Sidebar() {
+  const { currentUserData } = UserAuth();
   const [openDrawer, setOpenDrawer] = useState(true);
   const navigate = useNavigate();
 
   return (
     <React.Fragment>
-     
-      
-      
-        <Drawer variant="permanent" open={openDrawer}>
-          <List sx={{ marginTop: "60px" }}>
-            {Icons.map((item, index) => (
-              <ListItem
-                key={index}
-                onClick={() => navigate(`${item.text.toLowerCase()}`)}
+      <Drawer variant="permanent" open={openDrawer}>
+        <List sx={{ marginTop: "60px" }}>
+          {(currentUserData.type === "recruiter"
+            ? IconsForRecruiter
+            : IconsForEmployee
+          ).map((item, index) => (
+            <ListItem
+              key={index}
+              onClick={() => navigate(`${item.text.toLowerCase()}`)}
+              sx={{
+                paddingBottom: "1px",
+                paddingTop: "1px",
+              }}
+            >
+              <ListItemButton
                 sx={{
-                  paddingBottom: "1px",
-                  paddingTop: "1px",
+                  minHeight: 48,
+                  justifyContent: openDrawer ? "initial" : "center",
+                  px: 2.5,
+                  color: "#708090",
                 }}
               >
-                <ListItemButton
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: openDrawer ? "initial" : "center",
-                    px: 2.5,
-                    color: "#708090",
+                    color: "#4169E1",
+                    minWidth: 0,
+                    mr: openDrawer ? 3 : "auto",
+                    justifyContent: "center",
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      color: "#4169E1",
-                      minWidth: 0,
-                      mr: openDrawer ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div key={index}>
-                      <item.icon />
-                    </div>
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.text}
-                    primaryTypographyProps={{ fontSize: "14px" }}
-                    sx={{ opacity: openDrawer ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {DividerIcons.map((item, index) => (
-              <ListItem
-                key={index}
-                onClick={() => navigate(`${item.text.toLowerCase()}`)}
+                  <div key={index}>
+                    <item.icon />
+                  </div>
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.text}
+                  primaryTypographyProps={{ fontSize: "14px" }}
+                  sx={{ opacity: openDrawer ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {(currentUserData.type === "recruiter"
+            ? DividerIconsForRecruiter
+            : DividerIconsForEmployee
+          ).map((item, index) => (
+            <ListItem
+              key={index}
+              onClick={() => navigate(`/${item.text.toLowerCase()}`)}
+              sx={{
+                paddingBottom: "1px",
+                paddingTop: "1px",
+              }}
+            >
+              <ListItemButton
                 sx={{
-                  paddingBottom: "1px",
-                  paddingTop: "1px",
+                  minHeight: 48,
+                  justifyContent: openDrawer ? "initial" : "center",
+                  px: 2.5,
+                  color: "#708090",
                 }}
               >
-                <ListItemButton
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: openDrawer ? "initial" : "center",
-                    px: 2.5,
-                    color: "#708090",
+                    color: "#4169E1",
+                    minWidth: 0,
+                    mr: openDrawer ? 3 : "auto",
+                    justifyContent: "center",
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      color: "#4169E1",
-                      minWidth: 0,
-                      mr: openDrawer ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div key={index}>
-                      <item.icon />
-                    </div>
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item.text}
-                    primaryTypographyProps={{ fontSize: "14px" }}
-                    sx={{ opacity: openDrawer ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-        </Drawer>
-    
+                  <div key={index}>
+                    <item.icon />
+                  </div>
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.text}
+                  primaryTypographyProps={{ fontSize: "14px" }}
+                  sx={{ opacity: openDrawer ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+      </Drawer>
     </React.Fragment>
   );
 }

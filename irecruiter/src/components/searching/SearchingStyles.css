@@ -1,97 +1,107 @@
-.searchResultWrap{
-    position: fixed;
-    background: #fff!important;
-    width: 350px;
-    overflow-x: auto;
-    left: 50%;
-    margin-left: -197px;
-    top: 59px;
-    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
-    border-radius: 0.25rem!important;
-}
-   
-
-.searchResultWrap button{
-    border-radius:50px;
-    margin:5px 5px;
-    background-color:	#E8E8E8;
+.searchResultWrap {
+  position: fixed;
+  background: #fff !important;
+  width: 350px;
+  overflow-x: auto;
+  left: 50%;
+  margin-left: -197px;
+  top: 59px;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+  border-radius: 0.25rem !important;
 }
 
-.filter-title{
-    color:black;
-    text-align: left;
-    
-    font-weight: 700;
-    font-size: 10px;
-    margin:5px;
-    
+.searchResultWrap button {
+  border-radius: 50px;
+  margin: 5px 5px;
+  background-color: #e8e8e8;
+}
+
+.filter-title {
+  color: black;
+  text-align: left;
+
+  font-weight: 700;
+  font-size: 10px;
+  margin: 5px;
 }
 
 .initial-search-tex {
-    color:#A8A8A8;
-    font-size:10px;
-    margin:5px 0;
-
+  color: #a8a8a8;
+  font-size: 10px;
+  margin: 5px 0;
 }
 
 .search-result {
-    
-    color:black;
-    list-style: none;
-    text-align: left;
+  color: black;
+  list-style: none;
+  text-align: left;
 }
 
-
 .search-result li {
-    display: inline-block;
-    list-style: none;
+  display: inline-block;
+  list-style: none;
 }
 
 .can-phone {
-    margin-left: 100%;
+  margin-left: 100%;
 }
 
 .avatar-circel {
-    display: flex;
-    justify-content: center;
-    background-color:rgb(103, 58, 183);
-    width: 25px;
-    height: 25px;
-    border-radius:50%;
-    margin: 10px;
-   
+  display: flex;
+  justify-content: center;
+  background-color: rgb(103, 58, 183);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin: 10px;
+}
+.result-left-wrap {
+  display: inline-block;
+}
+
+.result-left {
+  display: flex;
+  align-items: center;
+}
+
+.result-right {
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .avatar-initial {
-    display: flex;
+  display: flex;
 
-    color:White;
-    justify-content: center;
-    align-items:center
+  color: White;
+  justify-content: center;
+  align-items: center;
 }
 
 .result-line {
-    display: flex;
-    align-items:center;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .result-line:hover {
-    background-color:	#D8D8D8
+  background-color: #d8d8d8;
 }
 
-.result-line a{
-    display: flex;
-    align-items:center;
-    color:#1976d2
+.result-line a {
+  color: #1976d2;
 }
 
-
-@media screen and  (max-width: 850px) {
-    .searchResultWrap{
-        width: 170px;
-        margin-left: -92px;
-    }
-    .can-phone {
-        display: none;
-    }
+@media screen and (max-width: 850px) {
+  .searchResultWrap {
+    width: 170px;
+    margin-left: -86px;
+  }
+  .can-phone {
+    display: none;
+  }
+  .result-left-wrap,
+  .result-right {
+    font-size: 10px;
+  }
 }
