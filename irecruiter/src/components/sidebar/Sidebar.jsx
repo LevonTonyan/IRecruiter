@@ -18,25 +18,30 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import SettingsIcon from "@mui/icons-material/Settings";
 
+
 import { useNavigate } from "react-router-dom";
 
 const Icons = [
   {
+
     text: "Dashboard",
     description: "icon",
     icon: DashboardIcon,
   },
   {
+
     text: "Clients",
     description: "icon",
     icon: GroupsIcon,
   },
   {
+
     text: "Jobs",
     description: "icon",
     icon: WorkIcon,
   },
   {
+
     text: "Candidates",
     description: "icon",
     icon: PeopleAltIcon,
@@ -45,28 +50,32 @@ const Icons = [
 
 const DividerIcons = [
   {
+
     text: "Reports",
     description: "icon",
     icon: AssessmentIcon,
   },
   {
+
     text: "Placements",
     description: "icon",
     icon: HowToRegIcon,
   },
   {
+
     text: "Calendar",
     description: "icon",
     icon: EventNoteIcon,
   },
   {
+
     text: "Settings",
     description: "icon",
     icon: SettingsIcon,
   },
 ];
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -76,6 +85,7 @@ const openedMixin = (theme) => ({
   }),
   overflowX: "hidden",
 });
+
 
 const closedMixin = (theme) => ({
   transition: theme.transitions.create("width", {
@@ -198,6 +208,7 @@ function Sidebar() {
           <Divider />
         </Drawer>
     
+
     </React.Fragment>
   );
 }

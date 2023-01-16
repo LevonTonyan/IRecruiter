@@ -1,4 +1,5 @@
 .navbar {
+
     display: flex;
     justify-content: space-between;
 
@@ -19,28 +20,29 @@
     width: 100%;
     justify-content: space-between;
     align-items:center
+
 }
 .user_avatar {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font: 16px / 40px Helvetica, Arial, sans-serif;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    user-select: none;
-    background-color: rgb(33, 150, 243);
-    color: white;
-    cursor: pointer;
-
-
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font: 16px / 40px Helvetica, Arial, sans-serif;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+  background-color: rgb(33, 150, 243);
+  color: white;
+  cursor: pointer;
 }
 .cont {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
 }
+
+
 
 .search-input input{
     padding:  0 10px;
@@ -93,6 +95,9 @@
         max-width: 150px;
         margin-left: -90px!important;
     }
+      .search_input {
+    margin-left: 10%;
+  }
     .search-btn {
        display: none;
     
@@ -100,3 +105,5 @@
         
 
     }
+    
+
