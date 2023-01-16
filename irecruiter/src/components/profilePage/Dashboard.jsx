@@ -9,8 +9,9 @@ import Loader from './../loader/Loader';
 
 
 const Dashboard = () => {
-  const [showModal, setShowModal] = useState(false)
-  const [showForm, setShowForm]=useState (false) 
+  const [showCandidateModal, setShowCandidateModal] = useState(false)
+    
+  const [showJobFormModal, setShowJobFormModal]=useState (false) 
   const { currentUserData, settingUser, user, loading,isSidebarOpen } = UserAuth()
 
 
@@ -26,20 +27,20 @@ const Dashboard = () => {
   /////////////CREATE CANDIDATE HANDLER////////////////////////
   const usersName = Object.keys(currentUserData).length&&currentUserData["Candidate Name"]
 
-  if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
-  if (showForm) return (<CreateJob setShowForm={setShowForm} />)
+  // if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
+  // if (showForm) return (<CreateJob setShowForm={setShowForm} />)
 
 
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
   const createCandidate = () => { 
-    setShowModal((prev) => !prev)
+    setShowCandidateModal((prev) => !prev)
   } 
 
 
   /////////////CREATE JOB HANDLER////////////////////////
   const createJob =()=>{
-    setShowForm((prev) => !prev)
+    setShowJobFormModal((prev) => !prev)
   }  
   
 
@@ -49,6 +50,9 @@ const Dashboard = () => {
 
   return (
     <div className={isSidebarOpen?"profile-container sideBarOpen":'profile-container'}>
+      {showCandidateModal&&<CreateCandidate setShowCandidateModal={setShowCandidateModal}/>}
+      {showJobFormModal&&<CreateJob setShowJobFormModal={setShowJobFormModal}/>}
+
       <div>
     <div className="greething-username">Hello {usersName},</div>
         <div className="greething">

@@ -28,7 +28,7 @@ function ControlledCheckbox() {
 }
 
 
-function CreateJob ({setShowForm}) {
+function CreateJob ({setShowJobFormModal}) {
   const navigate = useNavigate()
   const [error, setError] = useState(false);  
   const [ErrorMessage, setErrorMessage] = useState("");
@@ -75,10 +75,11 @@ const createNewJob = (values) => {
 }
 
   return (
+    <div className="job-modal">
     <div className='job-main'>
         <div className="job-container">
           <div className ="job-title">
-            <h3>Create Job</h3> <button className="btn btn-close"  onClick={() => setShowForm((prev) => !prev)}>X</button> 
+            <h3>Create Job</h3> <button className="btn btn-close"  onClick={() => setShowJobFormModal((prev) => !prev)}>X</button> 
           </div>
             <div>
               <form onSubmit={formik.handleSubmit}>
@@ -222,13 +223,14 @@ const createNewJob = (values) => {
 
                 <div className="job-button">
                 <Box sx={{ '& button': { m: 1 } }}>
-                    <Button color="secondary"  onClick={() => setShowForm((prev) => !prev)}>Cancel</Button>
+                    <Button color="secondary"  onClick={() => setShowJobFormModal((prev) => !prev)}>Cancel</Button>
                     <Button variant="contained" type="submit"> Create</Button> 
                 </Box>
                 </div>  
                  </form>
             </div>
         </div>  
+    </div>
     </div>
   )
 }
