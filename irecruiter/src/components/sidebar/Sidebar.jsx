@@ -17,8 +17,38 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import SettingsIcon from "@mui/icons-material/Settings";
-
+import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+
+const IconsForEmployee = [
+  {
+    text: "Dashboard",
+    description: "icon",
+    icon: DashboardIcon,
+  },
+  {
+    text: "Companies",
+    description: "icon",
+    icon: GroupsIcon,
+  },
+  {
+    text: "Jobs",
+    description: "icon",
+    icon: WorkIcon,
+  },
+];
+const DividerIconsForEmployee = [
+  {
+    text: "Calendar",
+    description: "icon",
+    icon: EventNoteIcon,
+  },
+  {
+    text: "Settings",
+    description: "icon",
+    icon: SettingsIcon,
+  },
+];
 
 const IconsForRecruiter = [
   {
@@ -107,9 +137,10 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 function Sidebar() {
+  const { user } = UserAuth();
   const [openDrawer, setOpenDrawer] = useState(true);
   const navigate = useNavigate();
-
+  console.log(user);
   return (
     <React.Fragment>
       <Drawer variant="permanent" open={openDrawer}>
