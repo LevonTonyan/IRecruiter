@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import * as Yup from "yup";
 import Cities from "./Cities.json"
 import { db } from "../../../db/firebase"
-import { doc, setDoc } from "firebase/firestore"
+import { doc, setDoc, addDoc, collection } from "firebase/firestore"
 import { useNavigate } from 'react-router-dom';
 
 
