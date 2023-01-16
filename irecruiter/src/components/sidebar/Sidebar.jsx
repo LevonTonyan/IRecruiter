@@ -145,7 +145,7 @@ function Sidebar() {
   const [openDrawer, setOpenDrawer] = useState(true);///////////////////////////////////////????????????????????
   const navigate = useNavigate();
  
-  
+  console.log(recentlyVisited);
 
   return (
     <React.Fragment>
@@ -237,9 +237,10 @@ function Sidebar() {
         </List>
         <Divider />
         <h5>Recently visited</h5>
-        {recentlyVisited.length && recentlyVisited.map(el =>
-          <Link key={uuid() } to={el}><div style={{ "fontSize": "10px", "margin": "5px" }}
-            key={uuid()}>{el.slice(1)[0].toUpperCase() + el.slice(2)}</div></Link>)}
+        {
+          recentlyVisited?.length && recentlyVisited.map(el =>
+            <div style={{ "fontSize": "10px", "margin": "5px auto" }}
+            key={uuid()}> <Link key={uuid() } to={el}>{el.slice(1)[0].toUpperCase() + el.slice(2)}</Link></div>)}
       </Drawer>
     </React.Fragment>
   );
