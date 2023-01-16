@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 
 function Layout() {
   return (
-    <>
+    <div>
       <nav className="landing-navbar">
         <div className="navbar-logo">
           <Link to="/">
@@ -21,16 +21,21 @@ function Layout() {
 
           <Link to="/about">About</Link>
 
-          <Link to="/contact">Contact</Link>
-          <Link to="login">
-            <Button variant="contained" sx={{ backgroundColor: "#1ebd53" }}>
-              Log In
-            </Button>
-          </Link>
+
+            <Link to="/contact">
+              Contact
+            </Link>
+            <Link to="login" >
+                          <Button variant="contained" sx={{backgroundColor:"#1ebd53"}}>
+                          Log In
+                          </Button>
+            </Link>
+          
+
         </div>
       </nav>
       <Outlet />
-    </>
+    </div>
   );
 }
 

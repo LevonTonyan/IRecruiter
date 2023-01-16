@@ -9,7 +9,8 @@ import Loader from './../loader/Loader';
 
 
 const Dashboard = () => {
-  const [showModal, setShowModal] = useState(false)
+  const [showCandidateModal, setShowCandidateModal] = useState(false)
+    
   const [showForm, setShowForm]=useState (false) 
   const { currentUserData, settingUser, user, loading,isSidebarOpen } = UserAuth()
 
@@ -26,14 +27,14 @@ const Dashboard = () => {
   /////////////CREATE CANDIDATE HANDLER////////////////////////
   const usersName = Object.keys(currentUserData).length&&currentUserData["Candidate Name"]
 
-  if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
-  if (showForm) return (<CreateJob setShowForm={setShowForm} />)
+  //if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
+  //if (showForm) return (<CreateJob setShowCandidateModal={setShowCandidateModal} />)
 
 
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
   const createCandidate = () => { 
-    setShowModal((prev) => !prev)
+    setShowCandidateModal((prev) => !prev)
   } 
 
 
@@ -48,7 +49,8 @@ const Dashboard = () => {
   
 
   return (
-    <div className={isSidebarOpen?"profile-container sideBarOpen":'profile-container'}>
+    <div className={isSidebarOpen ? "profile-container sideBarOpen" : 'profile-container'}>
+      {showCandidateModal&&<CreateCandidate setShowCandidateModal={setShowCandidateModal}/>}
       <div>
     <div className="greething-username">Hello {usersName},</div>
         <div className="greething">

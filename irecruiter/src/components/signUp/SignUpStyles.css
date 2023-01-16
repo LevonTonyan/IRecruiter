@@ -2,6 +2,8 @@
 
 
 .main {
+  position: relative;
+  top: -64px;
   height: 100vh;
   box-shadow: inset;
   display: flex;

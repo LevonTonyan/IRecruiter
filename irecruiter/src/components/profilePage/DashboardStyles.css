@@ -54,11 +54,13 @@
   justify-content: center;
 }
 
+
 .box h4 {
   margin: 0;
 }
 
 @media screen and (max-width: 850px) {
+
   .create-candidate-box-container {
     display: flex;
     flex-direction: column;
@@ -68,6 +70,7 @@
   .greething {
     display: none;
   }
+
   .box {
     width: 120px;
     height: 130px;
@@ -88,3 +91,4 @@
     line-height: 50px;
   }
 }
+

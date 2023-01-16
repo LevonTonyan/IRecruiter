@@ -61,6 +61,19 @@
     margin: 10px;
    
 }
+.result-left-wrap {
+    display: inline-block;
+}
+
+.result-left {
+    display: flex;
+    align-items:center
+}
+
+.result-right{
+    display: inline-block;
+    margin-right:10px;
+}
 
 .avatar-initial {
     display: flex;
@@ -73,6 +86,9 @@
 .result-line {
     display: flex;
     align-items:center;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
 
 .result-line:hover {
@@ -80,8 +96,7 @@
 }
 
 .result-line a{
-    display: flex;
-    align-items:center;
+   
     color:#1976d2
 }
 
