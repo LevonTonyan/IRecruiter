@@ -1,58 +1,56 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-   
+  display: flex;
+  justify-content: space-between;
 }
 
 .home_link {
-    text-decoration: none;
-    color:white;
-    margin: 20px;
-    font-size: larger;
-
-    vertical-align: middle;
+  text-decoration: none;
+  color: white;
+  margin: 20px;
+  font-size: larger;
+  vertical-align: middle;
 }
-
-@media screen and  (max-width: 850px) {
-    .home_link {
-      display: none;
-    }
-    .help_icon {
-        display: none;
-        }
-    }
 
 .toolbar {
-    width: 100%;
-    justify-content: space-between;
+  width: 100%;
+  justify-content: space-between;
 }
 .user_avatar {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font: 16px / 40px Helvetica, Arial, sans-serif;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    user-select: none;
-    background-color: rgb(33, 150, 243);
-    color: white;
-    cursor: pointer;
-
-
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font: 16px / 40px Helvetica, Arial, sans-serif;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+  background-color: rgb(33, 150, 243);
+  color: white;
+  cursor: pointer;
 }
 .cont {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
-
 .search_input {
-    width: 35%;
-    height: 35px;
-    border-radius:3px;
-    border:none;
-    background-color:#b3d4fc;
+  width: 35%;
+  height: 35px;
+  border-radius: 3px;
+  border: none;
+  background-color: #b3d4fc;
+}
+
+@media screen and (max-width: 850px) {
+  .home_link {
+    display: none;
+  }
+  .help_icon {
+    display: none;
+  }
+  .search_input {
+    margin-left: 10%;
+  }
 }
