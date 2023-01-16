@@ -1,18 +1,26 @@
-import "./CreateJob.css"
-import { Box, Button, Checkbox, FormControlLabel,  MenuItem, TextField } from '@mui/material'
-import { useFormik, ErrorMessage } from 'formik'
-import React, { useState } from 'react'
+import "./CreateJob.css";
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  MenuItem,
+  TextField,
+} from "@mui/material";
+import { useFormik, ErrorMessage } from "formik";
+import React, { useState } from "react";
 import * as Yup from "yup";
+
 import Cities from "./Cities.json"
 import { db } from "../../../db/firebase"
 import { doc, setDoc, addDoc, collection } from "firebase/firestore"
 import { useNavigate } from 'react-router-dom';
 
 
+
 function ControlledCheckbox() {
   const [checked, setChecked] = React.useState(true);
-  const [error, setError] = useState(false)
-  
+  const [error, setError] = useState(false);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -22,49 +30,45 @@ function ControlledCheckbox() {
     <Checkbox
       checked={checked}
       onChange={handleChange}
-      inputProps={{ 'aria-label': 'controlled' }}
+      inputProps={{ "aria-label": "controlled" }}
     />
   );
 }
 
 
+
 function CreateJob ({setShowJobFormModal}) {
   const navigate = useNavigate()
   const [error, setError] = useState(false);  
-  const [ErrorMessage, setErrorMessage] = useState("");
 
-  const formik =useFormik({
-    initialValues:{
-      catagory: "",
-      positionName: "",
-      selectClient:"",
-      addLocation: "",
-      checkBox: [],
-      contractDetails:"",
-      minSalary: "",
-      maxSalary: "",
-      jobDescription: "",
+  const [ErrorMessage, setErrorMessage] = useState("");
+  const [remote, setRemote] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      Category: "",
+      "Position Name": "",
+      Client: "",
+      Location: "",
+      remote: null,
+      "Contract Details": "",
+      MinSalary: "",
+      MaxSalary: "",
+      "Job Description": "",
     },
 
     validationSchema: Yup.object({
-      catagory: Yup.string()
-          .required("Necessary"),
-      positionName: Yup.string()
-          .required("Necessary"),
-      selectClient: Yup.string()
-          .required("Necessary"), 
-      addLocation: Yup.string()
-          .required("Necessary"),     
-      contractDetails: Yup.string()
-          .required("Necessary"),
-      jobDescription: Yup.string()
-          .required("Necessary"),        
+      Category: Yup.string().required("Necessary"),
+      "Position Name": Yup.string().required("Necessary"),
+      Client: Yup.string().required("Necessary"),
+      Location: Yup.string().required("Necessary"),
     }),
 
     onSubmit: (values) => {
       createNewJob(values)
     },
   })
+
 
   const createNewJob = () => {
     addDoc(collection(db, "jobs"), formik.values)
@@ -73,6 +77,7 @@ function CreateJob ({setShowJobFormModal}) {
   };
 
   return (
+
     <div className="job-modal">
     <div className='job-main'>
         <div className="job-container">
@@ -173,9 +178,11 @@ function CreateJob ({setShowJobFormModal}) {
                     label="Contract details (full time/ part time)"
                     variant="outlined"
                 >
+
                 <MenuItem value="full time">full time</MenuItem>
-                <MenuItem value="part time">part time</MenuItem>                  
+                <MenuItem value="part time">part time</MenuItem>
               </TextField>
+
                 </div>
               
                 <div className="job-salary">
@@ -226,11 +233,71 @@ function CreateJob ({setShowJobFormModal}) {
                 </Box>
                 </div>  
                  </form>
+
             </div>
-        </div>  
+
+            <div className="job-salary">
+              <TextField
+                name="MinSalary"
+                id="outlined-number"
+                label="Add minimum salary"
+                type="number"
+                size="small"
+                sx={{ width: "250px" }}
+                onChange={formik.handleChange}
+                value={formik.values.MinSalary}
+                error={formik.errors.MinSalary && true}
+              />
+              <TextField
+                name="MaxSalary"
+                id="outlined-number"
+                label="Add maximum salary"
+                type="number"
+                size="small"
+                sx={{ width: "250px" }}
+                onChange={formik.handleChange}
+                value={formik.values.MaxSalary}
+                error={formik.errors.MaxSalary && true}
+              />
+            </div>
+            <div className="job-input">
+              <TextField
+                name="Job Description"
+                id="outlined-multiline-static"
+                label="Job description*"
+                multiline
+                sx={{ width: "500px" }}
+                rows={2}
+                variant="outlined"
+                onChange={formik.handleChange}
+                value={formik.values["Job Description"]}
+                error={formik.errors["Job Description"] && true}
+                helperText={formik.errors["Job Description"]}
+              />
+            </div>
+
+            <div className="job-button">
+              <Box sx={{ "& button": { m: 1 } }}>
+                <Button
+                  color="secondary"
+                  onClick={() => setShowForm((prev) => !prev)}
+                >
+                  Cancel
+                </Button>
+                <Button variant="contained" type="submit">
+                  {" "}
+                  Create
+                </Button>
+              </Box>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+
     </div>
   )
+
 }
 
-export default CreateJob
+export default CreateJob;
