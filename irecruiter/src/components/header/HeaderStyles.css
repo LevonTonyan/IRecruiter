@@ -1,26 +1,20 @@
 .navbar {
-
-    display: flex;
-    justify-content: space-between;
-
-   
+  display: flex;
+  justify-content: space-between;
 }
 
 .home_link {
-    text-decoration: none;
-    color:white;
-    margin: 20px;
-    font-size: larger;
-    vertical-align: middle;
+  text-decoration: none;
+  color: white;
+  margin: 20px;
+  font-size: larger;
+  vertical-align: middle;
 }
 
-
-
 .toolbar {
-    width: 100%;
-    justify-content: space-between;
-    align-items:center
-
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 }
 .user_avatar {
   display: flex;
@@ -42,68 +36,57 @@
   margin-left: 10px;
 }
 
-
-
-.search-input input{
-    padding:  0 10px;
-    width: 96%;
-    border-radius:5px;
-    height: 40px;
-    background-color:rgb(162, 181, 232);
-    border:none;
+.search-input input {
+  padding: 0 10px;
+  width: 96%;
+  border-radius: 5px;
+  height: 40px;
+  background-color: rgb(162, 181, 232);
+  border: none;
 }
 .search-input {
-    width: 100%;
-    border-radius:5px;
-    height: 30px;
-    
+  width: 100%;
+  border-radius: 5px;
+  height: 30px;
 }
 .search-btn {
-    position: relative;
-    top:-33px;
-    right: -160px;
-    background-color:inherit;
-    border:none;
-
+  position: relative;
+  top: -33px;
+  right: -160px;
+  background-color: inherit;
+  border: none;
 }
 
-.search-input input:focus{
-    background-color:white;
-    outline: none;
+.search-input input:focus {
+  background-color: white;
+  outline: none;
 }
-
 
 .search-wrap {
-    position: absolute;
-    width: 350px;
-    max-width: 350px;
-    left: 50%;
-    margin-left: -200px!important;
+  position: absolute;
+  width: 350px;
+  max-width: 350px;
+  left: 50%;
+  margin-left: -200px !important;
 }
 
-
-@media screen and  (max-width: 850px) {
-    .home_link {
-      display: none;
-    }
-    .help_icon {
-        display: none;
-        }
-    .search-wrap {
-        position: absolute;
-        width: 150px;
-        max-width: 150px;
-        margin-left: -90px!important;
-    }
-      .search_input {
+@media screen and (max-width: 850px) {
+  .home_link {
+    display: none;
+  }
+  .help_icon {
+    display: none;
+  }
+  .search-wrap {
+    position: absolute;
+    width: 150px;
+    max-width: 150px;
+    margin-left: -85px !important;
+  }
+  .search_input {
     margin-left: 10%;
   }
-    .search-btn {
-       display: none;
-    
-    }
-        
-
-    }
-    
-
+  .search-btn {
+    display: none;
+  }
+}

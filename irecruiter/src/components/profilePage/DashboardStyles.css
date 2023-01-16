@@ -1,9 +1,7 @@
 .profile-container {
-
-  height:100vh;
-  align-items:center;
-  justify-content:center;
-
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .greething {
@@ -54,13 +52,11 @@
   justify-content: center;
 }
 
-
 .box h4 {
   margin: 0;
 }
 
 @media screen and (max-width: 850px) {
-
   .create-candidate-box-container {
     display: flex;
     flex-direction: column;
@@ -70,15 +66,27 @@
   .greething {
     display: none;
   }
+  .box span {
+    color: #707070;
+    line-height: 0.2;
+    font-size: 13px;
+    font-weight: 500;
+  }
 
   .box {
+    width: 160px;
+    height: 160px;
+    padding: 5px 5px;
+  }
+  .box button {
+    margin-top: 5px;
     width: 120px;
-    height: 130px;
-    padding: 10px 0px;
+    height: 40px;
+    padding: 5px 5px;
   }
 
   .box img {
-    width: 0;
+    width: 50px;
     margin: 0;
   }
   .create-candidate-box-container {
@@ -91,4 +99,3 @@
     line-height: 50px;
   }
 }
-
