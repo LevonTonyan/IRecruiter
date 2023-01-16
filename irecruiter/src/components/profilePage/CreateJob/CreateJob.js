@@ -62,17 +62,15 @@ function CreateJob ({setShowJobFormModal}) {
     }),
 
     onSubmit: (values) => {
-      console.log(values)
       createNewJob(values)
     },
   })
 
-const createNewJob = (values) => {
-  setDoc(doc(db, "job-form",), values)
-  .then((id) => values(id))
-  .then(() => navigate('/jobs'))
-  .catch((e) => setErrorMessage(e.message))
-}
+  const createNewJob = () => {
+    addDoc(collection(db, "jobs"), formik.values)
+      .then(() => navigate("/jobs"))
+      .catch((e) => setErrorMessage(e.message));
+  };
 
   return (
     <div className="job-modal">
