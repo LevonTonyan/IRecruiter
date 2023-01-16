@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import {useLocation} from 'react-router-dom'
 import "./DashboardStyles.css";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
@@ -9,9 +10,9 @@ import Loader from "./../loader/Loader";
 
 const Dashboard = () => {
   const [showCandidateModal, setShowCandidateModal] = useState(false);
-
+  const location = useLocation()
   const [showJobFormModal, setShowJobFormModal] = useState(false);
-  const { currentUserData, settingUser, user, loading, isSidebarOpen } =
+  const { currentUserData, settingUser, user, loading, isSidebarOpen, recentlyVisitedRef } =
     UserAuth();
 
   /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
@@ -20,6 +21,7 @@ const Dashboard = () => {
       settingUser(user.uid);
     }
   });
+
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
 
@@ -50,7 +52,7 @@ const Dashboard = () => {
       }
     >
       {showCandidateModal && (
-        <CreateCandidate setShowCandidateModal={setShowCandidateModal} />
+        <CreateCandidate setShowCreateMd={setShowCandidateModal} />
       )}
       {showJobFormModal && (
         <CreateJob setShowJobFormModal={setShowJobFormModal} />

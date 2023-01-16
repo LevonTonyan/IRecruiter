@@ -3,7 +3,7 @@ import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Searching from "../searching/Searching";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import "./HeaderStyles.css";
 import Sidebar from "../sidebar/Sidebar.jsx";
 import { UserAuth } from "../../context/AuthContext";
@@ -16,6 +16,7 @@ import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
 import ClickAwayListener from '@mui/base/ClickAwayListener';
+import { connectFirestoreEmulator } from "firebase/firestore";
 
 
 const drawerWidth = 240;
@@ -43,9 +44,9 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
   const [isSearching, setIsSearching] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('')
 
-  const { logout, currentUserData, settingUser, user, setIsSidebarOpen } =
+  const { logout, currentUserData, settingUser, user, setIsSidebarOpen, recentlyVisited, handleAddRecentlyVis } =
     UserAuth();
-
+  const location = useLocation()
   const navigate = useNavigate();
   const usersName =
     Object.keys(currentUserData).length && currentUserData["Candidate Name"][0];
@@ -62,6 +63,10 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
   };
+
+  useEffect(() => { 
+    handleAddRecentlyVis(location.pathname)
+  },[location])
 
   /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
   useEffect(() => {

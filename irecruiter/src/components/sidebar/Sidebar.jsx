@@ -18,7 +18,8 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { UserAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import uuid from 'react-uuid'
 
 const IconsForEmployee = [
   {
@@ -96,7 +97,10 @@ const DividerIconsForRecruiter = [
   },
 ];
 
-const drawerWidth = 200;
+const drawerWidth = 190;
+
+
+
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -137,9 +141,11 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 function Sidebar() {
-  const { currentUserData } = UserAuth();
-  const [openDrawer, setOpenDrawer] = useState(true);
+  const { currentUserData, recentlyVisited } = UserAuth();
+  const [openDrawer, setOpenDrawer] = useState(true);///////////////////////////////////////????????????????????
   const navigate = useNavigate();
+ 
+  
 
   return (
     <React.Fragment>
@@ -159,9 +165,9 @@ function Sidebar() {
             >
               <ListItemButton
                 sx={{
-                  minHeight: 48,
+                  minHeight: 20,
                   justifyContent: openDrawer ? "initial" : "center",
-                  px: 2.5,
+                  px: 1.5,
                   color: "#708090",
                 }}
               >
@@ -202,9 +208,9 @@ function Sidebar() {
             >
               <ListItemButton
                 sx={{
-                  minHeight: 48,
+                  minHeight: 20,
                   justifyContent: openDrawer ? "initial" : "center",
-                  px: 2.5,
+                  px: 1.5,
                   color: "#708090",
                 }}
               >
@@ -230,6 +236,10 @@ function Sidebar() {
           ))}
         </List>
         <Divider />
+        <h5>Recently visited</h5>
+        {recentlyVisited.length && recentlyVisited.map(el =>
+          <Link key={uuid() } to={el}><div style={{ "fontSize": "10px", "margin": "5px" }}
+            key={uuid()}>{el.slice(1)[0].toUpperCase() + el.slice(2)}</div></Link>)}
       </Drawer>
     </React.Fragment>
   );

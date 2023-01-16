@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useRef } from 'react';
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -8,6 +8,7 @@ import {
 } from 'firebase/auth'
 import { auth, db } from '../db/firebase';
 import { getDoc, doc, } from 'firebase/firestore'
+import { prepareDataForValidation } from 'formik';
 
 
 
@@ -21,7 +22,8 @@ export const AuthContextProvider = ({ children }) => {
     const [currentUserData, setCurrentUserData] = useState({});
     const [userType, setUserType] = useState('recruiter');
     const [loading, setLoading] = useState(false);
-    const [isSidebarOpen, setIsSidebarOpen ] = useState(false)
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    const [recentlyVisited, setRecentlyVis] = useState([])
 
     
     
@@ -38,6 +40,15 @@ export const AuthContextProvider = ({ children }) => {
         return signOut(auth)
     }
 
+    /////////Adding recently added link////////////////////
+    const handleAddRecentlyVis = (link) => {
+        if (recentlyVisited.includes(link)) {
+            setRecentlyVis(prev => [link, ...recentlyVisited.filter(l => l !== link)])
+        } else { 
+            setRecentlyVis(prev => [...prev, link])
+        }
+     }
+
 
     ////////Checking if user set//////////////
     useEffect(() => { 
@@ -51,7 +62,6 @@ export const AuthContextProvider = ({ children }) => {
     function settingUser(id) { 
         setLoading(true)
         const currentUserDataRef = doc(db, userType, id)
-       console.log(userType, "The id is: ", id)
         const getUserData = async() => { 
             const docSnap = await getDoc(currentUserDataRef)
             if (docSnap.exists()) {
@@ -86,7 +96,10 @@ export const AuthContextProvider = ({ children }) => {
             loading,
             settingUser,
             isSidebarOpen,
-            setIsSidebarOpen
+            setIsSidebarOpen,
+            recentlyVisited,
+            handleAddRecentlyVis
+
         }}>
             {children}
         </UserContext.Provider>

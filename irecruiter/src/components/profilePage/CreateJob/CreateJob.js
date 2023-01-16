@@ -33,7 +33,7 @@ function ControlledCheckbox() {
   );
 }
 
-function CreateJob({ setShowJobFormModal }) {
+function CreateJob({ setShowJobFormModal } ) {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
 
@@ -280,20 +280,7 @@ function CreateJob({ setShowJobFormModal }) {
             />
           </div>
 
-          <div className="job-button">
-            <Box sx={{ "& button": { m: 1 } }}>
-              <Button
-                color="secondary"
-                onClick={() => setShowForm((prev) => !prev)}
-              >
-                Cancel
-              </Button>
-              <Button variant="contained" type="submit">
-                {" "}
-                Create
-              </Button>
-            </Box>
-          </div>
+        
         </div>
       </div>
     </div>
