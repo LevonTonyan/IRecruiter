@@ -97,7 +97,7 @@ const Dashboard = () => {
             </span>
             <Box>
               <Button variant="contained" className="mui-btn" size="small">
-                Create a Candidate
+                Create a Client
               </Button>
             </Box>
           </div>
@@ -119,7 +119,7 @@ const Dashboard = () => {
             </span>
             <Box>
               <Button variant="contained" className="mui-btn" size="small">
-                Create a Candidate
+                Create a Job
               </Button>
             </Box>
           </div>
