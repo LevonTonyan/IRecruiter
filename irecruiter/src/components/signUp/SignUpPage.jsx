@@ -106,7 +106,7 @@ function SignUp() {
                 organisation: data.organisation,
                 type: userType,
               };
-        setDoc(doc(db, userType, cred.user.uid), object);g
+        setDoc(doc(db, userType, cred.user.uid), object);
         return cred.user.uid;
       })
       .then((id) => settingUser(id))
