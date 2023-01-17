@@ -1,0 +1,78 @@
+.candidates-details-container {
+  border: 1px solid #E0E0E0;
+  border-radius: 5px;
+}
+
+.details-title {
+  width: 100%;
+  background-color: #E8E8E8;
+  text-align: left;
+  padding: 10px 0px;
+  font-size: large;
+  font-weight: bolder;
+}
+.details-title span {
+  font-size: .75rem;
+  max-width: 396px;
+  margin-left: 10px;
+  
+  
+}
+
+.init-add-btn {
+  cursor:pointer;
+}
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 12px;
+  padding:5px 10px ;
+  
+}
+.line:hover {
+  background-color:	#F5F5F5;
+  transition: background-color 0.2s;
+}
+
+
+
+@media screen and (max-width: 850px) {
+  .rigth-column {
+    margin-right: 5%;
+  }
+}
+
+.mini-input button{
+  position:absolute;
+  right:1px;
+  bottom:1px;
+  border:none;
+  background-color:white;
+}
+
+.mini-input {
+  position:relative;
+  
+}
+
+.mini-input input {
+  background-color:inherit;
+  border:none;
+  border-bottom:1px solid black
+}
+
+.mini-input input:focus {
+    outline: none;
+}
+.edit-btn {
+  cursor: pointer;
+  border:none;
+  background-color:inherit;
+  margin-left:6px
+}
+
+
+

@@ -1,3 +1,4 @@
+
 import './App.css';
 import Header from './components/header/Header';
 import LoginPage from './components/login/LoginPage';
@@ -17,6 +18,8 @@ import SettingsPage from "./components/SettingsPage/SettingsPage";
 import { UserAuth } from './context/AuthContext';
 import JobsList from './components/jobsList/JobsList';
 import Settings from './components/SettingsPage/Settings'
+import ReportsPage from './components/reportsPage/ReportsPage'
+
 
 
 
@@ -24,6 +27,10 @@ function App() {
   const { user } = UserAuth();
   const isLoggedIn = user && Object.keys(user).length;
   /////IF LOGGED IN REDIRECT TO DASHBOARD/////////////
+
+
+
+
 
   return (
     <div className="App">
@@ -51,7 +58,6 @@ function App() {
           >
             <Route path="summary" element={<Summary />} />
             <Route path="jobs" element={<JobsTab />} />
-            
           </Route>
 
           <Route
@@ -62,7 +68,17 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
-                <Route
+
+          <Route
+            path="/reports"
+            element={
+              <ProtectedRoute>
+                <ReportsPage />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+          <Route
             path="/jobs"
             element={
               <ProtectedRoute>
