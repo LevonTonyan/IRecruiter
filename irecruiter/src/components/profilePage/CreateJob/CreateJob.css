@@ -3,66 +3,70 @@
   top: 30px;
   left: 0;
   width: 100%;
-  display:flex;
-  height:100vh;
-  align-items:center;
-  justify-content:center;
-  font-family: Roboto,sans-serif!important;
-  background-color:rgba(0,0,0,0.4);
-  z-index: 2; 
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto, sans-serif !important;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
 }
 
 .job-main {
-    height: 100vh;
-    box-shadow: inset;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  height: 100vh;
+  box-shadow: inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.job-container{
-        background-color: #fff;
-        height: 500px;
-        border-radius: 25px;
-        box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
-        width: 550px;
-        margin:20px;
-        min-width: 300px;
-    }
+.job-container {
+  background-color: #fff;
+  height: 500px;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+  width: 550px;
+  margin: 20px;
+  min-width: 300px;
+}
 
-.job-title{
-      display:flex;
-      justify-content:space-between;
-      margin:5px 30px 0px 30px;
-      font-size: 20px;
-      font-weight: 500;
-  }  
+.job-title {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 30px 0px 30px;
+  font-size: 20px;
+  font-weight: 500;
+}
 
-  .job-input {
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-  }
+.job-input {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
 
-  .job-location{
-     display:flex;
-     justify-content:space-evenly;
-     margin: 20px
-  }
+.job-container input {
+  height: px;
+}
 
-  .job-salary{
-    display:flex;
-    justify-content:space-evenly;
-    margin: 20px
-  }
+.job-location {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+}
 
-  .job-button{
-    display:flex;
-    justify-content:right ;
-    margin: 0px 20px 20px 0px;
-  }
+.job-salary {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+}
 
-  .btn-close {
-    border:none;
-    background-color:white;
-  }             
+.job-button {
+  display: flex;
+  justify-content: right;
+  margin: 0px 20px 20px 0px;
+}
+
+.btn-close {
+  border: none;
+  background-color: white;
+}

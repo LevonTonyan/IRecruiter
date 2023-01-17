@@ -1,4 +1,4 @@
-import { Box, Divider, IconButton, Toolbar } from "@mui/material";
+import { Box, IconButton, Toolbar } from "@mui/material";
 import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -15,8 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
-import ClickAwayListener from '@mui/base/ClickAwayListener';
-import { connectFirestoreEmulator } from "firebase/firestore";
+import ClickAwayListener from "@mui/base/ClickAwayListener";
+
 
 
 const drawerWidth = 240;
@@ -39,14 +39,20 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
+const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const [searchInputValue, setSearchInputValue] = useState('')
+  const [searchInputValue, setSearchInputValue] = useState("");
 
-  const { logout, currentUserData, settingUser, user, setIsSidebarOpen, recentlyVisited, handleAddRecentlyVis } =
-    UserAuth();
-  const location = useLocation()
+  const {
+    logout,
+    currentUserData,
+    settingUser,
+    user,
+    setIsSidebarOpen,
+    handleAddRecentlyVis,
+  } = UserAuth();
+  const location = useLocation();
   const navigate = useNavigate();
   const usersName =
     Object.keys(currentUserData).length && currentUserData["Candidate Name"][0];
@@ -64,9 +70,9 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
     setAnchorEl(e.currentTarget);
   };
 
-  useEffect(() => { 
-    handleAddRecentlyVis(location.pathname)
-  },[location])
+  useEffect(() => {
+    handleAddRecentlyVis(location.pathname);
+  }, [location]);
 
   /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
   useEffect(() => {
@@ -97,7 +103,7 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
 
   return (
     <>
-      <Box >
+      <Box>
         <AppBar position="fixed">
           <Box className="navbar">
             <Toolbar className="toolbar">
@@ -120,33 +126,33 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
                   </Link>
                 </span>
               </div>
-              
+
               <ClickAwayListener onClickAway={() => setIsSearching(false)}>
-              <div className="search-wrap">
-                <div className="search-input">
-                  <input
-                    value={searchInputValue}
-                    onChange={(e) => setSearchInputValue(e.target.value)}
-                    onFocus={() => setIsSearching(true)}
-                    type="text"
-                    placeholder="Search by Name, Job, Email or Client"
+                <div className="search-wrap">
+                  <div className="search-input">
+                    <input
+                      value={searchInputValue}
+                      onChange={(e) => setSearchInputValue(e.target.value)}
+                      onFocus={() => setIsSearching(true)}
+                      type="text"
+                      placeholder="Search by Name, Job, Email or Client"
+                    />
+                    <button className="search-btn">
+                      <SearchIcon />
+                    </button>
+                  </div>
+                  <Searching
+                    isSearching={isSearching}
+                    searchInputValue={searchInputValue}
+                    setSearchInputValue={setSearchInputValue}
                   />
-                  <button
-                    className="search-btn"
-                  ><SearchIcon/></button>
                 </div>
-                <Searching isSearching={isSearching} searchInputValue={searchInputValue} setSearchInputValue={setSearchInputValue } />
-              </div>
               </ClickAwayListener>
-               
 
               <div>
                 <IconButton>
                   <AddCircleIcon sx={{ color: "white" }} />
                 </IconButton>
-                {/* <IconButton className="help_icon">
-              <HelpIcon sx={{ color: "white"}} />
-            </IconButton> */}
                 <div
                   className="cont"
                   id="avatar-btn"
