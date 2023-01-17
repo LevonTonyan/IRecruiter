@@ -7,6 +7,11 @@ import { Formik, Form, useField, useFormikContext } from 'formik'
 import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import "yup-phone";
+import { doc, updateDoc  } from "firebase/firestore";
+import { db } from '../../db/firebase';
+
+
+
 
 function Settings(path) {
 
@@ -34,7 +39,18 @@ function Click(){
   alert('password is  ' +context.values.password)
   
   return navigate('/settings')
-}
+    }
+    
+
+    function handleChange() { 
+      const target = Object.keys(context.values)[0]
+      const value = Object.values(context.values)[0]
+
+      const profileRef = doc(db, currentUserData.type, user.uid);
+      updateDoc(profileRef, {
+        [target]: value
+      }).catch((e) => console.log(e))
+    }
 
     return (<Button
       sx={{
@@ -45,7 +61,7 @@ function Click(){
       variant="contained"
       color="primary"
       disabled={!context.isValid}
-      onClick = {() => Click()}> Change </Button>
+      onClick = {handleChange}> Change </Button>
       )}
 
 
@@ -100,8 +116,8 @@ function Click(){
                 className="outlined-basic"
                 label=""
                 variant="outlined" /></div>
-
-              <div className='buttonWrapperChange'> <ButtonWrapper
+                
+              <div className='buttonWrapperChange' > <ButtonWrapper
               /></div>
 
               <div className='buttonWrapperDiscart'> <Button

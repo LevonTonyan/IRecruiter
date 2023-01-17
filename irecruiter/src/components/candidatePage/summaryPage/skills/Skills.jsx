@@ -5,6 +5,7 @@ import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db } from './../../../../db/firebase';
 import { useState } from 'react';
 import uuid from 'react-uuid';
+import  Chip  from '@mui/material/Chip';
 
 
 ///////////////SMALL SKILLITEM CMPONENT///////////////////
@@ -59,13 +60,14 @@ const Skills = ({ candidate }) => {
         <div className="sk-List">
           {candidate.skills.length ? (
           candidate.skills.map((skill) => {
-            return <Skill skill={skill} key={uuid()} removeSkill={removeSkill } />
+            return <Chip label={skill} key={uuid()} onDelete={() => removeSkill(skill)} className='skill'/>
+            //<Skill skill={skill} key={uuid()} removeSkill={removeSkill} />
           })
-        ) : (<h5 style={{ margin: "0px 0px 0px 0px" }}>No skills added yet</h5>
+        ) : (<h5 style={{ margin: "16px 0px 0px 10px" }}>No skills added yet</h5>
         )}</div> 
         <div className="footer">
         {<input type="text" value={input} onChange={(e) => setInput(e.target.value)}></input>}
-        <Button type="submit" variant="contained" sx={{marginTop:"10px",}} onClick={addCandidateSkill}> + Add</Button>
+        <Button type="submit" variant="contained" sx={{marginTop:"10px","height":"20px"}} onClick={addCandidateSkill}> + Add</Button>
         </div>
         
       </div>

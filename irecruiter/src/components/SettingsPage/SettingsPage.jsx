@@ -44,7 +44,7 @@ const owner = {
       </div>
       <Link to = '/fullName' >
       <div className='chenge' >
-        <div className='command-info'> Full Name</div>
+        <div className='command-info'>Full Name</div>
         <div className='user-info'> {owner.fullName}</div>
         <div > <ArrowForwardIosRoundedIcon style={{width:'100px',float:'right'}}/></div>
       </div>
