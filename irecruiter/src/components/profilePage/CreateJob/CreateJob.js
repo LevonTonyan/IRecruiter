@@ -13,12 +13,11 @@ import * as Yup from "yup";
 
 import Cities from "./Cities.json";
 import { db } from "../../../db/firebase";
-import { doc, setDoc, addDoc, collection } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 function ControlledCheckbox() {
   const [checked, setChecked] = React.useState(true);
-  const [error, setError] = useState(false);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -33,7 +32,7 @@ function ControlledCheckbox() {
   );
 }
 
-function CreateJob({ setShowJobFormModal } ) {
+function CreateJob({ setShowJobFormModal }) {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
 
@@ -91,9 +90,9 @@ function CreateJob({ setShowJobFormModal } ) {
                 <TextField
                   name="catagory"
                   onChange={formik.handleChange}
-                  value={formik.values.catagory}
-                  error={formik.errors.catagory && true}
-                  helperText={formik.errors.catagory}
+                  value={formik.values.Category}
+                  error={formik.errors.Category && true}
+                  helperText={formik.errors.Category}
                   sx={{ width: "500px" }}
                   size="small"
                   label="Catagory*"
@@ -105,9 +104,9 @@ function CreateJob({ setShowJobFormModal } ) {
                 <TextField
                   name="positionName"
                   onChange={formik.handleChange}
-                  value={formik.values.positionName}
-                  error={formik.errors.positionName && true}
-                  helperText={formik.errors.positionName}
+                  value={formik.values["Position Name"]}
+                  error={formik.errors["Position Name"] && true}
+                  helperText={formik.errors["Position Name"]}
                   sx={{ width: "500px" }}
                   size="small"
                   label="Position name*"
@@ -169,9 +168,9 @@ function CreateJob({ setShowJobFormModal } ) {
                 <TextField
                   name="contractDetails"
                   onChange={formik.handleChange}
-                  value={formik.values.contractDetails}
-                  error={formik.errors.contractDetails && true}
-                  helperText={formik.errors.contractDetails}
+                  value={formik.values["Contract Details"]}
+                  error={formik.errors["Contract Details"] && true}
+                  helperText={formik.errors["Contract Details"]}
                   sx={{ width: "500px" }}
                   size="small"
                   select
@@ -192,8 +191,8 @@ function CreateJob({ setShowJobFormModal } ) {
                   size="small"
                   sx={{ width: "250px" }}
                   onChange={formik.handleChange}
-                  value={formik.values.minSalary}
-                  error={formik.errors.minSalary && true}
+                  value={formik.values.MinSalary}
+                  error={formik.errors.MinSalary && true}
                 />
                 <TextField
                   name="maxSalary"
@@ -203,8 +202,8 @@ function CreateJob({ setShowJobFormModal } ) {
                   size="small"
                   sx={{ width: "250px" }}
                   onChange={formik.handleChange}
-                  value={formik.values.maxSalary}
-                  error={formik.errors.maxSalary && true}
+                  value={formik.values.MaxSalary}
+                  error={formik.errors.MaxSalary && true}
                 />
               </div>
               <div className="job-input">
@@ -217,9 +216,9 @@ function CreateJob({ setShowJobFormModal } ) {
                   rows={2}
                   variant="outlined"
                   onChange={formik.handleChange}
-                  value={formik.values.jobDescription}
-                  error={formik.errors.jobDescription && true}
-                  helperText={formik.errors.jobDescription}
+                  value={formik.values["Job Description"]}
+                  error={formik.errors["Job Description"] && true}
+                  helperText={formik.errors["Job Description"]}
                 />
               </div>
 
@@ -279,8 +278,6 @@ function CreateJob({ setShowJobFormModal } ) {
               helperText={formik.errors["Job Description"]}
             />
           </div>
-
-        
         </div>
       </div>
     </div>
