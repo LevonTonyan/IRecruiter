@@ -12,7 +12,7 @@ import { useEffect } from 'react';
 
 function SettingsPage() {
 
-  const { currentUserData, user ,settingUser } = UserAuth()
+  const { currentUserData, user ,settingUser,isSidebarOpen } = UserAuth()
   useEffect(() => { 
     if (Object.keys(user).length && !Object.keys(currentUserData).length) { 
       settingUser(user.uid)
@@ -30,7 +30,7 @@ const owner = {
   return (
     <div >
       <Header/>
-      <div className = "wrapper">
+      <div className = "wrapper" style={isSidebarOpen?{"paddingLeft":"240px"}:{"paddingLeft":"0px"}}>
     <div className='changes'>
       <div style={{margin:"40px"}}>
         <h2> Profile</h2>

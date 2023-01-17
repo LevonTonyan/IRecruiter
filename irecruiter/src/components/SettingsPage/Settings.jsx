@@ -17,7 +17,7 @@ function Settings(path) {
 
   const navigate = useNavigate()
 
-  const { currentUserData, settingUser, user } = UserAuth()
+  const { currentUserData, settingUser, user,isSidebarOpen } = UserAuth()
   useEffect(() => {
     if (Object.keys(user).length && !Object.keys(currentUserData).length) {
       settingUser(user.uid)
@@ -77,7 +77,8 @@ function Click(){
 
 
   return (
-    <div> <Header />
+    <div >
+      
       <div className='route'>
         <div className='inputWrapper'>
 
