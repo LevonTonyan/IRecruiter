@@ -28,14 +28,7 @@ function Settings(path) {
 
     const context = useFormikContext()
 
-function Click(){
-  changing === 'full name' ? alert('full name is  ' + context.values.name ) :
-  changing === 'email' ? alert('email is  ' + context.values.email ):
-  changing === 'phone number' ? alert('phone number is  ' + context.values.phoneNumber):
-  alert('password is  ' +context.values.password)
-  
-  return navigate('/settings')
-    }
+
     
 
     function handleChange() { 

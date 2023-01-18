@@ -89,7 +89,9 @@ function App() {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/settings" element={<SettingsPage />}/>
+        <Route path="/settings" element={<SettingsPage />}>
+          
+        </Route>
           <Route path = '/fullName' element = {<Settings prop = 'full name'/>}/>
           <Route path = '/email' element = {<Settings prop = 'email'/>}/>
           <Route path = '/number' element = {<Settings prop = 'phone number'/>}/>
