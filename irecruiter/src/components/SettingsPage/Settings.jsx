@@ -7,12 +7,17 @@ import { Formik, Form, useField, useFormikContext } from 'formik'
 import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import "yup-phone";
+import { doc, updateDoc  } from "firebase/firestore";
+import { db } from '../../db/firebase';
+
+
+
 
 function Settings(path) {
 
   const navigate = useNavigate()
 
-  const { currentUserData, settingUser, user } = UserAuth()
+  const { currentUserData, settingUser, user,isSidebarOpen } = UserAuth()
   useEffect(() => {
     if (Object.keys(user).length && !Object.keys(currentUserData).length) {
       settingUser(user.uid)
@@ -34,7 +39,18 @@ function Click(){
   alert('password is  ' +context.values.password)
   
   return navigate('/settings')
-}
+    }
+    
+
+    function handleChange() { 
+      const target = Object.keys(context.values)[0]
+      const value = Object.values(context.values)[0]
+console.log(target   + '-' +value)
+      const profileRef = doc(db, currentUserData.type, user.uid);
+      updateDoc(profileRef, {
+        [target]: value
+      }).catch((e) => console.log(e))
+    }
 
     return (<Button
       sx={{
@@ -45,7 +61,7 @@ function Click(){
       variant="contained"
       color="primary"
       disabled={!context.isValid}
-      onClick = {() => Click()}> Change </Button>
+      onClick = {handleChange}> Change </Button>
       )}
 
 
@@ -61,25 +77,26 @@ function Click(){
 
 
   return (
-    <div> <Header />
+    <div >
+      
       <div className='route'>
         <div className='inputWrapper'>
 
           <div className='textWrapper'><h4>Enter new {changing}</h4></div>
           <Formik
             initialValues={changing === 'full name' ? {
-              name: "",
-            } : changing === 'email' ? { email: '', } : changing === 'phone number' ? { phoneNumber: '' } : { password: '', }}
+              'Candidate Name': "",
+            } : changing === 'email' ? { email: '', } : changing === 'phone number' ? { phone: '' } : { password: '', }}
 
             validationSchema={
               changing === 'full name' ? yup.object().shape({
-                name: yup.string().required("Necessary"),
+                'Candidate Name': yup.string().required("Necessary"),
               }) :
                 changing === 'email' ? yup.object().shape({
                   email: yup.string().email("Invalid email").required("Necessary"),
                 }) :
                   changing === 'phone number' ? yup.object().shape({
-                    phoneNumber: yup.string()
+                    phone: yup.string()
                       .required('Neccessary')
                       .phone(null, true, 'invalid phone number')
                     ,
@@ -94,14 +111,14 @@ function Click(){
 
             <Form>
               <div className='textFieldWrapper'><TextFieldWrapper
-                name={changing === 'full name' ? 'name' : changing === 'email' ? 'email' : changing === 'phone number' ? 'phoneNumber' : 'password'}
+                name={changing === 'full name' ? 'Candidate Name' : changing === 'email' ? 'email' : changing === 'phone number' ? 'phone' : 'password'}
                 fullWidth
                 size="small"
                 className="outlined-basic"
                 label=""
                 variant="outlined" /></div>
-
-              <div className='buttonWrapperChange'> <ButtonWrapper
+                
+              <div className='buttonWrapperChange' > <ButtonWrapper
               /></div>
 
               <div className='buttonWrapperDiscart'> <Button
