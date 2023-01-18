@@ -46,6 +46,7 @@ function Click(){
       const target = Object.keys(context.values)[0]
       const value = Object.values(context.values)[0]
 
+
       const profileRef = doc(db, currentUserData.type, user.uid);
       updateDoc(profileRef, {
         [target]: value
@@ -85,18 +86,18 @@ function Click(){
           <div className='textWrapper'><h4>Enter new {changing}</h4></div>
           <Formik
             initialValues={changing === 'full name' ? {
-              name: "",
-            } : changing === 'email' ? { email: '', } : changing === 'phone number' ? { phoneNumber: '' } : { password: '', }}
+              'Candidate Name': "",
+            } : changing === 'email' ? { email: '', } : changing === 'phone number' ? { phone: '' } : { password: '', }}
 
             validationSchema={
               changing === 'full name' ? yup.object().shape({
-                name: yup.string().required("Necessary"),
+                'Candidate Name': yup.string().required("Necessary"),
               }) :
                 changing === 'email' ? yup.object().shape({
                   email: yup.string().email("Invalid email").required("Necessary"),
                 }) :
                   changing === 'phone number' ? yup.object().shape({
-                    phoneNumber: yup.string()
+                    phone: yup.string()
                       .required('Neccessary')
                       .phone(null, true, 'invalid phone number')
                     ,
@@ -111,7 +112,7 @@ function Click(){
 
             <Form>
               <div className='textFieldWrapper'><TextFieldWrapper
-                name={changing === 'full name' ? 'name' : changing === 'email' ? 'email' : changing === 'phone number' ? 'phoneNumber' : 'password'}
+                name={changing === 'full name' ? 'Candidate Name' : changing === 'email' ? 'email' : changing === 'phone number' ? 'phone' : 'password'}
                 fullWidth
                 size="small"
                 className="outlined-basic"
