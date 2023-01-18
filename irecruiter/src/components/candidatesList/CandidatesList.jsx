@@ -9,6 +9,7 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Loader from '../loader/Loader';
 import { UserAuth } from '../../context/AuthContext';
+import CreateCandidate from './../profilePage/CreateCandidateModal/CreateCandidate';
 
 
 
@@ -25,9 +26,7 @@ const CandidatesList = () => {
   const {isSidebarOpen} = UserAuth()
   const [loading, setLoading] = useState(false)
   const [docs, setDocs] = useState([]);
-
-
-
+  const [showCreateMd, setShowCreateMd] = useState(false)
 
 
 
@@ -45,8 +44,8 @@ const CandidatesList = () => {
 
   //////DEF AGGrid options///////////////////////////////////////
   const rowData = docs
-  console.log(rowData
-  )
+  
+
   const [columnDefs , setColumnDefs] = useState([
     { cellRenderer: SimpleComp, field: "Candidate Name", cellClass:"cellClass"},
     { headerName: "Phone", field: "Candidate Phone Number" },
@@ -68,8 +67,7 @@ const CandidatesList = () => {
   }, []);
 
 
-
-
+ 
   const styles = {
     button: {
       maxWidth:"200px",
@@ -84,12 +82,19 @@ const CandidatesList = () => {
   
   return (
 
-    <div class={isSidebarOpen?'sideBarOpen':null}>
+    <div class={isSidebarOpen ? 'sideBarOpen' : null}>
+      
+      {showCreateMd && <CreateCandidate setShowCreateMd={setShowCreateMd} />}
+      
+      
       <div className='create-candidate-header'>
         <h1>Candidates</h1>
-        <Button variant='contained' sx={styles.button }>+ Create candidate</Button>
+        <Button variant='contained'
+          sx={styles.button}
+          onClick={() => setShowCreateMd(true)}
+        >+ Create candidate</Button>
       </div>
-      
+     
        
 
      <div className="ag-theme-alpine"

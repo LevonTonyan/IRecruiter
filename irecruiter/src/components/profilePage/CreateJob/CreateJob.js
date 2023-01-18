@@ -14,12 +14,11 @@ import * as Yup from "yup";
 
 import Cities from "./Cities.json";
 import { db } from "../../../db/firebase";
-import { doc, setDoc, addDoc, collection } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 function ControlledCheckbox() {
   const [checked, setChecked] = React.useState(true);
-  const [error, setError] = useState(false);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
@@ -73,6 +72,7 @@ function CreateJob({ setShowJobFormModal }) {
   };
 
   return (
+
     <div className="modal">
       <ClickAwayListener onClickAway={() => setShowJobFormModal(false)}>
     <div className="job-main">
@@ -239,6 +239,7 @@ function CreateJob({ setShowJobFormModal }) {
               </Box>
             </div>
           </form>
+
         </div>
       </div>
     </div>

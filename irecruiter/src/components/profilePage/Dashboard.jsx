@@ -9,7 +9,6 @@ import Loader from "./../loader/Loader";
 
 const Dashboard = () => {
   const [showCandidateModal, setShowCandidateModal] = useState(false);
-
   const [showJobFormModal, setShowJobFormModal] = useState(false);
   const { currentUserData, settingUser, user, loading, isSidebarOpen } =
     UserAuth();
@@ -50,7 +49,7 @@ const Dashboard = () => {
       }
     >
       {showCandidateModal && (
-        <CreateCandidate setShowCandidateModal={setShowCandidateModal} />
+        <CreateCandidate setShowCreateMd={setShowCandidateModal} />
       )}
       {showJobFormModal && (
         <CreateJob setShowJobFormModal={setShowJobFormModal} />
@@ -97,7 +96,7 @@ const Dashboard = () => {
             </span>
             <Box>
               <Button variant="contained" className="mui-btn" size="small">
-                Create a Candidate
+                Create a Client
               </Button>
             </Box>
           </div>
@@ -119,7 +118,7 @@ const Dashboard = () => {
             </span>
             <Box>
               <Button variant="contained" className="mui-btn" size="small">
-                Create a Candidate
+                Create a Job
               </Button>
             </Box>
           </div>

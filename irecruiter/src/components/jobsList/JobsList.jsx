@@ -29,12 +29,10 @@ const JobsList = () => {
 
   useEffect(() => {
     let arr = []
-    console.log(arr)
     setLoading(true)
     getDocs(collection(db, "jobs")).then((docs) => {
       docs.forEach(doc => arr.push({...doc.data(), id:doc.id}))
       setDocs(arr)
-      console.log(arr)
       setLoading(false)
     })
     

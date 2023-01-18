@@ -2,15 +2,23 @@ import { ClickAwayListener } from "@mui/material";
 import React from "react";
 import "./CreateCandidateStyles.css";
 
-const CreateCandidate = ({setShowCandidateModal}) => {
+const CreateCandidate = ({setShowCreateMd}) => {
   return (
     <div className="modal">
-      <ClickAwayListener onClickAway={() => setShowCandidateModal(false)}>
+      
 
 <div className="upload-box">
         <div className="upload-box-title">
           Create Candidate
+          <button
+              className="btn btn-close"
+              onClick={() => setShowCreateMd((prev) => !prev)}
+            >
+              X
+            </button>
         </div>
+  
+        
 
         <div className="box-container" >
           <div className="modal-box">
@@ -35,8 +43,7 @@ const CreateCandidate = ({setShowCandidateModal}) => {
         </div>
         <div></div>
       </div>
-      </ClickAwayListener>
-      
+ 
     </div>
   );
 };

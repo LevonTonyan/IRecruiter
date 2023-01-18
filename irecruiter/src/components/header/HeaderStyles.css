@@ -66,6 +66,7 @@
   position: absolute;
   width: 350px;
   max-width: 350px;
+  top: 12px;
   left: 50%;
   margin-left: -200px !important;
 }
@@ -82,7 +83,6 @@
     width: 150px;
     max-width: 150px;
     margin-left: -85px !important;
-    top: 8px;
   }
   .search_input {
     margin-left: 10%;
