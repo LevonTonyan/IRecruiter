@@ -16,6 +16,11 @@ import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
+import PersonIcon from '@mui/icons-material/Person';
+import WorkIcon from '@mui/icons-material/Work';
+import PersonPinIcon from '@mui/icons-material/PersonPin';
+import CreateCandidate from "../profilePage/CreateCandidateModal/CreateCandidate";
+import CreateJob from "../profilePage/CreateJob/CreateJob";
 
 
 
@@ -43,6 +48,11 @@ const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
+  const [showCandidateModal, setShowCandidateModal] = useState(false);
+  const [showJobFormModal, setShowJobFormModal] = useState(false);
+
+
+
 
   const {
     logout,
@@ -60,6 +70,7 @@ const Header = () => {
     ? currentUserData.organisation
     : "Self-employed";
   const [anchorEl, setAnchorEl] = useState(null);
+ 
   const open = Boolean(anchorEl);
 
   const handleClose = () => {
@@ -68,6 +79,28 @@ const Header = () => {
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
+  };
+
+
+  const [anchor, setAnchor] = useState(null);
+ 
+  const opened = Boolean(anchor);
+
+  const close = () => {
+    setAnchor(null);
+  };
+
+  const click = (e) => {
+    setAnchor(e.currentTarget);
+  };
+  
+const createCandidate = () => {
+    setShowCandidateModal((prev) => !prev);
+  };
+
+  /////////////CREATE JOB HANDLER////////////////////////
+  const createJob = () => {
+    setShowJobFormModal((prev) => !prev);
   };
 
   useEffect(() => {
@@ -102,7 +135,12 @@ const Header = () => {
   };
 
   return (
-    <>
+    <>{showCandidateModal && (
+      <CreateCandidate setShowCreateMd={setShowCandidateModal} />
+    )}
+    {showJobFormModal && (
+      <CreateJob setShowJobFormModal={setShowJobFormModal} />
+    )}
       <Box>
         <AppBar position="fixed">
           <Box className="navbar">
@@ -150,12 +188,57 @@ const Header = () => {
               </ClickAwayListener>
 
               <div>
-                <IconButton>
-                  <AddCircleIcon sx={{ color: "white" }} />
-                </IconButton>
+               
                 <div
                   className="cont"
-                  id="avatar-btn"
+                  onClick={click}
+                  aria-controls={opened ? "menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={opened ? true : undefined}
+                >
+                   <IconButton>
+                  <AddCircleIcon sx={{ color: "white" }} />
+                </IconButton>
+                  
+                </div>
+                <Menu
+                  id="menu"
+                  anchorEl={anchor}
+                  open={opened}
+                  MenuListProps={{ "aria-labelledby": "avatar-btn" }}
+                  onClose={close}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                >
+                 
+                    <MenuItem sx={styles.menuItem} divider alignitems="true" onClick = {() => createCandidate()}>
+                    <PersonIcon sx={styles.menuIcon} />
+                 
+                      Create Canditate
+                    </MenuItem>
+              
+
+                  <MenuItem  sx={styles.menuItem} onClick = {() =>createJob()}>
+                  <WorkIcon sx={styles.menuIcon}/>
+                 Create Job
+                  </MenuItem>
+
+                  <MenuItem  sx={styles.menuItem} >
+                    <PersonPinIcon sx={styles.menuIcon}/>
+                 Create Client
+                  </MenuItem>
+
+                </Menu>
+
+                <div
+                  className="cont"
+                  id = "avatar-btn"
                   onClick={handleClick}
                   aria-controls={open ? "menu" : undefined}
                   aria-haspopup="true"
@@ -188,6 +271,7 @@ const Header = () => {
                   <MenuItem onClick={handleLogout} sx={styles.menuItem}>
                     <PowerSettingsNewIcon sx={styles.menuIcon} /> Sign out
                   </MenuItem>
+
                 </Menu>
               </div>
             </Toolbar>
