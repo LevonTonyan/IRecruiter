@@ -45,7 +45,8 @@ function Click(){
     function handleChange() { 
       const target = Object.keys(context.values)[0]
       const value = Object.values(context.values)[0]
-console.log(target   + '-' +value)
+
+
       const profileRef = doc(db, currentUserData.type, user.uid);
       updateDoc(profileRef, {
         [target]: value

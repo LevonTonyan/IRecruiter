@@ -1,16 +1,27 @@
+import { ClickAwayListener } from "@mui/material";
 import React from "react";
 import "./CreateCandidateStyles.css";
 
-const CreateCandidate = ({setShowModal}) => {
+const CreateCandidate = ({setShowCreateMd}) => {
   return (
-    <div className="modal" onClick={() => setShowModal((prev) => !prev)}>
-      <div className="upload-box">
-        <div className="upload-box-title">
-          Create Candidate<button className="btn btn-close">X</button>
-        </div>
+    <div className="modal">
+      
 
-        <div className="box-container">
-          <div className="box">
+<div className="upload-box">
+        <div className="upload-box-title">
+          Create Candidate
+          <button
+              className="btn btn-close"
+              onClick={() => setShowCreateMd((prev) => !prev)}
+            >
+              X
+            </button>
+        </div>
+  
+        
+
+        <div className="box-container" >
+          <div className="modal-box">
             <div className="image-title-container">
               <img
                 src="https://app.manatal.com/img/create-candidate-form.2e829055.svg"
@@ -20,7 +31,7 @@ const CreateCandidate = ({setShowModal}) => {
             </div>
           </div>
 
-          <div className="box">
+          <div className="modal-box" >
             <div className="image-title-container">
               <img
                 src="https://app.manatal.com/img/create-candidate-resume.60d676d2.svg"
@@ -32,6 +43,7 @@ const CreateCandidate = ({setShowModal}) => {
         </div>
         <div></div>
       </div>
+ 
     </div>
   );
 };

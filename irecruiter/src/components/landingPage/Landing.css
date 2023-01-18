@@ -1,6 +1,10 @@
 
+
+
 .landing-navbar{
-    position: relative;
+  position: relative;
+  top: -64px;
+
     height: 90px;
     background-color: #d4e8ff;
     display: flex;

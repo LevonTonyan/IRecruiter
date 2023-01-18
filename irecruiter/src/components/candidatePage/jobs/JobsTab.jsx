@@ -1,6 +1,7 @@
 
 import './BlankJobsPageStyles.css'
 import React from 'react'
+import { Button } from '@mui/material'
 
 const JobsTab = () => {
   return (
@@ -21,8 +22,7 @@ function JobBlankPage (){
       <div><h3>You have not created any jobs yet</h3>
       </div>
       <div><h4>A Job represents a new job opening, an open position or vacancy listing. Creating a job will allow you to start adding candidates to that job, publish the job onto your career page, post the job to job boards and much more.</h4></div>
-        <div><button>+ Create Job</button></div>
-        
+        <div><Button variant='contained'>+ Add to Job</Button></div>
       </div>
        
      </div>
