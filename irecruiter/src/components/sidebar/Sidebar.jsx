@@ -237,7 +237,7 @@ function Sidebar() {
             <div style={{ fontSize: "10px", margin: "5px auto" }} key={uuid()}>
               {" "}
               <Link key={uuid()} to={el}>
-                {el.slice(1)[0].toUpperCase() + el.slice(2)}
+                {el?.slice(1)[0].toUpperCase() + el.slice(2)}
               </Link>
             </div>
           ))}
