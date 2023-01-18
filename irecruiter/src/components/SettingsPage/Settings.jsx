@@ -2,7 +2,7 @@ import Header from '../header/Header'
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { UserAuth } from "../../context/AuthContext";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Formik, Form, useField, useFormikContext } from 'formik'
 import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom';
@@ -16,13 +16,9 @@ import { db } from '../../db/firebase';
 function Settings(path) {
 
   const navigate = useNavigate()
-
-  const { currentUserData, settingUser, user,isSidebarOpen } = UserAuth()
-  useEffect(() => {
-    if (Object.keys(user).length && !Object.keys(currentUserData).length) {
-      settingUser(user.uid)
-    }
-  })
+  const [message, setMessage] = useState("");
+  const { currentUserData,  user } = UserAuth()
+  
 
   
 
@@ -48,9 +44,10 @@ function Click(){
 
 
       const profileRef = doc(db, currentUserData.type, user.uid);
-      updateDoc(profileRef, {
+      let msg = updateDoc(profileRef, {
         [target]: value
-      }).catch((e) => console.log(e))
+      }).then(() => setMessage(`${target} successfully changed`)).catch((e) => console.log(e))
+    
     }
 
     return (<Button
@@ -111,7 +108,9 @@ function Click(){
           >
 
             <Form>
-              <div className='textFieldWrapper'><TextFieldWrapper
+              <div className='textFieldWrapper'>
+                <div style={{"alignItems":'center'}}><span style={{'color':'green'}}>{message}</span></div>  
+                <TextFieldWrapper
                 name={changing === 'full name' ? 'Candidate Name' : changing === 'email' ? 'email' : changing === 'phone number' ? 'phone' : 'password'}
                 fullWidth
                 size="small"

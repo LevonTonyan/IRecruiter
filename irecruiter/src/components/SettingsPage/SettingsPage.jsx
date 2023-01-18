@@ -12,16 +12,12 @@ import { useEffect } from 'react';
 
 function SettingsPage() {
 
-  const { currentUserData, user ,settingUser,isSidebarOpen } = UserAuth()
-  useEffect(() => { 
-    if (Object.keys(user).length && !Object.keys(currentUserData).length) { 
-      settingUser(user.uid)
-    }
-  })
+  const { currentUserData, user, isSidebarOpen } = UserAuth()
+
 
 const owner = {
   image:'https://cdn-icons-png.flaticon.com/512/2521/2521826.png',
-  fullName:currentUserData.name,
+  fullName:currentUserData['Candidate Name'],
   email:user.email,
   phoneNumber:currentUserData.phone
 
@@ -49,7 +45,7 @@ const owner = {
         <div > <ArrowForwardIosRoundedIcon style={{width:'100px',float:'right'}}/></div>
       </div>
       </Link>
-      <Link to = '/email'>
+      <Link >
       <div className='chenge' >
         <div className='command-info'> Email</div>
         <div className='user-info'> {owner.email}</div>
