@@ -1,6 +1,6 @@
 .job-modal {
   position: fixed;
-  top: 30px;
+  top: 0px;
   left: 0;
   width: 100%;
   display: flex;
@@ -20,15 +20,16 @@
   justify-content: center;
 }
 
-.job-container {
-  background-color: #fff;
-  height: 500px;
-  border-radius: 25px;
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
-  width: 550px;
-  margin: 20px;
-  min-width: 300px;
-}
+
+.job-container{
+        background-color: #fff;
+        border-radius: 25px;
+        box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
+        width: 550px;
+        margin:80px 20px 20px 20px;
+        min-width: 300px;
+    }
+
 
 .job-title {
   display: flex;
