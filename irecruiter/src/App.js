@@ -19,6 +19,7 @@ import { UserAuth } from './context/AuthContext';
 import JobsList from './components/jobsList/JobsList';
 import Settings from './components/SettingsPage/Settings'
 import ReportsPage from './components/reportsPage/ReportsPage'
+import ClientsList from './components/clientsList/ClientsList';
 
 
 
@@ -65,6 +66,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <CandidatesList />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+            <Route
+            path="/clients"
+            element={
+              <ProtectedRoute>
+                <ClientsList />
               </ProtectedRoute>
             }
           ></Route>
