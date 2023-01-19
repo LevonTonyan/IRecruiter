@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth, db } from "../db/firebase";
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, doc,onSnapshot } from "firebase/firestore";
 
 const UserContext = createContext();
 
@@ -16,7 +16,7 @@ export const AuthContextProvider = ({ children }) => {
   const [userType, setUserType] = useState("recruiter");
   const [loading, setLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [recentlyVisited, setRecentlyVis] = useState([]);
+  const [recentlyVisited, setRecentlyVis] = useState(['/dashboard']);
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -40,12 +40,9 @@ export const AuthContextProvider = ({ children }) => {
         link,
         ...recentlyVisited.filter((l) => l !== link),
       ]);
-        console.log("one")
     } else {
-        console.log('second')
       setRecentlyVis((prev) => [link,...prev]);
         }
-        console.log(recentlyVisited)
   };
 
   ////////Checking if user set//////////////
@@ -55,7 +52,13 @@ export const AuthContextProvider = ({ children }) => {
     });
     return () => unsubscribe();
   }, []);
+    
+//  console.log(user.uid)
+//     const currentUserDataRef = doc(db, userType, user.uid);
+//   onSnapshot(currentUserDataRef, (doc) => console.log(""))
 
+
+    
   function settingUser(id) {
     setLoading(true);
     const currentUserDataRef = doc(db, userType, id);
@@ -89,7 +92,8 @@ export const AuthContextProvider = ({ children }) => {
         currentUserData,
         setUserType,
         userType,
-        loading,
+              loading,
+              setLoading,
         settingUser,
         isSidebarOpen,
         setIsSidebarOpen,

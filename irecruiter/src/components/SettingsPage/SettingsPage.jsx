@@ -22,7 +22,6 @@ const owner = {
   phoneNumber:currentUserData.phone
 
 }
-console.log(isSidebarOpen)
   return (
     <div >
       <div className = {isSidebarOpen?"wrapper sideBarOpen":"wrapper"} >

@@ -17,10 +17,10 @@ function Settings(path) {
 
   const navigate = useNavigate()
   const [message, setMessage] = useState("");
-  const { currentUserData,  user } = UserAuth()
+  const { currentUserData,  user,settingUser } = UserAuth()
   
 
-  
+
 
   let changing = path.prop
  
@@ -39,7 +39,12 @@ function Settings(path) {
       const profileRef = doc(db, currentUserData.type, user.uid);
       let msg = updateDoc(profileRef, {
         [target]: value
-      }).then(() => setMessage(`${target} successfully changed`)).catch((e) => console.log(e))
+      }).then(() => setMessage(`${target} successfully changed`))
+        .then((r) => {
+          settingUser(user.uid)
+          navigate('/settings')
+        })
+        .catch((e) => console.log(e))
     
     }
 

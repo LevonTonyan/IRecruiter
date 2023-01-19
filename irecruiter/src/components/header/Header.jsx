@@ -113,7 +113,7 @@ const Header = () => {
     if (Object.keys(user).length && !Object.keys(currentUserData).length) {
       settingUser(user.uid);
     }
-  });
+  },[]);
 
   const handleLogout = async () => {
     try {
