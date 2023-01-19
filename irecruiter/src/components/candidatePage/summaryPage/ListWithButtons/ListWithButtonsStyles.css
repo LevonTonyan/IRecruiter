@@ -26,6 +26,7 @@
 .line {
   display: flex;
   justify-content: space-between;
+  height: 25px;
   width: 100%;
   box-sizing: border-box;
   font-size: 12px;
