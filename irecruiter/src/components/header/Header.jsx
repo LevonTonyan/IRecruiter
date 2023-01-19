@@ -43,7 +43,6 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const Header = () => {
-  const [openDrawer, setOpenDrawer] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
   const [showCandidateModal, setShowCandidateModal] = useState(false);
@@ -54,6 +53,7 @@ const Header = () => {
     currentUserData,
     settingUser,
     user,
+    isSidebarOpen,
     setIsSidebarOpen,
     handleAddRecentlyVis,
   } = UserAuth();
@@ -143,7 +143,6 @@ const Header = () => {
               <div>
                 <IconButton
                   onClick={() => {
-                    setOpenDrawer((prev) => !prev);
                     setIsSidebarOpen((prev) => !prev);
                   }}
                 >
@@ -270,7 +269,7 @@ const Header = () => {
           </Box>
         </AppBar>
       </Box>
-      {openDrawer ? <Sidebar /> : null}
+      {isSidebarOpen ? <Sidebar /> : null}
       <Outlet />
     </>
   );
