@@ -21,6 +21,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import CreateCandidate from "../profilePage/CreateCandidateModal/CreateCandidate";
 import CreateJob from "../profilePage/CreateJob/CreateJob";
+import CreateClient from "../profilePage/CreateClient/CreateClient";
 
 const drawerWidth = 240;
 
@@ -43,17 +44,18 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const Header = () => {
-  const [openDrawer, setOpenDrawer] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
   const [showCandidateModal, setShowCandidateModal] = useState(false);
   const [showJobFormModal, setShowJobFormModal] = useState(false);
+  const [showClientFormModal, setShowClientFormModal] = useState(false)
 
   const {
     logout,
     currentUserData,
     settingUser,
     user,
+    isSidebarOpen,
     setIsSidebarOpen,
     handleAddRecentlyVis,
   } = UserAuth();
@@ -63,7 +65,7 @@ const Header = () => {
     Object.keys(currentUserData).length && currentUserData["Candidate Name"][0];
   const organisation = Object.keys(currentUserData).length
     ? currentUserData.organisation
-    : "Self-employed";
+    : "";
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
@@ -96,6 +98,11 @@ const Header = () => {
   const createJob = () => {
     setShowJobFormModal((prev) => !prev);
   };
+
+  const createClient = () => {
+    setShowClientFormModal((prev) => !prev);
+  };
+
 
   useEffect(() => {
     handleAddRecentlyVis(location.pathname);
@@ -136,6 +143,9 @@ const Header = () => {
       {showJobFormModal && (
         <CreateJob setShowJobFormModal={setShowJobFormModal} />
       )}
+         {showClientFormModal && (
+        <CreateClient setShowClientFormModal={setShowClientFormModal} />
+      )}
       <Box>
         <AppBar position="fixed">
           <Box className="navbar">
@@ -143,7 +153,6 @@ const Header = () => {
               <div>
                 <IconButton
                   onClick={() => {
-                    setOpenDrawer((prev) => !prev);
                     setIsSidebarOpen((prev) => !prev);
                   }}
                 >
@@ -223,7 +232,7 @@ const Header = () => {
                     Create Job
                   </MenuItem>
 
-                  <MenuItem sx={styles.menuItem}>
+                  <MenuItem sx={styles.menuItem} onClick={() => createClient()}>
                     <PersonPinIcon sx={styles.menuIcon} />
                     Create Client
                   </MenuItem>
@@ -270,7 +279,7 @@ const Header = () => {
           </Box>
         </AppBar>
       </Box>
-      {openDrawer ? <Sidebar /> : null}
+      {isSidebarOpen ? <Sidebar /> : null}
       <Outlet />
     </>
   );

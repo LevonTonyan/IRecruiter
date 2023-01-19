@@ -108,17 +108,17 @@ const openedMixin = (theme) => ({
   overflowX: "hidden",
 });
 
-const closedMixin = (theme) => ({
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
-});
+// const closedMixin = (theme) => ({
+//   transition: theme.transitions.create("width", {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   overflowX: "hidden",
+//   width: `calc(${theme.spacing(7)} + 1px)`,
+//   [theme.breakpoints.up("sm")]: {
+//     width: `calc(${theme.spacing(8)} + 1px)`,
+//   },
+// });
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -131,10 +131,10 @@ const Drawer = styled(MuiDrawer, {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
   }),
-  ...(!open && {
-    ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
-  }),
+  // ...(!open && {
+  //   ...closedMixin(theme),
+  //   "& .MuiDrawer-paper": closedMixin(theme),
+  // }),
 }));
 
 function Sidebar() {
@@ -142,6 +142,9 @@ function Sidebar() {
   const openDrawer = true;
   const navigate = useNavigate();
 
+
+  
+  
   return (
     <React.Fragment>
       <Drawer variant="permanent" open={isSidebarOpen}>
@@ -238,8 +241,8 @@ function Sidebar() {
         <h5>Recently visited</h5>
         {recentlyVisited.length &&
           recentlyVisited.map((el) => (
+            
             <div style={{ fontSize: "10px", margin: "5px auto" }} key={uuid()}>
-              {" "}
               <Link key={uuid()} to={el}>
                 {el?.slice(1)[0].toUpperCase() + el.slice(2)}
               </Link>

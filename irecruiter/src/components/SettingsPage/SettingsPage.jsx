@@ -4,7 +4,7 @@ import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRound
 import Header from '../header/Header';
 import { Link } from 'react-router-dom'
 import { UserAuth } from "../../context/AuthContext";
-import { useEffect } from 'react';
+
 
 
 
@@ -25,7 +25,6 @@ const owner = {
 console.log(isSidebarOpen)
   return (
     <div >
-      <Header/>
       <div className = {isSidebarOpen?"wrapper sideBarOpen":"wrapper"} >
     <div className='changes'>
       <div style={{margin:"40px"}}>

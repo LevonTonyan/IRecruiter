@@ -6,9 +6,12 @@ import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
 import CreateJob from "./CreateJob/CreateJob";
 import { UserAuth } from "../../context/AuthContext";
 import Loader from "./../loader/Loader";
+import CreateClient from "./CreateClient/CreateClient";
 
 const Dashboard = () => {
   const [showCandidateModal, setShowCandidateModal] = useState(false);
+  
+  const [showClientFormModal, setShowClientFormModal] = useState(false);
   const [showJobFormModal, setShowJobFormModal] = useState(false);
   const { currentUserData, settingUser, user, loading, isSidebarOpen } =
     UserAuth();
@@ -34,6 +37,11 @@ const Dashboard = () => {
     setShowCandidateModal((prev) => !prev);
   };
 
+   /////////////CREATE CLIENT HANDLER////////////////////////
+   const createClient = () => {
+    setShowClientFormModal((prev) => !prev);
+  };
+
   /////////////CREATE JOB HANDLER////////////////////////
   const createJob = () => {
     setShowJobFormModal((prev) => !prev);
@@ -50,6 +58,9 @@ const Dashboard = () => {
     >
       {showCandidateModal && (
         <CreateCandidate setShowCreateMd={setShowCandidateModal} />
+      )}
+      {showClientFormModal && (
+        <CreateClient setShowClientFormModal={setShowClientFormModal} />
       )}
       {showJobFormModal && (
         <CreateJob setShowJobFormModal={setShowJobFormModal} />
@@ -81,7 +92,7 @@ const Dashboard = () => {
             </Box>
           </div>
 
-          <div className="box">
+          <div className="box" onClick={createClient}>
             <div>
               <img
                 src="https://app.manatal.com/img/createDepartment.a226c27a.png"

@@ -14,7 +14,7 @@ const additionalInfo = ["Current Department",
 "Notice Period ",
 "Expected Salary",
 "Expected Benefits",
-"Nationalities",
+  "Nationalities",
 "Languages",
 "Candidate Reference Name"]
 
@@ -22,6 +22,7 @@ const additionalInfo = ["Current Department",
 const details = [
   "Candidate Name",
   "Diploma",
+  "Location",
   "University",
   "Current Company",
   "Gender",

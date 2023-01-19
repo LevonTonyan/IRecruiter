@@ -31,15 +31,21 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   /////////Adding recently added link////////////////////
-  const handleAddRecentlyVis = (link) => {
+    const handleAddRecentlyVis = (link) => {
+        if (link.length > 20) { return } 
+        
+
     if (recentlyVisited.includes(link)) {
       setRecentlyVis(() => [
         link,
         ...recentlyVisited.filter((l) => l !== link),
       ]);
+        console.log("one")
     } else {
-      setRecentlyVis((prev) => [...prev, link]);
-    }
+        console.log('second')
+      setRecentlyVis((prev) => [link,...prev]);
+        }
+        console.log(recentlyVisited)
   };
 
   ////////Checking if user set//////////////

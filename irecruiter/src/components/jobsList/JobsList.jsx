@@ -44,12 +44,12 @@ const JobsList = () => {
   const [columnDefs , setColumnDefs] = useState([
     { cellRenderer: SimpleComp, field: "Position Name", cellClass:"cellClass"},
     { headerName: "Category", field: "Category" },
-    { headerName: "Location", field: "Location" },
+    { headerName: "Location", field: "Location",},
     { headerName: "Client", field: "Client" },
-    { headerName: "Position Name", field: "Position Name" },
     { headerName: "MaxSalary", field: "MaxSalary" },
     { headerName: "MinSalary", field: "MinSalary" },
     { headerName: "Remote", field: "Remote" },
+    { headerName: "Applied", field: "Remote" }
    
   ])
 

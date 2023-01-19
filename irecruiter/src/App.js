@@ -52,6 +52,7 @@ function App() {
             <Route path="summary" element={<Summary />} />
             <Route path="jobs" element={<JobsTab />} />
           </Route>
+          
 
           <Route
             path="/candidates"
