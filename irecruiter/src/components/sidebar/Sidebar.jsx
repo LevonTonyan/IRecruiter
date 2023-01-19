@@ -138,13 +138,13 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 function Sidebar() {
-  const { currentUserData, recentlyVisited } = UserAuth();
+  const { currentUserData, recentlyVisited,isSidebarOpen } = UserAuth();
   const openDrawer = true;
   const navigate = useNavigate();
 
   return (
     <React.Fragment>
-      <Drawer variant="permanent" open={true}>
+      <Drawer variant="permanent" open={isSidebarOpen}>
         <List sx={{ marginTop: "60px" }}>
           {(currentUserData.type === "recruiter"
             ? IconsForRecruiter
@@ -152,7 +152,9 @@ function Sidebar() {
           ).map((item, index) => (
             <ListItem
               key={index}
-              onClick={() => navigate(`${item.text.toLowerCase()}`)}
+              onClick={() => {
+                navigate(`/${item.text.toLowerCase()}`)
+              }}
               sx={{
                 paddingBottom: "1px",
                 paddingTop: "1px",
@@ -195,7 +197,9 @@ function Sidebar() {
           ).map((item, index) => (
             <ListItem
               key={index}
-              onClick={() => navigate(`/${item.text.toLowerCase()}`)}
+              onClick={() => {
+                navigate(`/${item.text.toLowerCase()}`)
+              }}
               sx={{
                 paddingBottom: "1px",
                 paddingTop: "1px",

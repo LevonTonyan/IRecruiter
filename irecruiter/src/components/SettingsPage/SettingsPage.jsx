@@ -22,11 +22,11 @@ const owner = {
   phoneNumber:currentUserData.phone
 
 }
-
+console.log(isSidebarOpen)
   return (
     <div >
       <Header/>
-      <div className = "wrapper" style={isSidebarOpen?{"paddingLeft":"240px"}:{"paddingLeft":"0px"}}>
+      <div className = {isSidebarOpen?"wrapper sideBarOpen":"wrapper"} >
     <div className='changes'>
       <div style={{margin:"40px"}}>
         <h2> Profile</h2>
@@ -38,7 +38,7 @@ const owner = {
         <div className = 'iconWrapper' onClick={()=>{console.log('hello')}}>
         </div>
       </div>
-      <Link to = '/fullName' >
+      <Link to = 'fullName' >
       <div className='chenge' >
         <div className='command-info'>Full Name</div>
         <div className='user-info'> {owner.fullName}</div>
@@ -52,14 +52,14 @@ const owner = {
         <div> <ArrowForwardIosRoundedIcon style={{width:'100px',float:'right'}}/></div>
       </div>
       </Link>
-      <Link to = '/number'>
+      <Link to = 'number'>
       <div className='chenge' >
         <div className='command-info'> Phone Number</div>
         <div className='user-info'> {owner.phoneNumber}</div>
         <div> <ArrowForwardIosRoundedIcon style={{width:'100px',float:'right'}}/></div>
       </div>
       </Link>
-      <Link to = '/password'>
+      <Link to = 'password'>
       <div className='chenge' >
         <div className='command-info'> Password</div>
         <div className='user-info'> change your password</div>

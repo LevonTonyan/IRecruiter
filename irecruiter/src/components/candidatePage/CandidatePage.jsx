@@ -1,5 +1,5 @@
 import "./CandidatePageStyles.css";
-import { doc, getDoc, onSnapshot  } from "firebase/firestore";
+import { doc, onSnapshot  } from "firebase/firestore";
 import CandidatePageHeader from "./candidatePageHeader/CandidatePageHeader";
 import { Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -30,7 +30,7 @@ const CandidatePage = () => {
   if (loading) return <Loader />
 
   return (
-    <div className="candidatePage-container" style={isSidebarOpen?{"paddingLeft":"240px"}:{"paddingLeft":"0px"}}>
+    <div className={isSidebarOpen?"candidatePage-container sideBarOpen":"candidatePage-container"}>
       <CandidatePageHeader candidate={candidate } />
       <Outlet context={candidate }/>
     </div>

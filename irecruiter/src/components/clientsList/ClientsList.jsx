@@ -22,6 +22,8 @@ const ClientsList=()=>{
     const [loading, setLoading] = useState(false)
     const [docs, setDocs] = useState([]);
     
+
+    
     useEffect(() => {
         let arr = []
         setLoading(true)
