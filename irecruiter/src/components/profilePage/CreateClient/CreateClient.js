@@ -26,11 +26,11 @@ function ControlledCheckbox() {
   }
 
 
-function CreateClient({setShowClientFormModal}) {
+function CreateClient({ setShowClientFormModal }) {
     const navigate = useNavigate();
-    const [error, setError]=useState(false);
+   
     const [ErrorMessage, setErrorMessage]=useState("");
-    const [remote, setRemote] = useState(false);
+    
 
     const formik=useFormik({
         initialValues:{

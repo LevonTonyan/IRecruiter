@@ -21,6 +21,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import CreateCandidate from "../profilePage/CreateCandidateModal/CreateCandidate";
 import CreateJob from "../profilePage/CreateJob/CreateJob";
+import CreateClient from "../profilePage/CreateClient/CreateClient";
 
 const drawerWidth = 240;
 
@@ -47,6 +48,7 @@ const Header = () => {
   const [searchInputValue, setSearchInputValue] = useState("");
   const [showCandidateModal, setShowCandidateModal] = useState(false);
   const [showJobFormModal, setShowJobFormModal] = useState(false);
+  const [showClientFormModal, setShowClientFormModal] = useState(false)
 
   const {
     logout,
@@ -97,6 +99,11 @@ const Header = () => {
     setShowJobFormModal((prev) => !prev);
   };
 
+  const createClient = () => {
+    setShowClientFormModal((prev) => !prev);
+  };
+
+
   useEffect(() => {
     handleAddRecentlyVis(location.pathname);
   }, [location]);
@@ -135,6 +142,9 @@ const Header = () => {
       )}
       {showJobFormModal && (
         <CreateJob setShowJobFormModal={setShowJobFormModal} />
+      )}
+         {showClientFormModal && (
+        <CreateClient setShowClientFormModal={setShowClientFormModal} />
       )}
       <Box>
         <AppBar position="fixed">
@@ -222,7 +232,7 @@ const Header = () => {
                     Create Job
                   </MenuItem>
 
-                  <MenuItem sx={styles.menuItem}>
+                  <MenuItem sx={styles.menuItem} onClick={() => createClient()}>
                     <PersonPinIcon sx={styles.menuIcon} />
                     Create Client
                   </MenuItem>
