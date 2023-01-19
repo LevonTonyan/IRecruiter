@@ -1,112 +1,107 @@
-import { createContext, useContext, useEffect, useState, useRef } from 'react';
+import { createContext, useContext, useEffect, useState } from "react";
 import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    signOut,
-    onAuthStateChanged,
-    
-} from 'firebase/auth'
-import { auth, db } from '../db/firebase';
-import { getDoc, doc, } from 'firebase/firestore'
-import { prepareDataForValidation } from 'formik';
-
-
-
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth, db } from "../db/firebase";
+import { getDoc, doc } from "firebase/firestore";
 
 const UserContext = createContext();
 
+export const AuthContextProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+  const [currentUserData, setCurrentUserData] = useState({});
+  const [userType, setUserType] = useState("recruiter");
+  const [loading, setLoading] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [recentlyVisited, setRecentlyVis] = useState([]);
 
-export const AuthContextProvider = ({ children }) => { 
+  const createUser = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-    const [user, setUser] = useState({});
-    const [currentUserData, setCurrentUserData] = useState({});
-    const [userType, setUserType] = useState('recruiter');
-    const [loading, setLoading] = useState(false);
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-    const [recentlyVisited, setRecentlyVis] = useState([])
+  const loginUser = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-    
-    
+  const logout = () => {
+    return signOut(auth);
+  };
 
-    const createUser = (email, password) => { 
-        return createUserWithEmailAndPassword(auth, email,password)
-    }
-
-    const loginUser = (email, password) => { 
-        return signInWithEmailAndPassword(auth, email, password)
-    }
-
-    const logout = () => { 
-        return signOut(auth)
-    }
-
-    /////////Adding recently added link////////////////////
+  /////////Adding recently added link////////////////////
     const handleAddRecentlyVis = (link) => {
-        if (recentlyVisited.includes(link)) {
-            setRecentlyVis(prev => [link, ...recentlyVisited.filter(l => l !== link)])
-        } else { 
-            setRecentlyVis(prev => [...prev, link])
+        if (link.length > 20) { return } 
+        
+
+    if (recentlyVisited.includes(link)) {
+      setRecentlyVis(() => [
+        link,
+        ...recentlyVisited.filter((l) => l !== link),
+      ]);
+        console.log("one")
+    } else {
+        console.log('second')
+      setRecentlyVis((prev) => [link,...prev]);
         }
-     }
+        console.log(recentlyVisited)
+  };
 
+  ////////Checking if user set//////////////
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
-    ////////Checking if user set//////////////
-    useEffect(() => { 
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);  
-        })
-        return () => unsubscribe();
-    }, [])
-    
-
-    function settingUser(id) { 
-        setLoading(true)
-        const currentUserDataRef = doc(db, userType, id)
-        const getUserData = async() => { 
-            const docSnap = await getDoc(currentUserDataRef)
-            if (docSnap.exists()) {
-                setCurrentUserData(docSnap.data())
-                setLoading(false)
-              } else {
-                // doc.data() will be undefined in this case
-                const currentUserDataRef = doc(db, 'employee', id)
-                const docSnap = await getDoc(currentUserDataRef)
-                if (docSnap.exists()) {
-                    setCurrentUserData(docSnap.data())
-                    setLoading(false)
-                } else { 
-                    console.log("No such user!");
-                }
-              }
+  function settingUser(id) {
+    setLoading(true);
+    const currentUserDataRef = doc(db, userType, id);
+    const getUserData = async () => {
+      const docSnap = await getDoc(currentUserDataRef);
+      if (docSnap.exists()) {
+        setCurrentUserData(docSnap.data());
+        setLoading(false);
+      } else {
+        // doc.data() will be undefined in this case
+        const currentUserDataRef = doc(db, "employee", id);
+        const docSnap = await getDoc(currentUserDataRef);
+        if (docSnap.exists()) {
+          setCurrentUserData(docSnap.data());
+          setLoading(false);
+        } else {
+          console.log("No such user!");
         }
-        getUserData()
-       
-       
-    }
+      }
+    };
+    getUserData();
+  }
 
+  return (
+    <UserContext.Provider
+      value={{
+        createUser,
+        loginUser,
+        user,
+        logout,
+        currentUserData,
+        setUserType,
+        userType,
+        loading,
+        settingUser,
+        isSidebarOpen,
+        setIsSidebarOpen,
+        recentlyVisited,
+        handleAddRecentlyVis,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+};
 
-    return (
-        <UserContext.Provider value={{
-            createUser,
-            loginUser,
-            user, logout,
-            currentUserData,
-            setUserType,
-            userType,
-            loading,
-            settingUser,
-            isSidebarOpen,
-            setIsSidebarOpen,
-            recentlyVisited,
-            handleAddRecentlyVis
-
-        }}>
-            {children}
-        </UserContext.Provider>
-    )
-}
-
-export const UserAuth = () => { 
-    return useContext(UserContext)
-}
-
+export const UserAuth = () => {
+  return useContext(UserContext);
+};

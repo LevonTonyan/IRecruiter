@@ -1,4 +1,9 @@
+
+
+
 .main {
+  position: relative;
+  top: -64px;
   height: 100vh;
   box-shadow: inset;
   display: flex;
@@ -8,7 +13,7 @@
 
 .main a {
   text-decoration:none;
-  color:blue
+  color:#1976d2
 }
 
 .signup-container {
@@ -31,6 +36,7 @@
   display: flex;
   justify-content: center;
   margin: 20px;
+  align-items:center
 }
 
 .checkBox {
@@ -43,4 +49,29 @@
   height: 40px;
 
 
+}
+
+.footer-login {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 850px) {
+  .signup-container {
+    background-color: #fff;
+    width: 88%;
+  }
+  .logo {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    }
+    .input {
+      display: flex;
+      justify-content: center;
+      margin: 10px;
+      align-items:center;
+   
+    }
+    .main {
+      height: 90vh;
+    }
 }

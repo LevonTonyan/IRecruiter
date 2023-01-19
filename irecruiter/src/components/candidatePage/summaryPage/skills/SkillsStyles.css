@@ -1,8 +1,7 @@
 .skills-container {
   border: 1px solid#E0E0E0;
   border-radius: 5px;
-
-height: fit-content;  
+height: 168px;  
 }
 
 .skills-title {
@@ -38,7 +37,7 @@ height: fit-content;
   flex-direction: column;
   justify-content: center;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 20px;
   
 }

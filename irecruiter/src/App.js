@@ -13,21 +13,17 @@ import CandidatePage from "./components/candidatePage/CandidatePage";
 import Summary from "./components/candidatePage/summaryPage/Summary";
 import JobsTab from "./components/candidatePage/jobs/JobsTab";
 import CandidatesList from "./components/candidatesList/CandidatesList";
+import SettingsPage from "./components/SettingsPage/SettingsPage";
 import { UserAuth } from "./context/AuthContext";
 import JobsList from "./components/jobsList/JobsList";
-import ReportsPage from './components/reportsPage/ReportsPage'
+import Settings from "./components/SettingsPage/Settings";
+import ReportsPage from "./components/reportsPage/ReportsPage";
 import ClientsList from "./components/clientsList/ClientsList";
-
-
 
 function App() {
   const { user } = UserAuth();
   const isLoggedIn = user && Object.keys(user).length;
   /////IF LOGGED IN REDIRECT TO DASHBOARD/////////////
-
-
-
-
 
   return (
     <div className="App">
@@ -56,6 +52,7 @@ function App() {
             <Route path="summary" element={<Summary />} />
             <Route path="jobs" element={<JobsTab />} />
           </Route>
+          
 
           <Route
             path="/candidates"
@@ -89,6 +86,32 @@ function App() {
             element={
               <ProtectedRoute>
                 <JobsList />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <SettingsPage  />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+              <Route
+            path="/settings/fullName"
+            element={
+              <ProtectedRoute>
+                <Settings prop="full name" />
+              </ProtectedRoute>
+            }
+          ></Route>
+               <Route
+            path="/settings/number"
+            element={
+              <ProtectedRoute>
+                <Settings prop="phone number" />
               </ProtectedRoute>
             }
           ></Route>

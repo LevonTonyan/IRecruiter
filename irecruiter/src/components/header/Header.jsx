@@ -1,4 +1,4 @@
-import { Box, Divider, IconButton, Toolbar } from "@mui/material";
+import { Box, IconButton, Toolbar } from "@mui/material";
 import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -15,9 +15,12 @@ import MenuItem from "@mui/material/MenuItem";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
-import ClickAwayListener from '@mui/base/ClickAwayListener';
-import { connectFirestoreEmulator } from "firebase/firestore";
-
+import ClickAwayListener from "@mui/base/ClickAwayListener";
+import PersonIcon from "@mui/icons-material/Person";
+import WorkIcon from "@mui/icons-material/Work";
+import PersonPinIcon from "@mui/icons-material/PersonPin";
+import CreateCandidate from "../profilePage/CreateCandidateModal/CreateCandidate";
+import CreateJob from "../profilePage/CreateJob/CreateJob";
 
 const drawerWidth = 240;
 
@@ -39,21 +42,30 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
+const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-  const [searchInputValue, setSearchInputValue] = useState('')
+  const [searchInputValue, setSearchInputValue] = useState("");
+  const [showCandidateModal, setShowCandidateModal] = useState(false);
+  const [showJobFormModal, setShowJobFormModal] = useState(false);
 
-  const { logout, currentUserData, settingUser, user, setIsSidebarOpen, recentlyVisited, handleAddRecentlyVis } =
-    UserAuth();
-  const location = useLocation()
+  const {
+    logout,
+    currentUserData,
+    settingUser,
+    user,
+    setIsSidebarOpen,
+    handleAddRecentlyVis,
+  } = UserAuth();
+  const location = useLocation();
   const navigate = useNavigate();
   const usersName =
     Object.keys(currentUserData).length && currentUserData["Candidate Name"][0];
   const organisation = Object.keys(currentUserData).length
     ? currentUserData.organisation
-    : "Self-employed";
+    : "";
   const [anchorEl, setAnchorEl] = useState(null);
+
   const open = Boolean(anchorEl);
 
   const handleClose = () => {
@@ -64,9 +76,30 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
     setAnchorEl(e.currentTarget);
   };
 
-  useEffect(() => { 
-    handleAddRecentlyVis(location.pathname)
-  },[location])
+  const [anchor, setAnchor] = useState(null);
+
+  const opened = Boolean(anchor);
+
+  const close = () => {
+    setAnchor(null);
+  };
+
+  const click = (e) => {
+    setAnchor(e.currentTarget);
+  };
+
+  const createCandidate = () => {
+    setShowCandidateModal((prev) => !prev);
+  };
+
+  /////////////CREATE JOB HANDLER////////////////////////
+  const createJob = () => {
+    setShowJobFormModal((prev) => !prev);
+  };
+
+  useEffect(() => {
+    handleAddRecentlyVis(location.pathname);
+  }, [location]);
 
   /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
   useEffect(() => {
@@ -97,7 +130,13 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
 
   return (
     <>
-      <Box >
+      {showCandidateModal && (
+        <CreateCandidate setShowCreateMd={setShowCandidateModal} />
+      )}
+      {showJobFormModal && (
+        <CreateJob setShowJobFormModal={setShowJobFormModal} />
+      )}
+      <Box>
         <AppBar position="fixed">
           <Box className="navbar">
             <Toolbar className="toolbar">
@@ -120,33 +159,76 @@ const Header = ({ setShowSignOutDrop, showSignOutDrop }) => {
                   </Link>
                 </span>
               </div>
-              
+
               <ClickAwayListener onClickAway={() => setIsSearching(false)}>
-              <div className="search-wrap">
-                <div className="search-input">
-                  <input
-                    value={searchInputValue}
-                    onChange={(e) => setSearchInputValue(e.target.value)}
-                    onFocus={() => setIsSearching(true)}
-                    type="text"
-                    placeholder="Search by Name, Job, Email or Client"
+                <div className="search-wrap">
+                  <div className="search-input">
+                    <input
+                      value={searchInputValue}
+                      onChange={(e) => setSearchInputValue(e.target.value)}
+                      onFocus={() => setIsSearching(true)}
+                      type="text"
+                      placeholder="Search by Name, Job, Email or Client"
+                    />
+                    <button className="search-btn">
+                      <SearchIcon />
+                    </button>
+                  </div>
+                  <Searching
+                    isSearching={isSearching}
+                    searchInputValue={searchInputValue}
+                    setSearchInputValue={setSearchInputValue}
                   />
-                  <button
-                    className="search-btn"
-                  ><SearchIcon/></button>
                 </div>
-                <Searching isSearching={isSearching} searchInputValue={searchInputValue} setSearchInputValue={setSearchInputValue } />
-              </div>
               </ClickAwayListener>
-               
 
               <div>
-                <IconButton>
-                  <AddCircleIcon sx={{ color: "white" }} />
-                </IconButton>
-                {/* <IconButton className="help_icon">
-              <HelpIcon sx={{ color: "white"}} />
-            </IconButton> */}
+                <div
+                  className="cont"
+                  onClick={click}
+                  aria-controls={opened ? "menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={opened ? true : undefined}
+                >
+                  <IconButton>
+                    <AddCircleIcon sx={{ color: "white" }} />
+                  </IconButton>
+                </div>
+                <Menu
+                  id="menu"
+                  anchorEl={anchor}
+                  open={opened}
+                  MenuListProps={{ "aria-labelledby": "avatar-btn" }}
+                  onClose={close}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                >
+                  <MenuItem
+                    sx={styles.menuItem}
+                    alignitems="true"
+                    onClick={() => createCandidate()}
+                  >
+                    <PersonIcon sx={styles.menuIcon} />
+                    Create Canditate
+                  </MenuItem>
+
+                  <MenuItem sx={styles.menuItem} onClick={() => createJob()}>
+                    <WorkIcon sx={styles.menuIcon} />
+                    Create Job
+                  </MenuItem>
+
+                  <MenuItem sx={styles.menuItem}>
+                    <PersonPinIcon sx={styles.menuIcon} />
+                    Create Client
+                  </MenuItem>
+                </Menu>
+
                 <div
                   className="cont"
                   id="avatar-btn"

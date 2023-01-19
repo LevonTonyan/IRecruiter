@@ -39,8 +39,8 @@ const Summary = () => {
   return (
     <div className="summary-container">
       <ListWithButtons candidate={candidate} compName='Candidate Details' details={ details} />
+      <ListWithButtons candidate={candidate} compName='Additional Information' details={additionalInfo} />
       <Skills candidate={candidate} />
-      <ListWithButtons candidate={candidate} compName='Additional Information' details={additionalInfo } />
 
     </div>
   );

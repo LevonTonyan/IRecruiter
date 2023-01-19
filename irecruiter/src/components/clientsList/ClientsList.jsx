@@ -1,4 +1,4 @@
-import "./ClientsList.css"
+import "./ClientsListStyles.css"
 import {React,useState, useEffect, useMemo } from 'react'
 import { db } from "../../db/firebase"
 import { collection, getDocs} from 'firebase/firestore'
@@ -22,6 +22,8 @@ const ClientsList=()=>{
     const [loading, setLoading] = useState(false)
     const [docs, setDocs] = useState([]);
     
+
+
     useEffect(() => {
         let arr = []
         setLoading(true)
@@ -37,7 +39,7 @@ const ClientsList=()=>{
     //////DEF AGGrid options///////////////////////////////////////
     const rowData = docs 
 
-    const [columnDefs , setColumnDefs] = useState([
+    const [columnDefs ] = useState([
         { cellRenderer: SimpleComp, field: "Client Name", cellClass:"cellClass"},
         { headerName: "Company Name", field: "Company Name" },
         { headerName: "Job Count", field: "Job Count" },
