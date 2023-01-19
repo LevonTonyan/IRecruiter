@@ -41,7 +41,7 @@ const ClientsList=()=>{
         { cellRenderer: SimpleComp, field: "Client Name", cellClass:"cellClass"},
         { headerName: "Company Name", field: "Company Name" },
         { headerName: "Job Count", field: "Job Count" },
-        { headerName: "Department Name", field: "Department Name" },
+        { headerName: "Position Name", field: "Position Name" },
         { headerName: "Location", field: "Location" },
         { headerName: "Salary", field: "Salary" },
         { headerName: "Job Stage", field: "Job Stage" },
