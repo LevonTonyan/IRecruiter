@@ -1,26 +1,26 @@
-import Header from '../header/Header'
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { UserAuth } from "../../context/AuthContext";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Formik, Form, useField, useFormikContext } from 'formik'
 import * as yup from 'yup'
 import { useNavigate } from 'react-router-dom';
 import "yup-phone";
 import { doc, updateDoc  } from "firebase/firestore";
 import { db } from '../../db/firebase';
+import { getAuth, updateProfile, updateEmail, updatePassword} from "firebase/auth";
+
+
 
 
 
 
 function Settings(path) {
-
+  const auth = getAuth();
   const navigate = useNavigate()
   const [message, setMessage] = useState("");
   const { currentUserData,  user,settingUser } = UserAuth()
   
-
-
 
   let changing = path.prop
  
@@ -29,25 +29,60 @@ function Settings(path) {
     const context = useFormikContext()
 
 
-    
+    function updateUserProfilePassword(newPass) { 
+      const user = auth.currentUser;
+      const newPassword = newPass
+      updatePassword(user, newPassword)
+        .then(() => setMessage(`password has been successfully changed`))
+        .catch((e) => setMessage(e))
+      .then(() => settingUser(user.uid))
+      .then(()=> navigate('/settings'))
+      
+    }
 
-    function handleChange() { 
-      const target = Object.keys(context.values)[0]
-      const value = Object.values(context.values)[0]
+    function updateUserProfile(target, value) { 
+        const profileRef = doc(db, currentUserData.type, user.uid);
+        updateDoc(profileRef, {
+          [target]: value
+        }).then(() => setMessage(`${target} has been successfully changed`))
+        .catch((e) => setMessage(e))
+          .then(() => settingUser(user.uid))
+          .then(()=> navigate('/settings'))
+         
+    }
 
-
-      const profileRef = doc(db, currentUserData.type, user.uid);
-      let msg = updateDoc(profileRef, {
-        [target]: value
-      }).then(() => setMessage(`${target} successfully changed`))
-        .then((r) => {
-          settingUser(user.uid)
-          navigate('/settings')
-        })
-        .catch((e) => console.log(e))
+    function updateUserProfileEmail(newEmail) { 
+      updateEmail(auth.currentUser, newEmail)
+        .then(() => setMessage(`email hase been successfully changed`))
+        .catch((e) => setMessage(e))
+      .then(() => settingUser(user.uid))
+      .then(()=> navigate('/settings'))
     
     }
 
+
+    function handleChange() {
+      const target = Object.keys(context.values)[0];
+      const value = Object.values(context.values)[0];
+      
+      switch (target) {
+        case "Candidate Name":
+          updateUserProfile(target, value);
+          break;
+        case "email":
+          updateUserProfileEmail(value);
+          break;
+        case "password":
+          updateUserProfilePassword(value);
+          break;
+        default:
+          return;
+      }
+    }
+    
+
+  
+  
     return (<Button
       sx={{
         width: "100px",

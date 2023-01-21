@@ -1,12 +1,8 @@
 
 import './SettingsPage.css'
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
-import Header from '../header/Header';
 import { Link } from 'react-router-dom'
 import { UserAuth } from "../../context/AuthContext";
-
-
-
 
 
 
@@ -43,7 +39,7 @@ const owner = {
         <div > <ArrowForwardIosRoundedIcon style={{width:'100px',float:'right'}}/></div>
       </div>
       </Link>
-      <Link >
+      <Link to='email'>
       <div className='chenge' >
         <div className='command-info'> Email</div>
         <div className='user-info'> {owner.email}</div>

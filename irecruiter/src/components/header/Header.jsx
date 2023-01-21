@@ -1,10 +1,10 @@
+import "./HeaderStyles.css";
 import { Box, IconButton, Toolbar } from "@mui/material";
 import React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Searching from "../searching/Searching";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
-import "./HeaderStyles.css";
 import Sidebar from "../sidebar/Sidebar.jsx";
 import { UserAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
@@ -193,7 +193,7 @@ const Header = () => {
 
               <div>
                 <div
-                  className="cont"
+                  className={currentUserData.type==='employee'?"cont hidden":"cont"}
                   onClick={click}
                   aria-controls={opened ? "menu" : undefined}
                   aria-haspopup="true"
@@ -239,7 +239,7 @@ const Header = () => {
                 </Menu>
 
                 <div
-                  className="cont"
+                  className='cont'
                   id="avatar-btn"
                   onClick={handleClick}
                   aria-controls={open ? "menu" : undefined}

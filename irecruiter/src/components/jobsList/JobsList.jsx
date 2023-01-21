@@ -1,6 +1,6 @@
 import { db } from '../../db/firebase'
 import { useState, useEffect, useMemo } from 'react'
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import {AgGridReact} from 'ag-grid-react';
 import './JobsListStyles.css'
 import 'ag-grid-community/styles//ag-grid.css';
@@ -13,12 +13,30 @@ import { UserAuth } from '../../context/AuthContext';
 
 
 
-const SimpleComp = p => {
+const SimpleComp = (p) => {
+  const { user, currentUserData } = UserAuth();
+  function applyHandler() {
+    const jobRef = doc(db, "employee", user.uid);
+    const job = p.data["Position Name"];
+    updateDoc(jobRef, {
+      "Applied jobs": arrayUnion(job),
+    }).catch((e) => console.log(e));
+  }
   return (
-    <Link to={`/job/${p.data.id}`} >{p.value}</Link>
-    )
-  
-}
+    <>
+      {currentUserData.type === "employee" ? (
+        <>
+          <button className="apply-btn" onClick={applyHandler}>
+            apply
+          </button>
+          <Link to={`/job/${p.data.id}`}>{p.value}</Link>
+        </>
+      ) : (
+        <Link to={`/job/${p.data.id}`}>{p.value}</Link>
+      )}
+    </>
+  );
+};
 
 
 const JobsList = () => {

@@ -74,6 +74,10 @@ const AddButton = ({ setShowMiniEdit }) => {
 
 
 function Editable({ candidate, field }) {
+
+
+
+
   const [showMiniEdit, setShowMiniEdit] = useState(false);
   const [input, setInput] = useState("");
   
@@ -102,7 +106,7 @@ function Editable({ candidate, field }) {
           ? <Stack direction="row" spacing={1}>{
             candidate[field].map(el => { 
               return ( <Chip
-                label={el}
+                label={el instanceof Map?null:el}
                 size='small'
                 onDelete={() => handleDelete(el,field)}
                 onClick={handleEdit} />)

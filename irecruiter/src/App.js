@@ -115,6 +115,22 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
+                <Route
+            path="/settings/password"
+            element={
+              <ProtectedRoute>
+                <Settings prop="password" />
+              </ProtectedRoute>
+            }
+          ></Route>
+                <Route
+            path="/settings/email"
+            element={
+              <ProtectedRoute>
+                <Settings prop="email" />
+              </ProtectedRoute>
+            }
+          ></Route>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />

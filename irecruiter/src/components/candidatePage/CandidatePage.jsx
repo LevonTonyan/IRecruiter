@@ -28,7 +28,6 @@ const CandidatePage = () => {
 
   
   if (loading) return <Loader />
-
   return (
     <div className={isSidebarOpen?"candidatePage-container sideBarOpen":"candidatePage-container"}>
       <CandidatePageHeader candidate={candidate } />

@@ -30,6 +30,7 @@ const details = [
   "Birthdate",
   "Candidate Address",
   "Candidate Phone Number",
+  "Applied jobs"
 ];
 
 

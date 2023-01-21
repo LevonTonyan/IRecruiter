@@ -36,6 +36,10 @@
   margin-left: 10px;
 }
 
+.hidden {
+    display: none;
+}
+
 .search-input input {
   padding: 0 10px;
   width: 96%;

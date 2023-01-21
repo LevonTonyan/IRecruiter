@@ -6,7 +6,8 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth, db } from "../db/firebase";
-import { getDoc, doc,onSnapshot } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
+
 
 const UserContext = createContext();
 
@@ -47,7 +48,8 @@ export const AuthContextProvider = ({ children }) => {
 
   ////////Checking if user set//////////////
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+        console.log(currentUser)
       setUser(currentUser);
     });
     return () => unsubscribe();
