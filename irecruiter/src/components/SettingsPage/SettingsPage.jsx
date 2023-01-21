@@ -17,7 +17,7 @@ function SettingsPage() {
 
   const [photo, setPhoto] = useState(null)
 
-console.log(currentUserData)
+
 const owner = {
   image:'https://cdn-icons-png.flaticon.com/512/2521/2521826.png',
   fullName:currentUserData['Candidate Name'],
