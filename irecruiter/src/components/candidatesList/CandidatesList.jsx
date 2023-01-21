@@ -15,7 +15,6 @@ import CandidateForm from '../profilePage/CreateCandidateModal/CandidateForm/Can
 
 
 const SimpleComp = p => {
-  console.log(p)
   return (
     <Link to={`/candidate/${p.data.id}`} >{p.value}</Link>
     )
@@ -83,7 +82,7 @@ const CandidatesList = () => {
   
   return (
 
-    <div class={isSidebarOpen ? 'sideBarOpen candidatesList' : 'candidatesList'}>
+    <div className={isSidebarOpen ? 'sideBarOpen candidatesList' : 'candidatesList'}>
       
       {showCreateMd && <CandidateForm setShowCandidateFormModal={setShowCreateMd} />}
       

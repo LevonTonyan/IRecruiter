@@ -96,7 +96,7 @@ const JobsList = () => {
   
   return (
 
-    <div class={isSidebarOpen?'sideBarOpen':null}>
+    <div className={isSidebarOpen?'sideBarOpen':null}>
       <div className='create-job-header'>
         <h1>Jobs</h1>
         <Button variant='contained' sx={styles.button}
