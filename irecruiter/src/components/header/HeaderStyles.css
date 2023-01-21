@@ -90,6 +90,7 @@
     display: none;
   }
   .search-wrap {
+    top: 8px;
     position: absolute;
     width: 150px;
     max-width: 150px;
