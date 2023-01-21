@@ -7,7 +7,6 @@ import {
   MenuItem,
   TextField,
 } from "@mui/material";
-import { ClickAwayListener } from "@mui/material";
 import { useFormik, ErrorMessage } from "formik";
 import React, { useState } from "react";
 import * as Yup from "yup";
@@ -74,7 +73,6 @@ function CreateJob({ setShowJobFormModal }) {
   return (
 
     <div className="modal">
-      <ClickAwayListener onClickAway={() => setShowJobFormModal(false)}>
     <div className="job-main">
       <div className="job-container">
         <div className="job-title">
@@ -243,7 +241,6 @@ function CreateJob({ setShowJobFormModal }) {
         </div>
       </div>
     </div>
-    </ClickAwayListener>
     </div>
   );
 }
