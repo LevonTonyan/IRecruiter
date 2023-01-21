@@ -21,7 +21,7 @@ function Settings(path) {
   const [message, setMessage] = useState("");
   const { currentUserData,  user,settingUser } = UserAuth()
   
-
+console.log(currentUserData)
   let changing = path.prop
  
   function ButtonWrapper() {
@@ -41,6 +41,7 @@ function Settings(path) {
     }
 
     function updateUserProfile(target, value) { 
+      console.log(target)
         const profileRef = doc(db, currentUserData.type, user.uid);
         updateDoc(profileRef, {
           [target]: value
@@ -69,7 +70,7 @@ function Settings(path) {
           updateUserProfile(target, value);
           break;
           case "phone":
-            updateUserProfile(target, value);
+            updateUserProfile("Candidate Phone Number", value);
             break;
         case "email":
           updateUserProfileEmail(value);
