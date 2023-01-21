@@ -9,7 +9,6 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Loader from '../loader/Loader';
 import { UserAuth } from '../../context/AuthContext';
-import CreateCandidate from './../profilePage/CreateCandidateModal/CreateCandidate';
 import CandidateForm from '../profilePage/CreateCandidateModal/CandidateForm/CandidateForm';
 
 

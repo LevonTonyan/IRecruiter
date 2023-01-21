@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./DashboardStyles.css";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
-import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
 import CreateJob from "./CreateJob/CreateJob";
 import { UserAuth } from "../../context/AuthContext";
 import Loader from "./../loader/Loader";

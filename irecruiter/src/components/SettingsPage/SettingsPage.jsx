@@ -3,21 +3,41 @@ import './SettingsPage.css'
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
 import { Link } from 'react-router-dom'
 import { UserAuth } from "../../context/AuthContext";
+import { useState } from 'react';
+import defAvatar from '../../images/defAvatar.png'
+import { getAuth, updateProfile } from "firebase/auth";
+import { Button } from '@mui/material';
+
 
 
 
 function SettingsPage() {
 
-  const { currentUserData, user, isSidebarOpen } = UserAuth()
+  const { currentUserData, user, isSidebarOpen, upload } = UserAuth()
+
+  const [photo, setPhoto] = useState(null)
 
 
 const owner = {
   image:'https://cdn-icons-png.flaticon.com/512/2521/2521826.png',
   fullName:currentUserData['Candidate Name'],
   email:user.email,
-  phoneNumber:currentUserData.phone
+  phoneNumber: currentUserData.phone,
+  photoURL:user.photoURL?user.photoURL:defAvatar
+  }
+  
+  const handleChange = (e) => { 
+    if(e.target.files[0]){
+      setPhoto(e.target.files[0])
+    }
+  }
 
-}
+  function handleUpload() {
+    upload(photo, user)
+    setPhoto(null)
+  }
+
+
   return (
     <div >
       <div className = {isSidebarOpen?"wrapper sideBarOpen":"wrapper"} >
@@ -27,10 +47,18 @@ const owner = {
         <p className='p'> Manage your user profile and contact details. Changes will affect how other users see you within IRecuiter. </p>
       </div>
       <div className='ProfilePicture' >
-        <div className='command-info'> Profile picture</div>
-        <div className='user-info'> Update your profile picture</div>
-        <div className = 'iconWrapper' onClick={()=>{console.log('hello')}}>
-        </div>
+            <div className='command-info'> Profile picture
+            <input accept="image/*" type="file" onChange={handleChange}/>
+            </div>
+            
+            <div className='user-info'>
+            <Button  variant='contained' disabled={photo?false:true} size ='small' onClick={handleUpload}>upload</Button>
+           
+            </div>
+            
+             
+              
+        
       </div>
       <Link to = 'fullName' >
       <div className='chenge' >

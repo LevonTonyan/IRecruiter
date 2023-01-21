@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import "yup-phone";
 import { doc, updateDoc  } from "firebase/firestore";
 import { db } from '../../db/firebase';
-import { getAuth, updateProfile, updateEmail, updatePassword} from "firebase/auth";
+import { getAuth, updateEmail, updatePassword} from "firebase/auth";
 
 
 
@@ -64,11 +64,13 @@ function Settings(path) {
     function handleChange() {
       const target = Object.keys(context.values)[0];
       const value = Object.values(context.values)[0];
-      
       switch (target) {
         case "Candidate Name":
           updateUserProfile(target, value);
           break;
+          case "phone":
+            updateUserProfile(target, value);
+            break;
         case "email":
           updateUserProfileEmail(value);
           break;
