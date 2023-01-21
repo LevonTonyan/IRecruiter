@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Divider,
   List,
@@ -6,7 +7,6 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -19,7 +19,7 @@ import EventNoteIcon from "@mui/icons-material/EventNote";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { UserAuth } from "../../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
-import uuid from 'react-uuid'
+import uuid from "react-uuid";
 
 const IconsForEmployee = [
   {
@@ -81,11 +81,6 @@ const DividerIconsForRecruiter = [
     icon: AssessmentIcon,
   },
   {
-    text: "Placements",
-    description: "icon",
-    icon: HowToRegIcon,
-  },
-  {
     text: "Calendar",
     description: "icon",
     icon: EventNoteIcon,
@@ -99,9 +94,6 @@ const DividerIconsForRecruiter = [
 
 const drawerWidth = 190;
 
-
-
-
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
@@ -111,17 +103,17 @@ const openedMixin = (theme) => ({
   overflowX: "hidden",
 });
 
-const closedMixin = (theme) => ({
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
-});
+// const closedMixin = (theme) => ({
+//   transition: theme.transitions.create("width", {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   overflowX: "hidden",
+//   width: `calc(${theme.spacing(7)} + 1px)`,
+//   [theme.breakpoints.up("sm")]: {
+//     width: `calc(${theme.spacing(8)} + 1px)`,
+//   },
+// });
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -134,22 +126,23 @@ const Drawer = styled(MuiDrawer, {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
   }),
-  ...(!open && {
-    ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
-  }),
+  // ...(!open && {
+  //   ...closedMixin(theme),
+  //   "& .MuiDrawer-paper": closedMixin(theme),
+  // }),
 }));
 
 function Sidebar() {
-  const { currentUserData, recentlyVisited } = UserAuth();
-  const [openDrawer, setOpenDrawer] = useState(true);///////////////////////////////////////????????????????????
+  const { currentUserData, recentlyVisited,isSidebarOpen } = UserAuth();
+  const openDrawer = true;
   const navigate = useNavigate();
- 
-  console.log(recentlyVisited);
 
+
+  
+  
   return (
     <React.Fragment>
-      <Drawer variant="permanent" open={openDrawer}>
+      <Drawer variant="permanent" open={isSidebarOpen}>
         <List sx={{ marginTop: "60px" }}>
           {(currentUserData.type === "recruiter"
             ? IconsForRecruiter
@@ -157,7 +150,9 @@ function Sidebar() {
           ).map((item, index) => (
             <ListItem
               key={index}
-              onClick={() => navigate(`${item.text.toLowerCase()}`)}
+              onClick={() => {
+                navigate(`/${item.text.toLowerCase()}`)
+              }}
               sx={{
                 paddingBottom: "1px",
                 paddingTop: "1px",
@@ -200,7 +195,9 @@ function Sidebar() {
           ).map((item, index) => (
             <ListItem
               key={index}
-              onClick={() => navigate(`/${item.text.toLowerCase()}`)}
+              onClick={() => {
+                navigate(`/${item.text.toLowerCase()}`)
+              }}
               sx={{
                 paddingBottom: "1px",
                 paddingTop: "1px",
@@ -237,10 +234,15 @@ function Sidebar() {
         </List>
         <Divider />
         <h5>Recently visited</h5>
-        {
-          recentlyVisited?.length && recentlyVisited.map(el =>
-            <div style={{ "fontSize": "10px", "margin": "5px auto" }}
-            key={uuid()}> <Link key={uuid() } to={el}>{el.slice(1)[0].toUpperCase() + el.slice(2)}</Link></div>)}
+        {recentlyVisited.length &&
+          recentlyVisited.map((el) => (
+            
+            <div style={{ fontSize: "10px", margin: "5px auto" }} key={uuid()}>
+              <Link key={uuid()} to={el}>
+                {el?.slice(1)[0].toUpperCase() + el.slice(2)}
+              </Link>
+            </div>
+          ))}
       </Drawer>
     </React.Fragment>
   );

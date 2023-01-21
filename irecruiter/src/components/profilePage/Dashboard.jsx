@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import {useLocation} from 'react-router-dom'
 import "./DashboardStyles.css";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
@@ -7,12 +6,15 @@ import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
 import CreateJob from "./CreateJob/CreateJob";
 import { UserAuth } from "../../context/AuthContext";
 import Loader from "./../loader/Loader";
+import CreateClient from "./CreateClient/CreateClient";
+import CandidateForm from "./CreateCandidateModal/CandidateForm/CandidateForm";
 
 const Dashboard = () => {
   const [showCandidateModal, setShowCandidateModal] = useState(false);
-  const location = useLocation()
+  
+  const [showClientFormModal, setShowClientFormModal] = useState(false);
   const [showJobFormModal, setShowJobFormModal] = useState(false);
-  const { currentUserData, settingUser, user, loading, isSidebarOpen, recentlyVisitedRef } =
+  const {currentUserData, settingUser, user, loading, isSidebarOpen } =
     UserAuth();
 
   /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
@@ -21,7 +23,6 @@ const Dashboard = () => {
       settingUser(user.uid);
     }
   });
-
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
 
@@ -35,6 +36,11 @@ const Dashboard = () => {
 
   const createCandidate = () => {
     setShowCandidateModal((prev) => !prev);
+  };
+
+   /////////////CREATE CLIENT HANDLER////////////////////////
+   const createClient = () => {
+    setShowClientFormModal((prev) => !prev);
   };
 
   /////////////CREATE JOB HANDLER////////////////////////
@@ -52,7 +58,10 @@ const Dashboard = () => {
       }
     >
       {showCandidateModal && (
-        <CreateCandidate setShowCreateMd={setShowCandidateModal} />
+        <CandidateForm setShowCandidateFormModal={setShowCandidateModal} />
+      )}
+      {showClientFormModal && (
+        <CreateClient setShowClientFormModal={setShowClientFormModal} />
       )}
       {showJobFormModal && (
         <CreateJob setShowJobFormModal={setShowJobFormModal} />
@@ -84,7 +93,7 @@ const Dashboard = () => {
             </Box>
           </div>
 
-          <div className="box">
+          <div className="box" onClick={createClient}>
             <div>
               <img
                 src="https://app.manatal.com/img/createDepartment.a226c27a.png"

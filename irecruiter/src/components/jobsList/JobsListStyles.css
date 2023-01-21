@@ -11,6 +11,14 @@
 
     text-decoration: underline;
     font-weight: bolder;
- 
- 
+  }
+
+  .apply-btn {
+    margin:0 7px 0 0;
+    background-color:inherit;
+    border-radius:5px;
+    border:2px solid rgb(55, 140, 209);
+    color:rgb(55, 140, 209);
+    cursor: pointer;
+    font-weight: 700;
   }

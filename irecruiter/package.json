@@ -8,7 +8,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.1",
-    "@mui/x-date-pickers": "^5.0.13",
+    "@mui/x-date-pickers": "^5.0.15",
     "@react-google-maps/api": "^2.17.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -20,6 +20,7 @@
     "firebase": "^9.15.0",
     "formik": "^2.2.9",
     "google-maps": "^4.3.3",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
@@ -32,8 +33,8 @@
     "yup-phone": "^1.3.2"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "start": "react-scripts   start",
+    "build": "react-scripts  build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

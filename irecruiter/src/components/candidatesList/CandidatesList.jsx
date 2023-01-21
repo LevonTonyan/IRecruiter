@@ -10,11 +10,13 @@ import { Link } from 'react-router-dom';
 import Loader from '../loader/Loader';
 import { UserAuth } from '../../context/AuthContext';
 import CreateCandidate from './../profilePage/CreateCandidateModal/CreateCandidate';
+import CandidateForm from '../profilePage/CreateCandidateModal/CandidateForm/CandidateForm';
 
 
 
 
 const SimpleComp = p => {
+  console.log(p)
   return (
     <Link to={`/candidate/${p.data.id}`} >{p.value}</Link>
     )
@@ -52,7 +54,7 @@ const CandidatesList = () => {
     { headerName: "Candidate Location", field: "Candidate Location" },
     { headerName: "Current Position", field: "currentPosition" },
     { headerName: "Current Company", field: "Current Company" },
-    { headerName: "Current salary", field: "currentSalary" },
+    { headerName: "Email", field: "Email" },
     { headerName: "Expected salary", field: "expectedSalary" },
     { headerName: "Candidate Created", field: "created" },
    
@@ -82,9 +84,9 @@ const CandidatesList = () => {
   
   return (
 
-    <div class={isSidebarOpen ? 'sideBarOpen' : null}>
+    <div class={isSidebarOpen ? 'sideBarOpen candidatesList' : 'candidatesList'}>
       
-      {showCreateMd && <CreateCandidate setShowCreateMd={setShowCreateMd} />}
+      {showCreateMd && <CandidateForm setShowCandidateFormModal={setShowCreateMd} />}
       
       
       <div className='create-candidate-header'>

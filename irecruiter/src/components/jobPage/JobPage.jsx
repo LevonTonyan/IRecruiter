@@ -1,26 +1,26 @@
-import "./CandidatePageStyles.css";
+import './JobPageStyles.css'
 import { doc, onSnapshot  } from "firebase/firestore";
-import CandidatePageHeader from "./candidatePageHeader/CandidatePageHeader";
 import { Outlet, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { db } from "../../db/firebase";
 import { useNavigate } from "react-router-dom";
 import Loader from "../loader/Loader";
 import { UserAuth } from "../../context/AuthContext";
+import ListWithButtons from '../candidatePage/summaryPage/ListWithButtons/ListWithButtons';
 
 
-const CandidatePage = () => {
+const JobPage = () => {
   const { isSidebarOpen } = UserAuth();
   const { id } = useParams()
-  const candidateRef = doc(db, 'employee', id)
-  const [candidate, setCandidate] = useState({})
+  const jobRef = doc(db, 'jobs', id)
+  const [job, setJob] = useState({})
   const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
 
 
   useEffect(() => { 
     setLoading(true)
-    onSnapshot(candidateRef, (doc) => setCandidate(doc.data()))
+    onSnapshot(jobRef, (doc) => setJob(doc.data()))
     navigate('summary')
     setLoading(false)
   },[])
@@ -28,12 +28,13 @@ const CandidatePage = () => {
 
   
   if (loading) return <Loader />
+console.log(job)
   return (
     <div className={isSidebarOpen?"candidatePage-container sideBarOpen":"candidatePage-container"}>
-      <CandidatePageHeader candidate={candidate } />
-      <Outlet context={candidate }/>
+      {/* <ListWithButtons/> */}
+      {/* <Outlet context={job }/> */}
     </div>
   );
 };
 
-export default CandidatePage;
+export default JobPage;
