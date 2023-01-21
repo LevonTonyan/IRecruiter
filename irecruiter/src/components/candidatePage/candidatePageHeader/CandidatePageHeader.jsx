@@ -23,7 +23,7 @@ const CandidatePageHeader = ({candidate}) => {
 
         <div className="user-details">
           <div>{candidate['Candidate Name']}</div>
-          <div>{candidate.Location }</div>
+          <div>{candidate['Candidate Location'] }</div>
         </div>
       </div>
       <div className="link-list-container">

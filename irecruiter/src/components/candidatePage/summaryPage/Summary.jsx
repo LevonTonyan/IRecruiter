@@ -14,15 +14,15 @@ const additionalInfo = ["Current Department",
 "Notice Period ",
 "Expected Salary",
 "Expected Benefits",
-  "Nationalities",
+"Nationalities",
 "Languages",
-"Candidate Reference Name"]
+"Candidate Reference Name",
+]
 
 
 const details = [
   "Candidate Name",
   "Diploma",
-  "Location",
   "University",
   "Current Company",
   "Gender",
@@ -30,7 +30,8 @@ const details = [
   "Birthdate",
   "Candidate Address",
   "Candidate Phone Number",
-  "Applied jobs"
+  "Applied jobs",
+  "Email"
 ];
 
 

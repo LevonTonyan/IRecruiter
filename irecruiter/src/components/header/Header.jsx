@@ -22,6 +22,7 @@ import PersonPinIcon from "@mui/icons-material/PersonPin";
 import CreateCandidate from "../profilePage/CreateCandidateModal/CreateCandidate";
 import CreateJob from "../profilePage/CreateJob/CreateJob";
 import CreateClient from "../profilePage/CreateClient/CreateClient";
+import CandidateForm from "../profilePage/CreateCandidateModal/CandidateForm/CandidateForm";
 
 const drawerWidth = 240;
 
@@ -138,7 +139,7 @@ const Header = () => {
   return (
     <>
       {showCandidateModal && (
-        <CreateCandidate setShowCreateMd={setShowCandidateModal} />
+        <CandidateForm setShowCandidateFormModal={setShowCandidateModal} />
       )}
       {showJobFormModal && (
         <CreateJob setShowJobFormModal={setShowJobFormModal} />

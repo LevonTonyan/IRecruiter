@@ -7,13 +7,14 @@ import CreateJob from "./CreateJob/CreateJob";
 import { UserAuth } from "../../context/AuthContext";
 import Loader from "./../loader/Loader";
 import CreateClient from "./CreateClient/CreateClient";
+import CandidateForm from "./CreateCandidateModal/CandidateForm/CandidateForm";
 
 const Dashboard = () => {
   const [showCandidateModal, setShowCandidateModal] = useState(false);
   
   const [showClientFormModal, setShowClientFormModal] = useState(false);
   const [showJobFormModal, setShowJobFormModal] = useState(false);
-  const { currentUserData, settingUser, user, loading, isSidebarOpen } =
+  const {currentUserData, settingUser, user, loading, isSidebarOpen } =
     UserAuth();
 
   /////////////HANDLING REFRESH TO RELOAD USER DETAILS///////////////////////
@@ -57,7 +58,7 @@ const Dashboard = () => {
       }
     >
       {showCandidateModal && (
-        <CreateCandidate setShowCreateMd={setShowCandidateModal} />
+        <CandidateForm setShowCandidateFormModal={setShowCandidateModal} />
       )}
       {showClientFormModal && (
         <CreateClient setShowClientFormModal={setShowClientFormModal} />

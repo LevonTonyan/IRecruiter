@@ -81,11 +81,6 @@ const DividerIconsForRecruiter = [
     icon: AssessmentIcon,
   },
   {
-    text: "Placements",
-    description: "icon",
-    icon: HowToRegIcon,
-  },
-  {
     text: "Calendar",
     description: "icon",
     icon: EventNoteIcon,

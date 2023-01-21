@@ -1,20 +1,23 @@
 import "./CandidateForm.css"
 import React, { useState } from 'react'
 import Cities from "../../CreateJob/Cities.json"
-import { useFormik, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, TextField, MenuItem } from "@mui/material";
 import { db } from "../../../../db/firebase";
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
+import  uuid  from 'react-uuid';
+import { UserAuth } from "../../../../context/AuthContext";
 
 
 
 
 function CandidateForm({setShowCandidateFormModal}) {
   const navigate = useNavigate();
-  const [error, setError] = useState(false);
-  const [ErrorMessage, setErrorMessage] = useState("");
+
+  const {user} = UserAuth()
+  const [errorMessage, setErrorMessage] = useState("");
 
   const formik = useFormik({
     initialValues: {
@@ -43,7 +46,28 @@ function CandidateForm({setShowCandidateFormModal}) {
   });
 
   const createNewCandidate = () => {
-    addDoc(collection(db, "employee"), formik.values)
+    let candidate = {
+      "Candidate Name":formik.values["Candidate Name"][0].toUpperCase() + formik.values["Candidate Name"].slice(1),
+      "Candidate Phone Number": formik.values["Candidate Phone Number"],
+      Diploma: null,
+      University: null,
+      "Current Company": null,
+      "Current Position":formik.values["Current Position"],
+      Birthdate: null,
+      Email:formik.values["Email Address"],
+      "Candidate Address": null,
+      "Candidate Location": formik.values["Candidate Location"],
+      expectedSalary: null,
+      createdBy: user.uid,
+      id: uuid(),
+      created: new Date().toLocaleString(),
+      skills: [],
+      jobs: [],
+      type: 'employee',
+    }
+
+    setDoc(doc(db, "employee", candidate.id), candidate)
+      .then(() => setShowCandidateFormModal(false))
       .then(() => navigate("/candidates"))
       .catch((e) => setErrorMessage(e.message));
   };
@@ -52,8 +76,10 @@ function CandidateForm({setShowCandidateFormModal}) {
     <div className="modal">
     <div className='candidate-form-main'>
         <div className='candidate-form-container'>
-            <div className='candidate-form-title'>
+          <div className='candidate-form-title'>
+            
             <h3>Create Form</h3>{" "}
+            
             <button
             className="btn btn-close"
             onClick={() => setShowCandidateFormModal((prev) => !prev)}
@@ -61,7 +87,7 @@ function CandidateForm({setShowCandidateFormModal}) {
             X
           </button>
             </div>
-
+            <div style={{color:'red'}}>{errorMessage&&errorMessage}</div>
             <div>
             <form onSubmit={formik.handleSubmit}>
                 <div className="input">
