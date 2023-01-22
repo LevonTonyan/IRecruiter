@@ -60,7 +60,7 @@ const JobsList = () => {
   const rowData = docs
  
   const [columnDefs , setColumnDefs] = useState([
-    { cellRenderer: SimpleComp, field: "Position Name", cellClass:"cellClass"},
+    {  headerName: "Position Name", field: "Position Name"},
     { headerName: "Category", field: "Category" },
     { headerName: "Location", field: "Location",},
     { headerName: "Client", field: "Client" },
