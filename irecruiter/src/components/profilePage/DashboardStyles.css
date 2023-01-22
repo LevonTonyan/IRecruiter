@@ -5,6 +5,7 @@
 
 .mui-btn {
   width: 200px;
+  height: 30px;
 }
 
 .greething {
@@ -39,6 +40,7 @@
 
 .box img {
   width: 80px;
+  height: 56px;
   margin: 30px;
 }
 

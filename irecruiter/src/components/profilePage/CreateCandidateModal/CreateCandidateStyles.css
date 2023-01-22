@@ -47,6 +47,10 @@
       background-color:white;
     }
   
+
+    .box-header {
+      height: 120px;
+    }
    
   
   .modal-box {
