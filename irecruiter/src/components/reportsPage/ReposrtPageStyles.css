@@ -1,15 +1,21 @@
 .reports-container {
-  display: flex;
-flex-direction: column;
-margin-top:150px;
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+  gap: 20px;
+  max-width: 930px;
+  max-height: 280px;
+  margin: auto;
 }
 
 
 
-.recharts-wrapper{
-  margin:20px 0;
-}
 
 @media screen and (max-width: 850px) {
+  .reports-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    max-height: 280px;
+  }
 
 }
