@@ -1,3 +1,4 @@
+import './CalendarPage.css'
 import React from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -23,7 +24,7 @@ const CalendarPage=()=>{
         headerToolbar={{
           start:"prev,next",
           center:"title",
-          end:"dayGridMonth, dayGridWeek, dayGridDay",
+          end:"dayGridMonth,dayGridWeek,dayGridDay",
         }}
         initialView='dayGridMonth'
         editable={true}
@@ -31,7 +32,7 @@ const CalendarPage=()=>{
         selectMirror={true}
         dayMaxEvents={true}
         select={handleDateSelect}
-        eventContent={renderEventContent} // custom render function
+        eventContent={renderEventContent}
         eventClick={handleEventClick}            
         
       />
@@ -41,7 +42,7 @@ const CalendarPage=()=>{
 }
 
 const handleDateSelect = (selectInfo) => {
-  let title = prompt('Enter event')
+  let title = prompt('Add event')
   let calendarApi = selectInfo.view.calendar
 
   calendarApi.unselect() // clear date selection
