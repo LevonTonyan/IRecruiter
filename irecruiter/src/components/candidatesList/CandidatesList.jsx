@@ -30,7 +30,6 @@ const CandidatesList = () => {
 
 
 
-
   useEffect(() => {
     let arr = []
     setLoading(true)
@@ -54,7 +53,7 @@ const CandidatesList = () => {
     { headerName: "Current Company", field: "Current Company" },
     { headerName: "Email", field: "Email" },
     { headerName: "Expected salary", field: "expectedSalary" },
-    { headerName: "Candidate Created", field: "created" },
+    
    
   ])
 
