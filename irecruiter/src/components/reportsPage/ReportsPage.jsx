@@ -203,7 +203,7 @@ const ReportsPage = () => {
                     textAnchor={x > cx ? "start" : "end"}
                     dominantBaseline="central"
                   >
-                    {jobsByClient[index].Client} ({value})
+                    {jobsByClient[index].Client} {value}
                   </text>
                 );
               }}
