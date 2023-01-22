@@ -9,6 +9,7 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Loader from '../loader/Loader';
 import { UserAuth } from '../../context/AuthContext';
+import CreateJob from '../profilePage/CreateJob/CreateJob';
 
 
 
@@ -43,6 +44,7 @@ const JobsList = () => {
   const {isSidebarOpen} = UserAuth()
   const [loading, setLoading] = useState(false)
   const [docs, setDocs] = useState([]);
+  const [showJobFormModal,setShowJobFormModal] = useState(false)
 
 
   useEffect(() => {
@@ -96,10 +98,11 @@ const JobsList = () => {
   
   return (
 
-    <div className={isSidebarOpen?'sideBarOpen':null}>
+    <div className={isSidebarOpen ? 'sideBarOpen' : null}>
+      {showJobFormModal&&<CreateJob setShowJobFormModal={setShowJobFormModal } />}
       <div className='create-job-header'>
         <h1>Jobs</h1>
-        <Button variant='contained' sx={styles.button}
+        <Button variant='contained' sx={styles.button} onClick={() => setShowJobFormModal(true)}
         >+ Create Job</Button>
       </div>
       
