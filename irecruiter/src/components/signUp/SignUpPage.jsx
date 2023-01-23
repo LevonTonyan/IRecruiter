@@ -100,8 +100,7 @@ function SignUp() {
                 type: userType,
               }
             : {
-                "Candidate Name":
-                  data.name[0].toUpperCase() + data.name.slice(1),
+                "Candidate Name":data.name[0].toUpperCase() + data.name.slice(1),
                 "Candidate Phone Number": data.phoneNumber,
                 organisation: data.organisation,
                 type: userType,
