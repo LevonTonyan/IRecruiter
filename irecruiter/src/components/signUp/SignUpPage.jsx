@@ -18,7 +18,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 function SignUp() {
   
-  const { createUser, setUserType, userType, settingUser } = UserAuth()
+  const { createUser, setUserType, userType, settingUser, currentUserData } = UserAuth()
   const navigate = useNavigate()
   const [error, setError] = useState("");
 
@@ -93,7 +93,9 @@ function SignUp() {
         }
         setDoc(doc(db, userType, cred.user.uid), object)
         return cred.user.uid
-      }).then((id) => settingUser(id)).then(() => navigate('/profile')).catch((e) => setError(e.message))
+    }).then((id) => settingUser(id))
+      .then(() => navigate(currentUserData.type === "recruiter" ? "/dashboard" : "/jobs"))
+      .catch((e) => setError(e.message))
 }
   
   return (
