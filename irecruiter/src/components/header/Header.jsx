@@ -176,7 +176,7 @@ const Header = () => {
                       onChange={(e) => setSearchInputValue(e.target.value)}
                       onFocus={() => setIsSearching(true)}
                       type="text"
-                      placeholder="Search by Name, Job, Email or Client"
+                      placeholder="Search by Name or Category"
                     />
                     <button className="search-btn">
                       <SearchIcon />
