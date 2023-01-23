@@ -61,9 +61,8 @@ const Header = () => {
   } = UserAuth();
   const location = useLocation();
   const navigate = useNavigate();
-
-console.log(currentUserData)
-  const usersName = Object.keys(currentUserData).length && currentUserData["Candidate Name"][0];
+  const usersName =
+    Object.keys(currentUserData).length && currentUserData["Candidate Name"][0];
   const organisation = Object.keys(currentUserData).length
     ? currentUserData.organisation
     : "";

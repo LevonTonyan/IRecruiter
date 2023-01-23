@@ -72,52 +72,6 @@ function SignUp() {
   }
 
 
-  const createNewUser = (data) => {
-    if (!data.name || !data.phoneNumber) {
-      console.log(data.name, data.phoneNumber);
-      setError("All fields marked * should be filled up");
-      return;
-    }
-
-    createUser(data.email, data.password)
-      .then((cred) => {
-        let object =
-          userType === "employee"
-            ? {
-                "Candidate Name":
-                  data.name[0].toUpperCase() + data.name.slice(1),
-                "Candidate Phone Number": data.phoneNumber,
-                Diploma: null,
-                University: null,
-                "Current Company": null,
-                Gender: null,
-                Birthdate: null,
-                "Candidate Address": null,
-                "Candidate Location": null,
-                expectedSalary: null,
-                createdBy: cred.user.uid,
-                id: cred.user.uid,
-                created: new Date().toLocaleString(),
-                location: null,
-                skills: [],
-                jobs: [],
-                type: userType,
-              }
-            : {
-                "Candidate Name":data.name[0].toUpperCase() + data.name.slice(1),
-                "Candidate Phone Number": data.phoneNumber,
-                organisation: data.organisation,
-                type: userType,
-              };
-        setDoc(doc(db, userType, cred.user.uid), object);
-        return cred.user.uid;
-      })
-      .then((id) => settingUser(id))
-      .then(() => navigate(userType === "recruiter" ? "/dashboard" : "/jobs"))
-      .catch((e) => setError(e.message));
-  };
-
-
   
   const createNewUser = (data) => {
     createUser(data.email, data.password).then(cred => {
