@@ -9,14 +9,12 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Loader from '../loader/Loader';
 import { UserAuth } from '../../context/AuthContext';
-import CreateCandidate from './../profilePage/CreateCandidateModal/CreateCandidate';
 import CandidateForm from '../profilePage/CreateCandidateModal/CandidateForm/CandidateForm';
 
 
 
 
 const SimpleComp = p => {
-  console.log(p)
   return (
     <Link to={`/candidate/${p.data.id}`} >{p.value}</Link>
     )
@@ -84,7 +82,7 @@ const CandidatesList = () => {
   
   return (
 
-    <div class={isSidebarOpen ? 'sideBarOpen candidatesList' : 'candidatesList'}>
+    <div className={isSidebarOpen ? 'sideBarOpen candidatesList' : 'candidatesList'}>
       
       {showCreateMd && <CandidateForm setShowCandidateFormModal={setShowCreateMd} />}
       

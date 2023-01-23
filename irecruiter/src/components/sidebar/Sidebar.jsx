@@ -14,7 +14,6 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import WorkIcon from "@mui/icons-material/Work";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AssessmentIcon from "@mui/icons-material/Assessment";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { UserAuth } from "../../context/AuthContext";
