@@ -39,6 +39,7 @@
 
 .box img {
   width: 80px;
+  height: 56px;
   margin: 30px;
 }
 
@@ -88,8 +89,9 @@
     padding: 5px 5px;
   }
 
-  .box img {
-    width: 50px;
+  .box-header img {
+    width: 56px;
+    height: 80px;
     margin: 0;
   }
   .create-candidate-box-container {

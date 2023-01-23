@@ -74,7 +74,7 @@ const Dashboard = () => {
 
         <div className="create-candidate-box-container">
           <div className="box" onClick={createCandidate}>
-            <div>
+            <div className="box-header">
               <img
                 src="https://app.manatal.com/img/createCandidates.0cff4784.png"
                 alt="na"
@@ -93,7 +93,7 @@ const Dashboard = () => {
           </div>
 
           <div className="box" onClick={createClient}>
-            <div>
+            <div className="box-header">
               <img
                 src="https://app.manatal.com/img/createDepartment.a226c27a.png"
                 alt="na"
@@ -113,7 +113,7 @@ const Dashboard = () => {
           </div>
 
           <div className="box" onClick={createJob}>
-            <div>
+            <div className="box-header">
               <img
                 src="https://app.manatal.com/img/createJob.9530d415.png"
                 alt="na"
