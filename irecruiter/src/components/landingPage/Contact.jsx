@@ -2,13 +2,15 @@ import './Landing.css'
 import phone from "../../images/call.png"
 import location from "../../images/location.png"
 import mail from "../../images/mail.png"
-import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
+import {MapContainer,TileLayer,Marker, Popup,} from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet'
 
 
 
 function Contact () {
   const containerStyle = {
-    width: '400px',
+    width: '500px',
     height: '50vh'
   };
   
@@ -17,30 +19,32 @@ function Contact () {
     lng: 44.490525
   };
   
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-  })
 
+  const position= {
+    lat: 40.198892,
+    lng: 44.490525, 
+  }
 
-  return isLoaded ? (  
+  const markerIcon= new L.Icon({
+    iconUrl: require('../../images/marker.png'),
+    iconSize:[30,30],
+  });
+
+  return (  
         <section>
           <div className='contact-heading'>
             <h2>Contact Us</h2>
           </div>
 <div className='allContainer'>
-  
-<GoogleMap
-              mapContainerStyle={containerStyle}  
-              zoom={10}  
-              center={center}>
-             <Marker position={
-                {
-                  lat: 40.198892,
-                  lng: 44.490525, 
-                }}/>
-            </GoogleMap>  
 
+        <MapContainer style={containerStyle} center={position} zoom={10} scrollWheelZoom={false}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker icon={markerIcon} position={position}/>
+          
+        </MapContainer>
+        
           <div className='contacts-container'>
               <div className='contact'>
               <img src={location} alt='call.png' className='icon'></img>
@@ -63,12 +67,10 @@ function Contact () {
                 <p>irecruit.support@gmail.com</p>
                 </div>
               </div>
-          </div>
-   
-            
+          </div>         
             </div>  
         </section> 
-    ): <></>
+    )
   }
 
 export default Contact

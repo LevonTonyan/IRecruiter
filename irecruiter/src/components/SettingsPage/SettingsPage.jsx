@@ -52,7 +52,10 @@ const owner = {
             </div>
             
             <div className='user-info'>
-            <Button  variant='contained' disabled={photo?false:true} size ='small' onClick={handleUpload}>upload</Button>
+              <Button variant='contained'
+                sx={{height:'25px'}}
+                disabled={photo ? false : true}
+                size='small' onClick={handleUpload}>upload</Button>
            
             </div>
             
