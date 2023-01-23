@@ -1,43 +1,14 @@
-.calendar-main {
-    position: relative;
-    top: -64px;
-    height: 100vh;
+  :root {
+    margin-right: 5px;
+    margin-top: 10px;
+  }
+
+  .fc .fc-toolbar.fc-header-toolbar {
     display: flex;
-    align-items: center;
-    justify-content: center;
-} 
+    flex-direction: row;
+    font-size: 14px;
+    margin-bottom: 40px;
+    position: relative;
+  }
 
-.css-u0soqy-MuiPickerStaticWrapper-root {
-    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 50%);
-}
 
-.css-hlj6pa-MuiDialogActions-root{
-    display: none !important;
-}
-
-.css-1hbyad5-MuiTypography-root{
-    display: none !important;
-}
-
-.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root
-    .MuiPickersToolbar-penIconButton {
-            display: none !important;
-}
-
-.css-3jvy96-MuiTypography-root-MuiDatePickerToolbar-title {
-    color: white;
-}
-
-.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root {
-    padding: 0 !important;
-}
-
-.css-jhsfre-MuiGrid-root-MuiPickersToolbar-content {
-    justify-content: center !important;
-    background-color: #1976d2;
-    align-items: center;
-}
-
-.css-bkrceb-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
-    background-color: #1976d2 !important;
-}
