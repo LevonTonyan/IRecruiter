@@ -47,6 +47,10 @@
       background-color:white;
     }
   
+
+    .box-header {
+      height: 120px;
+    }
    
   
   .modal-box {
@@ -96,7 +100,7 @@
       font-weight: 700!important;
   }
 
-  @media screen and  (max-width: 900px) {
+  @media screen and  (max-width: 850px) {
     .box-container{
       flex-direction: column ;
     }
@@ -121,5 +125,12 @@
   
     .greething {
       display: none;
+    }
+  }
+
+
+  @media only screen and (max-width: 850px){
+    .box-container{
+      width: 370px;
     }
   }

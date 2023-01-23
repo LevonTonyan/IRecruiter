@@ -9,6 +9,7 @@ import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Loader from '../loader/Loader';
 import { UserAuth } from '../../context/AuthContext';
+import CreateClient from "../profilePage/CreateClient/CreateClient";
 
 const SimpleComp = p => {
     return (
@@ -20,7 +21,8 @@ const SimpleComp = p => {
 const ClientsList=()=>{
     const {isSidebarOpen} = UserAuth()
     const [loading, setLoading] = useState(false)
-    const [docs, setDocs] = useState([]);
+  const [docs, setDocs] = useState([]);
+  const [showClientFormModal, setShowClientFormModal] = useState(false)
     
 
 
@@ -40,7 +42,7 @@ const ClientsList=()=>{
     const rowData = docs 
 
     const [columnDefs ] = useState([
-        { cellRenderer: SimpleComp, field: "Client Name", cellClass:"cellClass"},
+        { headerName: "Client Name", field: "Client Name"},
         { headerName: "Company Name", field: "Company Name" },
         { headerName: "Job Count", field: "Job Count" },
         { headerName: "Position Name", field: "Position Name" },
@@ -72,11 +74,13 @@ const ClientsList=()=>{
 
     return (
 
-        <div class={isSidebarOpen ? 'sideBarOpen' : null}>   
+      <div className={isSidebarOpen ? 'sideBarOpen' : null}>   
+        {showClientFormModal&&<CreateClient setShowClientFormModal={setShowClientFormModal } />}
             <div className='create-client-header'>
                 <h1>Clients</h1>
                 <Button variant='contained'
-                sx={styles.button}
+            sx={styles.button}
+            onClick={() => setShowClientFormModal(true)}
                 >+ Create client</Button>
             </div>
 

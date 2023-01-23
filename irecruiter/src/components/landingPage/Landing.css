@@ -155,6 +155,11 @@
     font-size: 20px;
     margin:30px 50px;
   }
+
+  .leaflet-container{
+    width: '500px';
+    height: '50vh';
+  }
   
   .contact-heading {
     display: flex;
@@ -182,15 +187,14 @@
   }
 
   .icon{
-  
     padding-top: 15px;
     padding-right: 25px;
     height: 50px;
     width: 50px;
   }
+
   .navbar-logo{
     margin-top: 8px;
-    
     margin-left: 30px;    
   }
   

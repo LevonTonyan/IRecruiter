@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./DashboardStyles.css";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
-import CreateCandidate from "./CreateCandidateModal/CreateCandidate";
 import CreateJob from "./CreateJob/CreateJob";
 import { UserAuth } from "../../context/AuthContext";
 import Loader from "./../loader/Loader";
@@ -74,8 +73,9 @@ const Dashboard = () => {
         </div>
 
         <div className="create-candidate-box-container">
+
           <div className="box" onClick={createCandidate}>
-            <div>
+            <div className="box-header">
               <img
                 src="https://app.manatal.com/img/createCandidates.0cff4784.png"
                 alt="na"
@@ -94,7 +94,7 @@ const Dashboard = () => {
           </div>
 
           <div className="box" onClick={createClient}>
-            <div>
+            <div className="box-header">
               <img
                 src="https://app.manatal.com/img/createDepartment.a226c27a.png"
                 alt="na"
@@ -114,7 +114,7 @@ const Dashboard = () => {
           </div>
 
           <div className="box" onClick={createJob}>
-            <div>
+            <div className="box-header">
               <img
                 src="https://app.manatal.com/img/createJob.9530d415.png"
                 alt="na"

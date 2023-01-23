@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import "yup-phone";
 import { doc, updateDoc  } from "firebase/firestore";
 import { db } from '../../db/firebase';
-import { getAuth, updateProfile, updateEmail, updatePassword} from "firebase/auth";
+import { getAuth, updateEmail, updatePassword} from "firebase/auth";
 
 
 
@@ -21,7 +21,7 @@ function Settings(path) {
   const [message, setMessage] = useState("");
   const { currentUserData,  user,settingUser } = UserAuth()
   
-
+console.log(currentUserData)
   let changing = path.prop
  
   function ButtonWrapper() {
@@ -41,6 +41,7 @@ function Settings(path) {
     }
 
     function updateUserProfile(target, value) { 
+      console.log(target)
         const profileRef = doc(db, currentUserData.type, user.uid);
         updateDoc(profileRef, {
           [target]: value
@@ -64,11 +65,13 @@ function Settings(path) {
     function handleChange() {
       const target = Object.keys(context.values)[0];
       const value = Object.values(context.values)[0];
-      
       switch (target) {
         case "Candidate Name":
           updateUserProfile(target, value);
           break;
+          case "phone":
+            updateUserProfile("Candidate Phone Number", value);
+            break;
         case "email":
           updateUserProfileEmail(value);
           break;

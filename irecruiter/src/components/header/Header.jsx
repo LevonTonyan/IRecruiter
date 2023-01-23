@@ -19,12 +19,11 @@ import ClickAwayListener from "@mui/base/ClickAwayListener";
 import PersonIcon from "@mui/icons-material/Person";
 import WorkIcon from "@mui/icons-material/Work";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
-import CreateCandidate from "../profilePage/CreateCandidateModal/CreateCandidate";
 import CreateJob from "../profilePage/CreateJob/CreateJob";
 import CreateClient from "../profilePage/CreateClient/CreateClient";
 import CandidateForm from "../profilePage/CreateCandidateModal/CandidateForm/CandidateForm";
 
-const drawerWidth = 240;
+const drawerWidth = 190;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -247,7 +246,7 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded={open ? true : undefined}
                 >
-                  <div className="user_avatar">{usersName[0]}</div>
+                  <div className="user_avatar">{user.photoURL?<img src={user.photoURL} alt=''/>:usersName[0]}</div>
                 </div>
                 <Menu
                   id="menu"

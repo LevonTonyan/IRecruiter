@@ -1,13 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { uploadBytes, ref, getDownloadURL } from "firebase/storage";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import { auth, db } from "../db/firebase";
 import { getDoc, doc } from "firebase/firestore";
-
+import { storage } from "./../db/firebase";
 
 const UserContext = createContext();
 
@@ -17,7 +19,7 @@ export const AuthContextProvider = ({ children }) => {
   const [userType, setUserType] = useState("recruiter");
   const [loading, setLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [recentlyVisited, setRecentlyVis] = useState(['/dashboard']);
+  const [recentlyVisited, setRecentlyVis] = useState(["/dashboard"]);
 
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -32,9 +34,10 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   /////////Adding recently added link////////////////////
-    const handleAddRecentlyVis = (link) => {
-        if (link.length > 20) { return } 
-        
+  const handleAddRecentlyVis = (link) => {
+    if (link.length > 20) {
+      return;
+    }
 
     if (recentlyVisited.includes(link)) {
       setRecentlyVis(() => [
@@ -42,25 +45,36 @@ export const AuthContextProvider = ({ children }) => {
         ...recentlyVisited.filter((l) => l !== link),
       ]);
     } else {
-      setRecentlyVis((prev) => [link,...prev]);
-        }
+      setRecentlyVis((prev) => [link, ...prev]);
+    }
   };
 
   ////////Checking if user set//////////////
   useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        console.log(currentUser)
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
     return () => unsubscribe();
   }, []);
-    
-//  console.log(user.uid)
-//     const currentUserDataRef = doc(db, userType, user.uid);
-//   onSnapshot(currentUserDataRef, (doc) => console.log(""))
 
 
+  /////// UPOAL PHOTO to the Storage
+
+  async function upload(file, user) {
+    const fileRef = ref(storage, user.uid + ".png");
+    const snapshot = await uploadBytes(fileRef, file);
+    const photoURL = await getDownloadURL(fileRef);
+    updateProfile(user, { photoURL })
+      .then(() => {
+        settingUser(user.uid);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
     
+  ////////////Setting current user/////////////////  
   function settingUser(id) {
     setLoading(true);
     const currentUserDataRef = doc(db, userType, id);
@@ -94,8 +108,9 @@ export const AuthContextProvider = ({ children }) => {
         currentUserData,
         setUserType,
         userType,
-              loading,
-              setLoading,
+        loading,
+        setLoading,
+        upload,
         settingUser,
         isSidebarOpen,
         setIsSidebarOpen,
