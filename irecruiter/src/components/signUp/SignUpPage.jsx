@@ -224,7 +224,7 @@ function SignUp() {
         </div>
         <div style={{ color: "red" }}>{error}</div>
         <div className="footer-login">
-          <p>Already have an account?</p>
+          Already have an account?
           <Link to="/login" style={{ marginLeft: "5px" }}>
             Login
           </Link>
