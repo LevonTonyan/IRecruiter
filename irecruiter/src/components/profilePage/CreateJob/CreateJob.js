@@ -90,29 +90,30 @@ function CreateJob({ setShowJobFormModal }) {
               <TextField
                 name="Category"
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values.Category}
-                error={formik.errors.Category && true}
-                helperText={formik.errors.Category}
                 sx={{ width: "500px" }}
                 size="small"
                 label="Category*"
                 variant="outlined"
               />
             </div>
+            {formik.errors.Category && formik.touched.Category ?<p className="job-error">{formik.errors.Category}</p>:null}
+
 
             <div className="job-input">
               <TextField
                 name="Position Name"
                 onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 value={formik.values["Position Name"]}
-                error={formik.errors["Position Name"] && true}
-                helperText={formik.errors["Position Name"]}
                 sx={{ width: "500px" }}
                 size="small"
                 label="Position name*"
                 variant="outlined"
               />
             </div>
+            {formik.errors["Position Name"] && formik.touched["Position Name"] ?<p className="job-error">{formik.errors["Position Name"]}</p>:null}
 
             <div className="job-input">
               <TextField
@@ -120,8 +121,7 @@ function CreateJob({ setShowJobFormModal }) {
                 name="Client"
                 value={formik.values.Client}
                 onChange={formik.handleChange}
-                error={formik.errors.Client && true}
-                helperText={formik.errors.Client}
+                onBlur={formik.handleBlur}
                 label="Select client"
                 select
                 sx={{ width: "500px" }}
@@ -134,6 +134,7 @@ function CreateJob({ setShowJobFormModal }) {
                 <MenuItem value="Renderforest">Renderforest</MenuItem>
               </TextField>
             </div>
+            {formik.errors.Client && formik.touched.Client ?<p className="job-error">{formik.errors.Client}</p>:null}
 
             <div className="job-location">
               <TextField
@@ -142,8 +143,7 @@ function CreateJob({ setShowJobFormModal }) {
                 name="Location"
                 value={formik.values["Location"]}
                 onChange={formik.handleChange}
-                error={formik.errors["Location"] && true}
-                helperText={formik.errors["Location"]}
+                onBlur={formik.handleBlur}
                 label="Add location"
                 sx={{ width: "300px" }}
                 size="small"
@@ -163,6 +163,7 @@ function CreateJob({ setShowJobFormModal }) {
                 label="Remote"
               />
             </div>
+            {formik.errors["Location"] && formik.touched["Location"] ?<p className="job-error">{formik.errors["Location"]}</p>:null}
 
             <div className="job-input">
               <TextField

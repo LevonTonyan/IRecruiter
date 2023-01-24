@@ -42,8 +42,16 @@
 .job-input {
   display: flex;
   justify-content: center;
-  margin: 10px;
+  margin: 20px;
 }
+
+.job-error {
+  display: flex;
+  margin-top: -10px;
+  margin-left: 30px;
+  color: red;
+  font-size: 12px;
+} 
 
 .job-container input {
   height: px;

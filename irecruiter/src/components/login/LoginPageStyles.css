@@ -20,6 +20,14 @@
     
 }
 
+.login-error {
+    display: flex;
+    margin-top: -20px;
+    margin-left: 130px;
+    color: red;
+    font-size: 12px;
+  } 
+
 .login-form a {
    text-decoration: none;
    color:#1976d2
@@ -33,7 +41,6 @@
 .login-form h1{ 
     color:#1976d2
 }
-
 
 
 .login-logo {
