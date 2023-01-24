@@ -119,30 +119,6 @@ function SignUp() {
 
 
   
-  const createNewUser = (data) => {
-    createUser(data.email, data.password).then(cred => {
-      let object = userType === 'employee' ?
-        {
-          name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber,
-          diploma: null,
-          university: null,
-          gender: null,
-          birthdate: null,
-          candidateAddress: null,
-          createdBy:cred.user.uid
-
-        } : {
-          name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber,
-          organisation:data.organisation
-        }
-        setDoc(doc(db, userType, cred.user.uid), object)
-        return cred.user.uid
-    }).then((id) => settingUser(id))
-      .then(() => navigate(currentUserData.type === "recruiter" ? "/dashboard" : "/jobs"))
-      .catch((e) => setError(e.message))
-}
   
   return (
     <div className="main">
