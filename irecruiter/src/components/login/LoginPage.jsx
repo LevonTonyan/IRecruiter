@@ -34,9 +34,7 @@ const LoginPage = () => {
   function loginButtonHandler() {
     loginUser(formik.values.logInEmail, formik.values.logInPassword)
       .then((res) => settingUser(res.user.uid))
-      .then(() =>
-        navigate(currentUserData.type === "recruiter" ? "/dashboard" : "/jobs")
-      )
+      .then(() => navigate(currentUserData.type === "recruiter" ? "/dashboard" : "/jobs"))
       .catch((error) => setError(error.message));
   }
 

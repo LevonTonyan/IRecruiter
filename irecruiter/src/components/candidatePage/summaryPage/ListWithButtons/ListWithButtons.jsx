@@ -74,7 +74,7 @@ const AddButton = ({ setShowMiniEdit }) => {
 
 
 function Editable({ candidate, field }) {
-
+  
 
 
 
@@ -90,23 +90,27 @@ function Editable({ candidate, field }) {
     console.log(target)
     const item = doc(db, "employee", candidate.id);
       updateDoc(item, {
-       
         [target]: isFieldPlural?arrayRemove(name):deleteField()
       }).catch(e => console.log(e)).then(() => setInput(""))
       }
   
-  ////////////////HERE SEND TO SERVER////////////////////////
-
+  if (field === 'Applied jobs') {
+    
+    return candidate[field]?.map((el => <Chip label={ el.name} size='small'/>))
+  
+  }
+  
   return (
     <>
-      {(candidate[field] && !showMiniEdit) ? (
+      {(candidate[field] && !showMiniEdit)? (
         
         //////if name of the field is plural return array of chips//////////////////
         candidate[field].length&&field.charAt(field.length - 1) === 's'
           ? <Stack direction="row" spacing={1}>{
             candidate[field].map(el => { 
-              return ( <Chip
-                label={el instanceof Map?null:el}
+              console.log(typeof el)
+              return (<Chip
+                label={el}
                 size='small'
                 onDelete={() => handleDelete(el,field)}
                 onClick={handleEdit} />)
@@ -148,6 +152,7 @@ const ListWithButtons = ({ candidate, compName,details }) => {
       </div>
       <div className="candidate-details">
         {details.map((detail, i) => {
+       
           return (
             <Line detailName={detail} candidate={candidate} key={i} id={i} />
           );

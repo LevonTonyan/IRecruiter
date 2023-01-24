@@ -16,19 +16,35 @@ import CreateJob from '../profilePage/CreateJob/CreateJob';
 
 const SimpleComp = (p) => {
   const { user, currentUserData } = UserAuth();
+  const [jobsAppliyed, setJobsAppliyed] = useState([]);
+  
+
+
   function applyHandler() {
     const jobRef = doc(db, "employee", user.uid);
-    const job = p.data["Position Name"];
+    const job = {id:p.data.id, name:p.data["Position Name"]};
     updateDoc(jobRef, {
       "Applied jobs": arrayUnion(job),
+    }).then(() => {
+  
+
+
     }).catch((e) => console.log(e));
   }
+
+  useEffect(() => { 
+    let jobs = Object.keys(currentUserData).length&&currentUserData['Applied jobs']?currentUserData['Applied jobs'].map(job => job.id):[]
+    setJobsAppliyed(jobs)
+  }, [currentUserData])
+  
+
+
   return (
     <>
       {currentUserData.type === "employee" ? (
         <>
-          <button className="apply-btn" onClick={applyHandler}>
-            apply
+          <button className={jobsAppliyed.includes(p.data.id)?"dis":"apply-btn"}  onClick={applyHandler}>
+          {jobsAppliyed.includes(p.data.id)?"applied":"apply"}
           </button>
           <Link to={`/job/${p.data.id}`}>{p.value}</Link>
         </>
@@ -62,7 +78,7 @@ const JobsList = () => {
   const rowData = docs
  
   const [columnDefs , setColumnDefs] = useState([
-    {  headerName: "Position Name", field: "Position Name"},
+    { cellRenderer: SimpleComp, field: "Position Name", cellClass:"cellClass"},
     { headerName: "Category", field: "Category" },
     { headerName: "Location", field: "Location",},
     { headerName: "Client", field: "Client" },

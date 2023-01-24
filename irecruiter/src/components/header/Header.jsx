@@ -61,8 +61,6 @@ const Header = () => {
   } = UserAuth();
   const location = useLocation();
   const navigate = useNavigate();
-
-console.log(currentUserData)
   const usersName = Object.keys(currentUserData).length && currentUserData["Candidate Name"][0];
   const organisation = Object.keys(currentUserData).length
     ? currentUserData.organisation
@@ -178,7 +176,7 @@ console.log(currentUserData)
                       onChange={(e) => setSearchInputValue(e.target.value)}
                       onFocus={() => setIsSearching(true)}
                       type="text"
-                      placeholder="Search by Name, Job, Email or Client"
+                      placeholder="Search by Name or Category"
                     />
                     <button className="search-btn">
                       <SearchIcon />
@@ -188,6 +186,7 @@ console.log(currentUserData)
                     isSearching={isSearching}
                     searchInputValue={searchInputValue}
                     setSearchInputValue={setSearchInputValue}
+                    
                   />
                 </div>
               </ClickAwayListener>

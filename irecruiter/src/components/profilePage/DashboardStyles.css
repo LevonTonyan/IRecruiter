@@ -91,8 +91,9 @@
     font-size: 10px;
   }
 
-  .box img {
-    width: 50px;
+  .box-header img {
+    width: 56px;
+    height: 80px;
     margin: 0;
   }
   .create-candidate-box-container {

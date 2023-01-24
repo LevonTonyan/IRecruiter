@@ -22,3 +22,13 @@
     cursor: pointer;
     font-weight: 700;
   }
+
+  .dis {
+    margin:0 7px 0 0;
+    background-color:inherit;
+    border-radius:5px;
+    border:2px solid rgb(170, 177, 182);
+    color:rgb(170, 177, 182);
+    cursor: pointer;
+    font-weight: 700;
+  }

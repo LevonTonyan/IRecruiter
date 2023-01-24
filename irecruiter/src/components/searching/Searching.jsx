@@ -8,7 +8,7 @@ import { db } from "../../db/firebase";
 import LinearProgress from "@mui/material/LinearProgress";
 import uuid from "react-uuid";
 
-const Searching = ({ isSearching, searchInputValue }) => {
+const Searching = ({ isSearching, searchInputValue, setSearchInputValue }) => {
   let valueToSearch =
     searchInputValue &&
     searchInputValue[0].toUpperCase() + searchInputValue.slice(1);
@@ -37,6 +37,7 @@ const Searching = ({ isSearching, searchInputValue }) => {
             ? setSearchResults("Nothig found")
             : setSearchResults(resultData);
           setLoading(false);
+          setSearchInputValue("")
         }
         handleSearch();
       }
