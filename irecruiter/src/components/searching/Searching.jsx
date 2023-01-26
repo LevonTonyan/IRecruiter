@@ -8,7 +8,7 @@ import { db } from "../../db/firebase";
 import LinearProgress from "@mui/material/LinearProgress";
 import uuid from "react-uuid";
 
-const Searching = ({ isSearching, searchInputValue }) => {
+const Searching = ({ isSearching, searchInputValue, setSearchInputValue,currentUserData }) => {
   let valueToSearch =
     searchInputValue &&
     searchInputValue[0].toUpperCase() + searchInputValue.slice(1);
@@ -37,6 +37,7 @@ const Searching = ({ isSearching, searchInputValue }) => {
             ? setSearchResults("Nothig found")
             : setSearchResults(resultData);
           setLoading(false);
+          setSearchInputValue("")
         }
         handleSearch();
       }
@@ -120,18 +121,18 @@ const Searching = ({ isSearching, searchInputValue }) => {
           {loading && <LinearProgress />}
           <span>Search for</span>
         </div>
-        <Button
-          style={
-            searchCollection === "candidates"
-              ? { backgroundColor: "#1976d2", color: "white" }
-              : {}
-          }
-          variant="outlined"
-          sx={{ height: "20px" }}
-          onClick={() => handleClick("candidates")}
-        >
-          Candidates
-        </Button>
+    {currentUserData.type==='recruiter'?<Button
+            style={
+              searchCollection === "candidates"
+                ? { backgroundColor: "#1976d2", color: "white" }
+                : {}
+            }
+            variant="outlined"
+            sx={{ height: "20px" }}
+            onClick={() => handleClick("candidates")}
+          >
+            Candidates
+          </Button>:null}
         <Button
           style={
             searchCollection === "jobs"

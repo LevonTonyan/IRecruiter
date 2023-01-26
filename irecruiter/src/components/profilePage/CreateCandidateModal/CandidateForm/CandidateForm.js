@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, TextField, MenuItem } from "@mui/material";
 import { db } from "../../../../db/firebase";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc,serverTimestamp  } from "firebase/firestore";
 import  uuid  from 'react-uuid';
 import { UserAuth } from "../../../../context/AuthContext";
 
@@ -60,7 +60,7 @@ function CandidateForm({setShowCandidateFormModal}) {
       expectedSalary: null,
       createdBy: user.uid,
       id: uuid(),
-      created: new Date().toLocaleString(),
+      created: serverTimestamp(),
       skills: [],
       jobs: [],
       type: 'employee',

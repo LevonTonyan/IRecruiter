@@ -63,8 +63,11 @@
     background-color:white;
   }         
 
-@media only screen and (max-width: 850px){
+
+
+  @media only screen and (max-width: 850px){
     .candidate-form-container{
       width: 370px;
     }
-  }  
+  }
+

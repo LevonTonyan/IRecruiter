@@ -67,6 +67,7 @@ function CreateJob({ setShowJobFormModal }) {
   const createNewJob = () => {
     addDoc(collection(db, "jobs"), formik.values)
       .then(() => navigate("/jobs"))
+      .then(() => setShowJobFormModal(false))
       .catch((e) => setErrorMessage(e.message));
   };
 

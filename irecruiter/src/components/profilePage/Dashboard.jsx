@@ -73,6 +73,7 @@ const Dashboard = () => {
         </div>
 
         <div className="create-candidate-box-container">
+
           <div className="box" onClick={createCandidate}>
             <div className="box-header">
               <img
