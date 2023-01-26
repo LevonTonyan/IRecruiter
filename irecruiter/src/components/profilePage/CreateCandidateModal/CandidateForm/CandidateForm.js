@@ -33,7 +33,7 @@ function CandidateForm({setShowCandidateFormModal}) {
 
     validationSchema: Yup.object({
         "Candidate Name": Yup.string().required("Necessary"),
-        "Candidate Phone Number": Yup.string().required("Necessary").phone(null,true,'Invalid phone number'),
+        "Candidate Phone Number": Yup.string().required("Necessary").phone("AM",true,'Invalid phone number'),
         "Candidate Location": Yup.string().required("Necessary"),
         "Email Address": Yup.string().email("Invalid email").required("Necessary"),
         "Current Position": Yup.string().required("Necessary"),
@@ -78,7 +78,7 @@ function CandidateForm({setShowCandidateFormModal}) {
         <div className='candidate-form-container'>
           <div className='candidate-form-title'>
             
-            <h3>Create Form</h3>{" "}
+            <h3>Create Candidate</h3>{" "}
             
             <button
             className="btn btn-close"
@@ -94,38 +94,36 @@ function CandidateForm({setShowCandidateFormModal}) {
                 <TextField
                     name="Candidate Name"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values["Candidate Name"]}
-                    error={formik.errors["Candidate Name"] && true}
-                    helperText={formik.errors["Candidate Name"]}
                     sx={{ width: "500px" }}
                     size="small"
                     label="Name*"
                     variant="outlined"
                 />
                 </div>
+                {formik.touched["Candidate Name"] && formik.errors["Candidate Name"] ?<p className="candidate-error">{formik.errors["Candidate Name"]}</p>:null}
 
                 <div className="input">
                 <TextField
                     name="Candidate Phone Number"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values["Candidate Phone Number"]}
-                    error={formik.errors["Candidate Phone Number"] && true}
-                    helperText={formik.errors["Candidate Phone Number"]}
                     sx={{ width: "500px" }}
-                    type="number"
                     size="small"
                     label="Phone Number"
                     variant="outlined"
                 />
                 </div>
+                {formik.touched["Candidate Phone Number"] && formik.errors["Candidate Phone Number"]?<p className="candidate-error">{formik.errors["Candidate Phone Number"]}</p>:null}
 
                 <div className="input">
                 <TextField
                     name="Candidate Location"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values["Candidate Location"]}
-                    error={formik.errors["Candidate Location"] && true}
-                    helperText={formik.errors["Candidate Location"]}
                     sx={{ width: "500px" }}
                     size="small"
                     id="select"
@@ -143,34 +141,38 @@ function CandidateForm({setShowCandidateFormModal}) {
                 )}
                 </TextField>
                 </div>
+                {formik.touched["Candidate Location"] && formik.errors["Candidate Location"] ?<p className="candidate-error">{formik.errors["Candidate Location"]}</p>:null}
+
 
                 <div className="input">
                 <TextField
                     name="Email Address"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values["Email Address"]}
-                    error={formik.errors["Email Address"] && true}
-                    helperText={formik.errors["Email Address"]}
                     sx={{ width: "500px" }}
                     size="small"
                     label="Email Address*"
                     variant="outlined"
                 />
                 </div>
+                {formik.touched["Email Address"] && formik.errors["Email Address"] ?<p className="candidate-error">{formik.errors["Email Address"]}</p>:null}
 
                 <div className="input">
                 <TextField
                     name="Current Position"
                     onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                     value={formik.values["Current Position"]}
-                    error={formik.errors["Current Position"] && true}
-                    helperText={formik.errors["Current Position"]}
+                    // error={formik.errors["Current Position"] && true}
+                    // helperText={formik.errors["Current Position"]}
                     sx={{ width: "500px" }}
                     size="small"
                     label="Current Position*"
                     variant="outlined"
                 />
                 </div>
+                {formik.errors["Current Position"] && formik.touched["Current Position"] ?<p className="candidate-error">{formik.errors["Current Position"]}</p>:null}
 
                 <div className="input">
                 <TextField
