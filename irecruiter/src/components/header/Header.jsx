@@ -186,6 +186,7 @@ const Header = () => {
                     isSearching={isSearching}
                     searchInputValue={searchInputValue}
                     setSearchInputValue={setSearchInputValue}
+                    currentUserData={currentUserData}
                     
                   />
                 </div>
