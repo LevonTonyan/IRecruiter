@@ -241,7 +241,7 @@ function SignUp() {
         <div className="input">
           
           <p>Already have an account?</p>
-          <Link to="/login" style={{margin:"15px 0 0 3px"}}>Login</Link>
+          <Link to="/login" style={{margin:"0 0 0 5px"}}>Login</Link>
         </div>
       </div>
     </div>
