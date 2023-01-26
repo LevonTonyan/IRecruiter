@@ -8,16 +8,7 @@ import uuid from 'react-uuid';
 import  Chip  from '@mui/material/Chip';
 
 
-///////////////SMALL SKILLITEM CMPONENT///////////////////
-const Skill = ({skill, removeSkill}) => {
-  return (<>
-            <div className='skill'>
-                {skill}
-             </div>
-            <button className='close-btn' onClick={() => removeSkill(skill)}>X</button>
-          </>
-  )
-}
+
 
 
 

@@ -18,7 +18,7 @@ import { doc, setDoc } from "firebase/firestore";
 
 function SignUp() {
   
-  const { createUser, setUserType, userType, settingUser } = UserAuth()
+  const { createUser, setUserType, userType, settingUser, currentUserData } = UserAuth()
   const navigate = useNavigate()
   const [error, setError] = useState("");
 
@@ -72,29 +72,53 @@ function SignUp() {
   }
 
 
-  
   const createNewUser = (data) => {
-    createUser(data.email, data.password).then(cred => {
-      let object = userType === 'employee' ?
-        {
-          name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber,
-          diploma: null,
-          university: null,
-          gender: null,
-          birthdate: null,
-          candidateAddress: null,
-          createdBy:cred.user.uid
+    if (!data.name || !data.phoneNumber) {
+      console.log(data.name, data.phoneNumber);
+      setError("All fields marked * should be filled up");
+      return;
+    }
 
-        } : {
-          name: data.name[0].toUpperCase() + data.name.slice(1),
-          phone: data.phoneNumber,
-          organisation:data.organisation
-        }
-        setDoc(doc(db, userType, cred.user.uid), object)
-        return cred.user.uid
-      }).then((id) => settingUser(id)).then(() => navigate('/profile')).catch((e) => setError(e.message))
-}
+    createUser(data.email, data.password)
+      .then((cred) => {
+        let object =
+          userType === "employee"
+            ? {
+                "Candidate Name":
+                  data.name[0].toUpperCase() + data.name.slice(1),
+                "Candidate Phone Number": data.phoneNumber,
+                Diploma: null,
+                University: null,
+                "Current Company": null,
+                Gender: null,
+                Birthdate: null,
+                "Candidate Address": null,
+                "Candidate Location": null,
+                expectedSalary: null,
+                createdBy: cred.user.uid,
+                id: cred.user.uid,
+                created: new Date().toLocaleString(),
+                location: null,
+                skills: [],
+                jobs: [],
+                type: userType,
+              }
+            : {
+                "Candidate Name":data.name[0].toUpperCase() + data.name.slice(1),
+                "Candidate Phone Number": data.phoneNumber,
+                organisation: data.organisation,
+                type: userType,
+              };
+        setDoc(doc(db, userType, cred.user.uid), object);
+        return cred.user.uid;
+      })
+      .then((id) => settingUser(id))
+      .then(() => navigate(userType === "recruiter" ? "/dashboard" : "/jobs"))
+      .catch((e) => setError(e.message));
+  };
+
+
+  
   
   return (
     <div className="main">

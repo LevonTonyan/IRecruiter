@@ -28,7 +28,6 @@ function ControlledCheckbox() {
 
 function CreateClient({ setShowClientFormModal }) {
     const navigate = useNavigate();
-   
     const [ErrorMessage, setErrorMessage]=useState("");
     
 
@@ -81,29 +80,29 @@ function CreateClient({ setShowClientFormModal }) {
                         <TextField
                             name="Client Name"
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             value={formik.values["Client Name"]}
-                            error={formik.errors["Client Name"] && true}
-                            helperText={formik.errors["Client Name"]}
                             sx={{ width: "500px" }}
                             size="small"
                             label="Name*"
                             variant="outlined"
                         />
                         </div>
+                        {formik.errors["Client Name"] && formik.touched["Client Name"] ?<p className="client-error">{formik.errors["Client Name"]}</p>:null}
 
                         <div className="client-input">
                         <TextField
                             name="Company Name"
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             value={formik.values["Company Name"]}
-                            error={formik.errors["Company Name"] && true}
-                            helperText={formik.errors["Company Name"]}
                             sx={{ width: "500px" }}
                             size="small"
                             label="Company Name*"
                             variant="outlined"
                         />
                         </div>
+                        {formik.errors["Company Name"] && formik.touched["Company Name"] ?<p className="client-error">{formik.errors["Company Name"]}</p>:null}
 
                         <div className="client-input">
                             <TextField
@@ -123,15 +122,15 @@ function CreateClient({ setShowClientFormModal }) {
                             <TextField
                                 name="Position Name"
                                 onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 value={formik.values["Position Name"]}
-                                error={formik.errors["Position Name"] && true}
-                                helperText={formik.errors["Position Name"]}
                                 sx={{ width: "500px" }}
                                 size="small"
                                 label="Position name*"
                                 variant="outlined"
                             />
                         </div>
+                        {formik.errors["Position Name"] && formik.touched["Position Name"] ?<p className="client-error">{formik.errors["Position Name"]}</p>:null}
 
                         <div className="client-location">
                             <TextField
@@ -140,8 +139,7 @@ function CreateClient({ setShowClientFormModal }) {
                                 name="Location"
                                 value={formik.values["Location"]}
                                 onChange={formik.handleChange}
-                                error={formik.errors["Location"] && true}
-                                helperText={formik.errors["Location"]}
+                                onBlur={formik.handleBlur}
                                 label="Add location"
                                 sx={{ width: "300px" }}
                                 size="small"
@@ -161,6 +159,7 @@ function CreateClient({ setShowClientFormModal }) {
                                 label="Remote"
                             />
                         </div>
+                        {formik.errors["Location"] && formik.touched["Location"] ?<p className="client-error">{formik.errors["Location"]}</p>:null}
 
                         <div className="client-salary">
                             <TextField
@@ -171,10 +170,11 @@ function CreateClient({ setShowClientFormModal }) {
                             size="small"
                             sx={{ width: "500px" }}
                             onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             value={formik.values.Salary}
-                            error={formik.errors.Salary && true}
                             />
                         </div>
+                        {formik.errors.Salary && formik.touched.Salary ?<p className="client-error">{formik.errors.Salary}</p>:null}
 
                         <div className="client-input">
                             <TextField

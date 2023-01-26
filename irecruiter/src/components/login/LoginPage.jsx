@@ -34,9 +34,7 @@ const LoginPage = () => {
   function loginButtonHandler() {
     loginUser(formik.values.logInEmail, formik.values.logInPassword)
       .then((res) => settingUser(res.user.uid))
-      .then(() =>
-        navigate(currentUserData.type === "recruiter" ? "/dashboard" : "/jobs")
-      )
+      .then(() => navigate(currentUserData.type === "recruiter" ? "/dashboard" : "/jobs"))
       .catch((error) => setError(error.message));
   }
 
@@ -56,25 +54,26 @@ const LoginPage = () => {
           <TextField
             sx={{ width: "50%", m: 3 }}
             size="small"
-            error={formik.errors.logInEmail && true}
             name="logInEmail"
             label="email"
-            helperText={formik.errors.logInEmail}
             value={formik.values.logInEmail}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.errors.logInEmail && formik.touched.logInEmail ?<p className="login-error">{formik.errors.logInEmail}</p>:null}
+          
 
           <TextField
             sx={{ width: "50%", mb: 3 }}
-            error={formik.errors.logInPassword && true}
             type="password"
             size="small"
             name="logInPassword"
             label="password"
-            helperText={formik.errors.logInPassword}
             value={formik.values.logInPassword}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.errors.logInPassword && formik.touched.logInPassword ?<p className="login-error">{formik.errors.logInPassword}</p>:null}          
 
           <Button
             sx={{ width: "50%", margin: "30px", borderRadius: "15px" }}
