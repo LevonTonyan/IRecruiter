@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
 import "./DashboardStyles.css";
+import React, { useEffect } from "react";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
 import CreateJob from "./CreateJob/CreateJob";
@@ -7,10 +7,29 @@ import { UserAuth } from "../../context/AuthContext";
 import Loader from "./../loader/Loader";
 import CreateClient from "./CreateClient/CreateClient";
 import CandidateForm from "./CreateCandidateModal/CandidateForm/CandidateForm";
+import { motion } from 'framer-motion'
+import crCan from '../../images/createCandidates.png'
+import crDep from '../../images/createDepartment.png';
+import crJob from '../../images/createJob.png';
+
+
+const boxAnimation = {
+  hidden: {
+    x: -100,
+    opacity:0,
+  },
+  visible: custom => ({
+    x: 0,
+    opacity:1,
+    transition:{delay:custom * 0.2}
+  }),
+
+}
+
+
 
 const Dashboard = () => {
   const [showCandidateModal, setShowCandidateModal] = useState(false);
-  
   const [showClientFormModal, setShowClientFormModal] = useState(false);
   const [showJobFormModal, setShowJobFormModal] = useState(false);
   const {currentUserData, settingUser, user, loading, isSidebarOpen } =
@@ -28,8 +47,7 @@ const Dashboard = () => {
   const usersName =
     Object.keys(currentUserData).length && currentUserData["Candidate Name"];
 
-  //if (showModal) return (<CreateCandidate setShowModal={setShowModal} />)
-  //if (showForm) return (<CreateJob setShowCandidateModal={setShowCandidateModal} />)
+
 
   /////////////CREATE CANDIDATE HANDLER////////////////////////
 
@@ -69,15 +87,19 @@ const Dashboard = () => {
       <div>
         <div className="greething-username">Hello {usersName},</div>
         <div className="greething">
-          Here are three steps to get you started.
+          <motion.span  animate={{fontSize:20} }>Here are three steps to get you started.</motion.span>
         </div>
 
         <div className="create-candidate-box-container">
-
-          <div className="box" onClick={createCandidate}>
+          <motion.div className="box"
+            onClick={createCandidate}
+            initial={boxAnimation.hidden}
+            animate={boxAnimation.visible}
+            custom={3}
+          >
             <div className="box-header">
               <img
-                src="https://app.manatal.com/img/createCandidates.0cff4784.png"
+                src={crCan}
                 alt="na"
               />
             </div>
@@ -91,12 +113,17 @@ const Dashboard = () => {
                 Create a Candidate
               </Button>
             </Box>
-          </div>
+          </motion.div>
 
-          <div className="box" onClick={createClient}>
+          <motion.div className="box" onClick={createClient}
+        
+            initial={boxAnimation.hidden}
+            animate={boxAnimation.visible}
+            custom={2}
+          >
             <div className="box-header">
               <img
-                src="https://app.manatal.com/img/createDepartment.a226c27a.png"
+                src={crDep}
                 alt="na"
               />
             </div>
@@ -111,12 +138,16 @@ const Dashboard = () => {
                 Create a Client
               </Button>
             </Box>
-          </div>
+          </motion.div>
 
-          <div className="box" onClick={createJob}>
+          <motion.div className="box" onClick={createJob}
+               initial={boxAnimation.hidden}
+               animate={boxAnimation.visible}
+               custom={1}
+          >
             <div className="box-header">
               <img
-                src="https://app.manatal.com/img/createJob.9530d415.png"
+                src={crJob}
                 alt="na"
               />
             </div>
@@ -133,7 +164,7 @@ const Dashboard = () => {
                 Create a Job
               </Button>
             </Box>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

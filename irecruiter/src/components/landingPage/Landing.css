@@ -1,256 +1,274 @@
-
-
-
-.landing-navbar{
+.landing-navbar {
   position: relative;
   top: -64px;
-
-    height: 90px;
-    background-color: #d4e8ff;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .navlink {
-    margin-top: 0px; 
-    margin-bottom: 0px; 
-    margin-left: 60px; 
-    margin-right: 0px;
-    padding: 25px 20px;
-    display: flex;
-    align-items:center;
-    vertical-align: middle;
-    font-size:x-large;
-    font-weight:bolder;
-    
-  }
-.landing-navbar{
-  position: relative;
   height: 90px;
-  background-color: #d4e8ff;
   display: flex;
   justify-content: space-between;
+
 }
 
 .navlink {
   width: 50vh;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 60px;
+  margin-right: 0px;
+  padding: 25px 20px;
   display: flex;
-  align-items:center;
+  align-items: center;
+  vertical-align: middle;
+  font-size: x-large;
+  font-weight: bolder;
   justify-content: space-around;
-  font-size:x-large;
-  font-weight:bolder;
-  
-  
+
+
 }
-  
-  .navlink a {
-    text-decoration: none;
-    color:black;
 
-  }
- 
-  .navlink a:hover {
-    color:rgb(49, 72, 199);
-    text-decoration: underline;
 
-  }
-.allContainer{
 
+
+.navlink a {
+  text-decoration: none;
+
+}
+
+.navlink a:hover {
+
+  text-decoration: underline;
+
+}
+
+.allContainer {
+  position: relative;
+  top: -64px;
+  height: 78vh;
+  background-image: url('../../images/group-meeting.jpg');
+  background-size: cover;
+  overflow: hidden;
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+}
+.contact-container {
+  height: 70vh;
+  position: relative;
+  top: -64px;
+  margin: 10px;
+  background-size: cover;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 }
 
-  .container{
-   
-    display: flex;
-    text-align: left;
-    margin-left: 15px;
-    float: left;
-    font-size: x-large;
-    display: block;
-    width: 100%;
-    max-width: 580px;
-  }
-  
-  .about {
-    display: flex;
-  
-    justify-content: center;
+.container {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: white;
+  display: flex;
+  text-align: left;
+  float: left;
+  font-size: x-large;
+  display: block;
+  width: 100%;
+  max-width: 580px;
+}
+
+.about {
+  display: flex;
+
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
+.button {
+  margin-left: 10px;
+  margin-top: -5px;
+  margin-bottom: 20px;
+  flex: 0 0 auto;
+  background-color: #1ebd53;
+  color: white;
+  margin-left: 20px;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  font-size: 18px;
+  line-height: 30%;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.leftbuttons a:hover {
+  background-color: #000;
+  color: white;
+  transition: 0.3s;
+}
+
+.leftbuttons {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: -20px;
+
+
+}
+
+.recruiterbutton {
+  margin-left: 20px;
+  padding: 15px 25px;
+  border-radius: 12px;
+  background-color: #145aff;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  font-size: 16px;
+  line-height: 120%;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.employeebutton {
+  margin-left: 20px;
+  padding: 15px 25px;
+  border-radius: 12px;
+  background-color: #1ebd53;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  font-size: 16px;
+  line-height: 120%;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.main-picture {
+
+  height: 400px;
+  width: 600px;
+}
+
+
+.about-header {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+
+}
+
+.about-text {
+
+  text-align: center;
+  font-size: 20px;
+  margin: 30px 50px;
+}
+
+.leaflet-container {
+  width: '500px';
+  height: '50vh';
+}
+
+.contact-heading {
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+}
+
+.contacts-container {
+  display: flex;
+  font-size: larger;
+  display: block;
+
+}
+
+.text {
+  display: block;
+  text-align: justify;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  padding-top: 15px;
+  padding-right: 25px;
+  height: 50px;
+  width: 50px;
+}
+
+.navbar-logo {
+  margin-top: 8px;
+  margin-left: 30px;
+  color: aliceblue
+}
+
+
+
+@media only screen and (max-width: 850px) {
+  .contact-container,
+  .allContainer {
     flex-direction: column;
+
   }
-  
-  
-  
-  .button {
-    margin-left: 10px;
-    margin-top: -5px;
-    margin-bottom: 20px;
-    flex: 0 0 auto;
-    background-color: #1ebd53;
-    color:white;
-    margin-left: 20px;
-    padding: 20px 30px;
-    border-radius: 12px;
-    text-align: center;
-    font-family: 'Open Sans',sans-serif;
-    color: #fff;
-    font-size: 18px;
-    line-height: 30%;
-    font-weight: 600; 
-    text-decoration: none; 
-  }
-  
-  .leftbuttons{
-    position: relative;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin-top: 20px;
-    margin-left: -20px;
-  }
-  
-  .recruiterbutton{
-    margin-left: 20px;
-    padding: 15px 25px;
-    border-radius: 12px;
-    background-color: #145aff;
-    font-family: 'Open Sans',sans-serif;
-    color: #fff;
-    font-size: 16px;
-    line-height: 120%;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  
-  .employeebutton{
-    margin-left: 20px;
-    padding: 15px 25px;
-    border-radius: 12px;
-    background-color: #1ebd53; 
-    font-family: 'Open Sans',sans-serif;
-    color: #fff;
-    font-size: 16px;
-    line-height: 120%;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  
+
   .main-picture {
-    
-    height:400px;
-    width:600px;
+
+    height: 300px;
+    width: 450px;
   }
-  
-  
-  .about-header{
-    display: flex;
-    justify-content: center;
+
+  .navbar-logo {
+    display: none;
+
+  }
+
+  .navlink {
     font-size: large;
-    
-  }
-  
-  .about-text {
-
-   text-align: center;
-    font-size: 20px;
-    margin:30px 50px;
+    margin-left: 0;
+    width: 100%;
+    display: flex;
   }
 
-  .leaflet-container{
-    width: '500px';
-    height: '50vh';
+
+
+  .container {
+    text-align: center;
   }
-  
-  .contact-heading {
+
+  .container h1 {
+    margin: 20px 40pxpx;
+    font-size: 30px;
+  }
+
+  .leftbuttons {
     display: flex;
     justify-content: center;
-    font-size: x-large;
-  }
-   
-  .contacts-container{
-    display: flex;
-    
-   
-    font-size: larger;
-    display: block;
-    
-  }
-  
-  .text{
-    display: block;
-    text-align:justify;
-  }
-
-  .contact{
-    display: flex;
     align-items: center;
+    width: 90%;
+    margin: auto;
+
   }
 
-  .icon{
-    padding-top: 15px;
-    padding-right: 25px;
-    height: 50px;
-    width: 50px;
-  }
 
-  .navbar-logo{
-    margin-top: 8px;
-    margin-left: 30px;    
+  .homepagetext {
+    font-size: 15px;
+    margin: 20px;
   }
-  
-  @media only screen and (max-width: 850px)  {
-    .allContainer{
-      flex-direction: column;
-    
-    }
-      .main-picture {
-    
-        height:300px;
-        width:450px;
-      }
-      .navbar-logo{
-        display:none;
-        
-      }
-      .navlink{
-        font-size: large;
-        margin-left: 0;
-        width: 100%;
-        display: flex;
-      }
-      
+}
 
-     
-      .container{
-        text-align: center;
-      }
-      .container h1 {
-        margin:20px 40pxpx;
-        font-size: 30px;
-      }
-      .leftbuttons {
-        display: flex;
-        justify-content: center;
-        align-items:center;
-        width:90%;
-        margin: auto;
-        
-      }
- 
-      
-     .homepagetext {
-      font-size: 15px;
-     }
-    
-      
-  }
+.about-text {
+  width: 70%;
+  margin:auto
+}
 
 
 .container h1 {
   margin: 20px;
 }
-
-  .homepagetext{
-    margin:20px;
-  }
