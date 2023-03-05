@@ -232,7 +232,7 @@ function Sidebar() {
           ))}
         </List>
         <Divider />
-        <h5>Recently visited</h5>
+        <h5 style={{margin:"10px"}}>Recently visited</h5>
         {recentlyVisited.length &&
           recentlyVisited.map((el) => (
             
