@@ -2,13 +2,16 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from 'firebase/auth'
-import {getStorage} from 'firebase/storage'
+import { getStorage } from 'firebase/storage'
+import env from "react-dotenv";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBuMUG5qOmk4bu3etOyFixQ5d42khaTARQ",
+  apiKey: env.FIREBASE_API_KEY,
   authDomain: "irecruiter-e3065.firebaseapp.com",
   projectId: "irecruiter-e3065",
   storageBucket: "irecruiter-e3065.appspot.com",

@@ -23,7 +23,7 @@ const textAnimation = {
 function Layout() {
   return (
     <div>
-      <nav className="landing-navbar" initial='hidden' whileInView='visible'>
+      <nav className="landing-navbar">
         <motion.div className="navbar-logo" variants={textAnimation }>
           <Link to="/">
             <HandshakeIcon

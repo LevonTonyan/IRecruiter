@@ -72,7 +72,6 @@ const JobsList = () => {
     getDocs(collection(db, "jobs")).then((docs) => {
       docs.forEach((doc) => arr.push({ ...doc.data(), id: doc.id }));
       setDocs(arr);
-      console.log("render");
       setLoading(false);
     });
   }, []);
